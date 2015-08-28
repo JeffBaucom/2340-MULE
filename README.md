@@ -2,8 +2,9 @@
 ## TEAM Donald Trump 2k16
 
 Project Team
-    -Sumit
-    -Jeffrey
-    -Matthew 
-    -Nathaniel
-    -Joseph
+    
+    - Sumit
+    - Jeffrey
+    - Matthew 
+    - Nathaniel
+    - Joseph
