@@ -2,12 +2,14 @@ package game;
 
 import java.io.IOException;
 
+import game.view.WelcomeScreenController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -59,6 +61,27 @@ public class Main extends Application {
             // Set person overview into the center of root layout.
             rootLayout.setCenter(personOverview);
 
+            // Give the controller access to the main app.
+            WelcomeScreenController controller = loader.getController();
+            controller.setMainApp(this);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void changeScreen() {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource
+                    ("/game/view/PlayerConfig" +
+                    ".fxml"));
+            AnchorPane nextScene = (AnchorPane) loader.load();
+
+            Scene scene = new Scene(nextScene);
+            primaryStage.setScene(scene);
+            primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
