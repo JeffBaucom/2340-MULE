@@ -1,14 +1,13 @@
 /**
  */
-public class Player2 {
+public class Player {
     String name;
     String color;
     String race;
 
-    public Player2() {
-        name = "";
+    public Player() {
     }
-    public Player2(String name, String race, String color) {
+    public Player(String name, String race, String color) {
         this.name = name;
         this.color = color;
         this.race = race;
