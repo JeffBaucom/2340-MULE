@@ -5,10 +5,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="41.0" layoutY="33.0" text="Choose Your Player Settings" textAlignment="CENTER">
+      <Label layoutX="102.0" layoutY="38.0" text="Choose Your Player Settings" textAlignment="CENTER" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
          <font>
             <Font name="Courier" size="32.0" />
          </font>
@@ -62,5 +61,6 @@
             </GridPane>
          </children>
       </GridPane>
+      <Button layoutX="508.0" layoutY="447.0" mnemonicParsing="false" text="Next" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
    </children>
 </AnchorPane>
