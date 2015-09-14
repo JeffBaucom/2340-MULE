@@ -2,6 +2,7 @@ package game;
 
 import java.io.IOException;
 
+import game.view.PlayerConfigController;
 import game.view.WelcomeScreenController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +24,7 @@ public class Main extends Application {
         this.primaryStage.setTitle("MULE Game");
 
         initRootLayout();
-        showGameScreen();
+        showWelcomeScreen();
         this.primaryStage.getIcons().add(new Image
                 ("file:resources/images/mule-icon.png"));
     }
@@ -50,7 +51,7 @@ public class Main extends Application {
     /**
      * Shows the game screen in the root layout.
      */
-    public void showGameScreen() {
+    public void showWelcomeScreen() {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
@@ -70,18 +71,20 @@ public class Main extends Application {
         }
     }
 
-    public void changeScreen() {
+    public void showConfigScreen() {
         try {
-            // Load the fxml file and create a new stage for the popup dialog.
+            // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource
-                    ("/game/view/PlayerConfig" +
-                    ".fxml"));
-            AnchorPane nextScene = (AnchorPane) loader.load();
+                    ("/game/view/PlayerConfig.fxml"));
+            AnchorPane playerConfigScreen = (AnchorPane) loader.load();
 
-            Scene scene = new Scene(nextScene);
-            primaryStage.setScene(scene);
-            primaryStage.show();
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(playerConfigScreen);
+
+            // Give the controller access to the main app.
+            PlayerConfigController controller = loader.getController();
+            controller.setMainApp(this);
         } catch (IOException e) {
             e.printStackTrace();
         }

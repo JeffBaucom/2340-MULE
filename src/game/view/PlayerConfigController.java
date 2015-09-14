@@ -29,7 +29,7 @@ public class PlayerConfigController {
      */
     @FXML
     private void handleNext() {
-        mainApp.changeScreen();
+        mainApp.showConfigScreen();
     }
 
     /**

@@ -42,7 +42,7 @@ public class WelcomeScreenController {
         else players = 4;
 
         for (int i = 0; i < players; i++) {
-            mainApp.changeScreen();
+            mainApp.showConfigScreen();
         }
     }
 
