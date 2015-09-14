@@ -1,9 +1,9 @@
-package game.control;
+package game.view;
 
 import game.Main;
 import javafx.fxml.FXML;
 
-public class WelcomeScreen {
+public class WelcomeScreenController {
 
     // Reference to the main application.
     private Main mainApp;
@@ -12,7 +12,7 @@ public class WelcomeScreen {
      * The constructor.
      * The constructor is called before the initialize() method.
      */
-    public WelcomeScreen() {
+    public WelcomeScreenController() {
     }
 
     /**
