@@ -36,9 +36,12 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <RadioButton mnemonicParsing="false" text="Flapper" />
-                  <RadioButton mnemonicParsing="false" text="Human" GridPane.rowIndex="1" />
-                  <RadioButton mnemonicParsing="false" text="Other" GridPane.rowIndex="2" />
+                  <RadioButton mnemonicParsing="false" text="Flapper">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="race" />
+                     </toggleGroup></RadioButton>
+                  <RadioButton mnemonicParsing="false" text="Human" toggleGroup="$race" GridPane.rowIndex="1" />
+                  <RadioButton mnemonicParsing="false" text="Other" toggleGroup="$race" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <Label text="Select a Color" GridPane.rowIndex="2" />
@@ -53,10 +56,13 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <RadioButton mnemonicParsing="false" text="Blue" GridPane.rowIndex="1" />
-                  <RadioButton mnemonicParsing="false" text="Red" />
-                  <RadioButton mnemonicParsing="false" text="Green" GridPane.rowIndex="2" />
-                  <RadioButton mnemonicParsing="false" text="Yellow" GridPane.rowIndex="3" />
+                  <RadioButton mnemonicParsing="false" text="Blue" GridPane.rowIndex="1">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="color" />
+                     </toggleGroup></RadioButton>
+                  <RadioButton mnemonicParsing="false" text="Red" toggleGroup="$color" />
+                  <RadioButton mnemonicParsing="false" text="Green" toggleGroup="$color" GridPane.rowIndex="2" />
+                  <RadioButton mnemonicParsing="false" text="Yellow" toggleGroup="$color" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>
