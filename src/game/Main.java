@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -71,23 +72,26 @@ public class Main extends Application {
         }
     }
 
-    public void showConfigScreen() {
-        try {
-            // Load person overview.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource
-                    ("/game/view/PlayerConfig.fxml"));
-            AnchorPane playerConfigScreen = (AnchorPane) loader.load();
+    public void showConfigScreen(int players) {
+        StackPane playerConfigStack = new StackPane();
+        for (int i = 0; i < players; i++) {
+            try {// Load person overview.
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(Main.class.getResource
+                        ("/game/view/PlayerConfig.fxml"));
+                AnchorPane playerConfigScreen = (AnchorPane) loader.load();
+                playerConfigStack.getChildren().add(playerConfigScreen);
 
-            // Set person overview into the center of root layout.
-            rootLayout.setCenter(playerConfigScreen);
-
-            // Give the controller access to the main app.
-            PlayerConfigController controller = loader.getController();
-            controller.setMainApp(this);
-        } catch (IOException e) {
-            e.printStackTrace();
+                // Give the controller access to the main app.
+                PlayerConfigController controller = loader.getController();
+                controller.setMainApp(this);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
+        // Set person overview into the center of root layout.
+        rootLayout.setCenter(playerConfigStack);
     }
 
     /**
