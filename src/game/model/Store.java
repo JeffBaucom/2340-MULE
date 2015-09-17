@@ -2,8 +2,8 @@ package game.model;
 
 public class Store {
 
-    private int smithoreStock, energyStock, foodStock, money
-    private int smithoreCost, foodCost, energyCost;
+    private int smithoreStock, energyStock, foodStock, muleStock, money
+    private int smithoreCost, foodCost, energyCost, muleCost;
 
     public Store() {
         smithoreStock = 100;
@@ -15,26 +15,38 @@ public class Store {
         money = 1000;
     }
 
-    public void buySmithore(int amount, Player p) {
-    }
-
-    public void buyFood(int amount, Player p) {
-
-    }
-    public void buyEnergy(int amount, Player p) {
+    public void buySmithore(int amount, Player player) {
 
     }
 
-    public void sellSmithore(int amount, Player p) {
-
-    }
-    public void sellFood(int amount, Player p) {
-
-    }
-    public void sellEnergy(int amount, Player p) {
+    public void buyFood(int amount, Player player) {
 
     }
 
+    public void buyEnergy(int amount, Player player) {
+
+    }
+
+    public void buyMule(int amount, Player player) {
+
+    }
+
+    public void sellSmithore(int amount, Player player) {
+
+    }
+
+    public void sellFood(int amount, Player player) {
+
+    }
+
+    public void sellEnergy(int amount, Player player) {
+
+    }
+
+    public void sellMule(int amount, Player player) {
+
+    }
+    
     public int getFood() {
         return foodStock;
     }
