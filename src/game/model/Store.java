@@ -2,7 +2,7 @@ package game.model;
 
 public class Store {
 
-    private int smithoreStock, energyStock, foodStock, muleStock, money
+    private int smithoreStock, energyStock, foodStock, muleStock, money;
     private int smithoreCost, foodCost, energyCost, muleCost;
 
     public Store() {

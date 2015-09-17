@@ -6,6 +6,7 @@ import game.view.PlayerConfigController;
 import game.view.WelcomeScreenController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -18,6 +19,7 @@ public class Main extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
+    StackPane playerConfigStack;
 
     @Override
     public void start(Stage primaryStage) {
@@ -38,7 +40,8 @@ public class Main extends Application {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/game/view/RootLayout.fxml"));
-            rootLayout = (BorderPane) loader.load();
+            rootLayout = loader.load();
+            playerConfigStack = new StackPane();
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
@@ -58,7 +61,7 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource
                     ("/game/view/WelcomeScreen.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            AnchorPane personOverview = loader.load();
 
             // Set person overview into the center of root layout.
             rootLayout.setCenter(personOverview);
@@ -73,13 +76,12 @@ public class Main extends Application {
     }
 
     public void showConfigScreen(int players) {
-        StackPane playerConfigStack = new StackPane();
         for (int i = 0; i < players; i++) {
             try {// Load person overview.
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(Main.class.getResource
                         ("/game/view/PlayerConfig.fxml"));
-                AnchorPane playerConfigScreen = (AnchorPane) loader.load();
+                AnchorPane playerConfigScreen = loader.load();
                 playerConfigStack.getChildren().add(playerConfigScreen);
 
                 // Give the controller access to the main app.
@@ -94,9 +96,14 @@ public class Main extends Application {
         rootLayout.setCenter(playerConfigStack);
     }
 
+    public void closeConfigScreen() {
+        playerConfigStack.getChildren().remove(playerConfigStack.getChildren
+                ().size() - 1);
+    }
+
     /**
      * Returns the main stage.
-     * @return
+     * @return null
      */
     public Stage getPrimaryStage() {
         return primaryStage;
