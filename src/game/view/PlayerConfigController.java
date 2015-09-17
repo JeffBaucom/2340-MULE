@@ -5,6 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 
 public class PlayerConfigController {
+    @FXML
+    RadioButton red;
+    @FXML
+    RadioButton blue;
+    @FXML
+    RadioButton green;
+    @FXML
+    RadioButton yellow;
     // Reference to the main application.
     private Main mainApp;
 
@@ -28,8 +36,21 @@ public class PlayerConfigController {
      * details for a new person.
      */
     @FXML
-    private void handleNext() {
-        mainApp.closeConfigScreen();
+    private void handleColor() {
+        RadioButton chosen;
+        if(red.isSelected()) chosen = red;
+        else if(blue.isSelected()) chosen = blue;
+        else if(green.isSelected()) chosen = green;
+        else chosen = yellow;
+
+        mainApp.updatePlayerColors(chosen);
+    }
+
+    @FXML
+    private void disableButtons(ArrayList<RadioButton> chosenColors) {
+        for (RadioButton b: chosenColors) {
+            b.setDisable(true);
+        }
     }
 
     /**
@@ -41,4 +62,3 @@ public class PlayerConfigController {
         this.mainApp = mainApp;
     }
 }
-

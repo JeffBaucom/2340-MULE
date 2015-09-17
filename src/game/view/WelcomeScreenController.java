@@ -41,7 +41,7 @@ public class WelcomeScreenController {
         else if(players3.isSelected()) players = 3;
         else players = 4;
 
-        mainApp.showConfigScreen(players);
+        mainApp.showAllConfigScreens(players);
     }
 
     /**

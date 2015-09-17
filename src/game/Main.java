@@ -14,12 +14,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.scene.control.RadioButton;
 
 public class Main extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
     StackPane playerConfigStack;
+    private ArrayList<RadioButton> chosenColors;
 
     @Override
     public void start(Stage primaryStage) {
@@ -75,25 +77,33 @@ public class Main extends Application {
         }
     }
 
-    public void showConfigScreen(int players) {
+    public void showAllConfigScreens(int players) {
         for (int i = 0; i < players; i++) {
             try {// Load person overview.
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(Main.class.getResource
-                        ("/game/view/PlayerConfig.fxml"));
-                AnchorPane playerConfigScreen = loader.load();
-                playerConfigStack.getChildren().add(playerConfigScreen);
-
-                // Give the controller access to the main app.
-                PlayerConfigController controller = loader.getController();
-                controller.setMainApp(this);
+                showConfigScreen();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-
         // Set person overview into the center of root layout.
         rootLayout.setCenter(playerConfigStack);
+    }
+
+    public void updatePlayerColors(RadioButton chosen) {
+        chosenColors.add(chosen);
+    }
+
+    public void showConfigScreen() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource
+                ("/game/view/PlayerConfig.fxml"));
+        AnchorPane playerConfigScreen = loader.load();
+        playerConfigStack.getChildren().add(playerConfigScreen);
+
+        // Give the controller access to the main app.
+        PlayerConfigController controller = loader.getController();
+        controller.disableButtons(chosenColors);
+        controller.setMainApp(this);
     }
 
     public void closeConfigScreen() {
