@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="storeAnchor" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="true" prefHeight="500.0" prefWidth="600.0" snapToPixel="true" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.view.TownController">
+  <children>
+  <Button id="ReturnToTownButton" fx:id="leaveStoreButton" layoutX="242.0" layoutY="431.0" mnemonicParsing="false" onMouseClicked="#leaveStoreButtonPressed" text="Return to Town">
+    <effect>
+      <Lighting diffuseConstant="1.78" specularConstant="0.6" specularExponent="22.22" surfaceScale="3.49">
+        <bumpInput>
+          <Shadow />
+        </bumpInput>
+        <light>
+          <javafx.scene.effect.Light.Distant color="#aea48b" />
+        </light>
+      </Lighting>
+    </effect>
+  </Button>
+  <Button id="SellFoodButton" fx:id="buySmithoreButton" layoutX="365.0" layoutY="119.0" mnemonicParsing="false" onMouseClicked="#buySmithoreButtonClicked" text="Sell Food" />
+  <Button id="SellSmithoreButton" fx:id="foodButton" layoutX="366.0" layoutY="164.0" mnemonicParsing="false" onMouseClicked="#buyFoodButtonClicked" text="Sell Smithore" />
+  <Button id="BuySmithoreButton" layoutX="219.0" layoutY="164.0" mnemonicParsing="false" onMouseClicked="#sellFoodButtonClicked" text="Buy Smithore" />
+      <Text layoutX="273.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Store">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Button id="BuyFoodButton" fx:id="buySmithoreButton1" layoutX="219.0" layoutY="119.0" mnemonicParsing="false" onMouseClicked="#buySmithoreButtonClicked" text="Buy Food" />
+      <Button id="BuyEnergyButton" fx:id="foodButton1" layoutX="217.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#buyFoodButtonClicked" text="Buy Energy" />
+      <Button id="SellEnergyButton" fx:id="foodButton2" layoutX="366.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#buyFoodButtonClicked" text="Sell Energy" />
+      <Button id="BuyMuleButton" fx:id="foodButton11" layoutX="217.0" layoutY="261.0" mnemonicParsing="false" onMouseClicked="#buyFoodButtonClicked" text="Buy MULE" />
+      <Button id="SellMuleButton" fx:id="foodButton12" layoutX="366.0" layoutY="261.0" mnemonicParsing="false" onMouseClicked="#buyFoodButtonClicked" text="Sell MULE" />
+      <Text id="StoreFoodStock" layoutX="124.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text id="StoreSmithOreStock" layoutX="124.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text id="StoreEnergyStock" layoutX="124.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text id="StoreMuleStock" layoutX="124.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+  </children>
+</AnchorPane>

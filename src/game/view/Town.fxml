@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="storeAnchor" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="true" prefHeight="500.0" prefWidth="600.0" snapToPixel="true" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.view.TownController">
+  <children>
+  <Button id="leaveButton" fx:id="leaveStoreButton" layoutX="242.0" layoutY="431.0" mnemonicParsing="false" onMouseClicked="#leaveStoreButtonPressed" text="Return to Map">
+    <effect>
+      <Lighting diffuseConstant="1.78" specularConstant="0.6" specularExponent="22.22" surfaceScale="3.49">
+        <bumpInput>
+          <Shadow />
+        </bumpInput>
+        <light>
+          <javafx.scene.effect.Light.Distant color="#aea48b" />
+        </light>
+      </Lighting>
+    </effect>
+  </Button>
+  <Button id="AssayOfficeButton" layoutX="369.0" layoutY="343.0" mnemonicParsing="false" onMouseClicked="#sellSmithoreButtonClicked" text="Trade with Assay Office" />
+  <Button id="LandOfficeButton" fx:id="buySmithoreButton" layoutX="62.0" layoutY="343.0" mnemonicParsing="false" onMouseClicked="#buySmithoreButtonClicked" text="Trade with Land Office" />
+  <Button id="StoreButton" fx:id="foodButton" layoutX="102.0" layoutY="142.0" mnemonicParsing="false" onMouseClicked="#buyFoodButtonClicked" text="Trade with Store" />
+  <Button id="GambleButton" layoutX="369.0" layoutY="142.0" mnemonicParsing="false" onMouseClicked="#sellFoodButtonClicked" text="Gamble at Pub" />
+      <Text layoutX="231.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Town Square">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+  </children>
+</AnchorPane>
