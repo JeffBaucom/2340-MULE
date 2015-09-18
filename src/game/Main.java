@@ -79,14 +79,8 @@ public class Main extends Application {
 
     public void showAllConfigScreens(int players) {
         for (int i = 0; i < players; i++) {
-            try {// Load person overview.
-                showConfigScreen();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                this.showConfigScreen();
         }
-        // Set person overview into the center of root layout.
-        rootLayout.setCenter(playerConfigStack);
     }
 
     public void updatePlayerColors(RadioButton chosen) {
@@ -94,16 +88,23 @@ public class Main extends Application {
     }
 
     public void showConfigScreen() {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource
-                ("/game/view/PlayerConfig.fxml"));
-        AnchorPane playerConfigScreen = loader.load();
-        playerConfigStack.getChildren().add(playerConfigScreen);
+        try {//Load person overview
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource
+                    ("/game/view/PlayerConfig.fxml"));
+            AnchorPane playerConfigScreen = loader.load();
+            playerConfigStack.getChildren().add(playerConfigScreen);
 
-        // Give the controller access to the main app.
-        PlayerConfigController controller = loader.getController();
-        controller.disableButtons(chosenColors);
-        controller.setMainApp(this);
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(playerConfigStack);
+
+            // Give the controller access to the main app.
+            PlayerConfigController controller = loader.getController();
+            controller.disableButtons(chosenColors);
+            controller.setMainApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void closeConfigScreen() {

@@ -44,6 +44,7 @@ public class PlayerConfigController {
         else chosen = yellow;
 
         mainApp.updatePlayerColors(chosen);
+        mainApp.closeConfigScreen();
     }
 
     @FXML

@@ -57,13 +57,13 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <RadioButton mnemonicParsing="false" text="Blue" GridPane.rowIndex="1">
+                  <RadioButton fx:id="blue" mnemonicParsing="false" text="Blue" GridPane.rowIndex="1">
                      <toggleGroup>
                         <ToggleGroup fx:id="color" />
                      </toggleGroup></RadioButton>
-                  <RadioButton mnemonicParsing="false" text="Red" toggleGroup="$color" />
-                  <RadioButton mnemonicParsing="false" text="Green" toggleGroup="$color" GridPane.rowIndex="2" />
-                  <RadioButton mnemonicParsing="false" text="Yellow" toggleGroup="$color" GridPane.rowIndex="3" />
+                  <RadioButton fx:id="red" mnemonicParsing="false" text="Red" toggleGroup="$color" />
+                  <RadioButton fx:id="green" mnemonicParsing="false" text="Green" toggleGroup="$color" GridPane.rowIndex="2" />
+                  <RadioButton fx:id="yellow" mnemonicParsing="false" text="Yellow" toggleGroup="$color" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>
