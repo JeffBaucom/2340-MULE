@@ -1,4 +1,4 @@
-package game.view;
+package game.control;
 
 import game.Main;
 import javafx.fxml.FXML;

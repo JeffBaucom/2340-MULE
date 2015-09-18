@@ -1,18 +1,17 @@
 package game;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-import game.view.PlayerConfigController;
-import game.view.WelcomeScreenController;
+import game.control.PlayerConfigController;
+import game.control.WelcomeScreenController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.RadioButton;
 
@@ -44,6 +43,7 @@ public class Main extends Application {
             loader.setLocation(Main.class.getResource("/game/view/RootLayout.fxml"));
             rootLayout = loader.load();
             playerConfigStack = new StackPane();
+            chosenColors = new ArrayList<RadioButton>();
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
@@ -86,6 +86,7 @@ public class Main extends Application {
     }
 
     public void updatePlayerColors(RadioButton chosen) {
+        System.out.println(chosen);
         chosenColors.add(chosen);
     }
 

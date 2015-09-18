@@ -1,8 +1,10 @@
-package game.view;
+package game.control;
 
 import game.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
+
+import java.util.ArrayList;
 
 public class PlayerConfigController {
     @FXML
@@ -13,14 +15,21 @@ public class PlayerConfigController {
     RadioButton green;
     @FXML
     RadioButton yellow;
+
     // Reference to the main application.
     private Main mainApp;
+    ArrayList<RadioButton> radioButtons;
 
     /**
      * The constructor.
      * The constructor is called before the initialize() method.
      */
     public PlayerConfigController() {
+        radioButtons = new ArrayList<RadioButton>();
+        radioButtons.add(red);
+        radioButtons.add(blue);
+        radioButtons.add(green);
+        radioButtons.add(yellow);
     }
 
     /**
@@ -36,7 +45,7 @@ public class PlayerConfigController {
      * details for a new person.
      */
     @FXML
-    private void handleColor() {
+    private void handleNext() {
         RadioButton chosen;
         if(red.isSelected()) chosen = red;
         else if(blue.isSelected()) chosen = blue;
@@ -48,9 +57,13 @@ public class PlayerConfigController {
     }
 
     @FXML
-    private void disableButtons(ArrayList<RadioButton> chosenColors) {
-        for (RadioButton b: chosenColors) {
-            b.setDisable(true);
+    public void disableButtons(ArrayList<RadioButton> chosenColors) {
+        for (RadioButton b : chosenColors) {
+            for (RadioButton c : radioButtons) {
+                if (b.getId().equals(c.getId())) {
+                    c.setDisable(true);
+                }
+            }
         }
     }
 
