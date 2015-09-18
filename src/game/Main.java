@@ -20,7 +20,7 @@ public class Main extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
     StackPane playerConfigStack;
-    private ArrayList<RadioButton> chosenColors;
+    private ArrayList<RadioButton> chosenColors = new ArrayList<RadioButton>(0);
 
     @Override
     public void start(Stage primaryStage) {
@@ -86,7 +86,6 @@ public class Main extends Application {
     }
 
     public void updatePlayerColors(RadioButton chosen) {
-        System.out.println(chosen);
         chosenColors.add(chosen);
     }
 
