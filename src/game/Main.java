@@ -79,8 +79,10 @@ public class Main extends Application {
 
     public void showAllConfigScreens(int players) {
         for (int i = 0; i < players; i++) {
-                this.showConfigScreen();
+            this.showConfigScreen();
         }
+        // Set person overview into the center of root layout.
+        rootLayout.setCenter(playerConfigStack);
     }
 
     public void updatePlayerColors(RadioButton chosen) {
@@ -94,9 +96,6 @@ public class Main extends Application {
                     ("/game/view/PlayerConfig.fxml"));
             AnchorPane playerConfigScreen = loader.load();
             playerConfigStack.getChildren().add(playerConfigScreen);
-
-            // Set person overview into the center of root layout.
-            rootLayout.setCenter(playerConfigStack);
 
             // Give the controller access to the main app.
             PlayerConfigController controller = loader.getController();

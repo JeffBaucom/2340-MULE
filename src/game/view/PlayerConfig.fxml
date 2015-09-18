@@ -68,6 +68,6 @@
             </GridPane>
          </children>
       </GridPane>
-      <Button layoutX="508.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleNext" text="Next" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+      <Button layoutX="508.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleColor" text="Next" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
    </children>
 </AnchorPane>
