@@ -14,22 +14,13 @@ public class Player {
         this.color = color;
         this.race = race;
     }
-    public void setColor(Color color) {
-        this.color = color;
-    }
-    public Color getColor() {
-        return this.color;
-    }
-    public void setRace(Race race) {
-        this.race = race;
-    }
-    public Race getRace() {
-        return this.race;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getName() {
-        return this.name;
-    }
+
+    public void setColor(Color color) { this.color = color; }
+    public Color getColor() { return this.color; }
+
+    public void setRace(Race race) { this.race = race; }
+    public Race getRace() { return this.race; }
+
+    public void setName(String name) { this.name = name; }
+    public String getName() {return this.name; }
 }

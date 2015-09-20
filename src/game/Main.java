@@ -2,7 +2,7 @@ package game;
 
 import java.io.IOException;
 
-import game.control.ScreenStackController;
+import game.view.ScreenStackController;
 import game.model.Game;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -70,7 +70,7 @@ public class Main extends Application {
         screenStack.setScreen("main");
     }
 
-    public void showConfigScreens() {
+    public void showConfigScreen() {
         screenStack.loadScreen("player config", PLAYER_CONFIG);
         screenStack.setScreen("player config");
     }

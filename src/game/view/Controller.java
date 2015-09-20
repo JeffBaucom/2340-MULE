@@ -1,4 +1,4 @@
-package game.control;
+package game.view;
 
 import game.Main;
 

@@ -6,9 +6,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.control.PlayerConfigController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.view.PlayerConfigController">
    <children>
-      <Label fx:id="playerText" layoutX="102.0" layoutY="38.0" textAlignment="CENTER" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+      <Label fx:id="playerText" layoutX="102.0" layoutY="38.0" text="Player #" textAlignment="CENTER" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
          <font>
             <Font name="Courier" size="32.0" />
          </font>
@@ -25,7 +25,7 @@
         </rowConstraints>
          <children>
             <Label text="Enter Player Name:" />
-            <TextField GridPane.columnIndex="1" />
+            <TextField fx:id="playerNameField" GridPane.columnIndex="1" />
             <Label text="Select a Race" GridPane.rowIndex="1" />
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
               <columnConstraints>
@@ -37,12 +37,12 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <RadioButton mnemonicParsing="false" text="Flapper">
+                  <RadioButton fx:id="flapper" mnemonicParsing="false" text="Flapper">
                      <toggleGroup>
                         <ToggleGroup fx:id="race" />
                      </toggleGroup></RadioButton>
-                  <RadioButton mnemonicParsing="false" text="Human" toggleGroup="$race" GridPane.rowIndex="1" />
-                  <RadioButton mnemonicParsing="false" text="Other" toggleGroup="$race" GridPane.rowIndex="2" />
+                  <RadioButton fx:id="human" mnemonicParsing="false" text="Human" toggleGroup="$race" GridPane.rowIndex="1" />
+                  <RadioButton fx:id="other" mnemonicParsing="false" text="Other" toggleGroup="$race" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <Label text="Select a Color" GridPane.rowIndex="2" />

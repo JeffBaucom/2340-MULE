@@ -1,4 +1,4 @@
-package game.control;
+package game.view;
 
 import game.Main;
 import javafx.fxml.FXML;
@@ -43,9 +43,9 @@ public class MainScreenController extends Controller{
         else if(players3.isSelected()) playerCount = 3;
         else playerCount = 4;
 
-        main.newGame(playerCount);
-        main.showConfigScreens();
         main.closeScreen();
+        main.newGame(playerCount);
+        main.showConfigScreen();
     }
 
     public void setMain(Main main) {
