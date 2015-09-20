@@ -5,6 +5,7 @@ public class Turn {
 
     private int playerID;
     protected int time;
+    private int[] currentLocation; // where the player is right now
 
     public Turn() {
 
@@ -22,8 +23,12 @@ public class Turn {
 
     }
 
-    public void placeMule() {
+    public void placeMule(int r, int c) {
 
+    }
+
+    public void buyTile(int r, int c) {
+        Game.gameMap.getTile(r, c).setOwner(playerID);
     }
 
 }
