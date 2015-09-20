@@ -43,14 +43,14 @@ public class Map {
         tiles[3][7] = new Tile("P");
         tiles[3][8] = new Tile("P");
         tiles[4][0] = new Tile("P");
-        tiles[4][1] = new Tile("M2");
-        tiles[4][2] = new Tile("P");
+        tiles[4][1] = new Tile("P");
+        tiles[4][2] = new Tile("M2");
         tiles[4][3] = new Tile("P");
         tiles[4][4] = new Tile("R");
         tiles[4][5] = new Tile("P");
-        tiles[4][6] = new Tile("M2");
+        tiles[4][6] = new Tile("P");
         tiles[4][7] = new Tile("P");
-        tiles[4][8] = new Tile("P");
+        tiles[4][8] = new Tile("M2");
 
 
     }
