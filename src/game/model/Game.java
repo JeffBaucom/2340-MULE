@@ -1,12 +1,19 @@
 package game.model;
 
 public class Game {
+    TurnManager turnManager;
     Player[] players;
-    Player currentPlayer;
+    int currentPlayerId;
+
+    Store store;
 
     public Game(int playerCount) {
         this.players = new Player[playerCount];
-        currentPlayer = players[0];
+
+        turnManager = new TurnManager();
+        currentPlayerId = 0;
+
+        store = new Store();
     }
 
     public void newPlayer(int playerIndex, String name, Color color, Race
@@ -16,11 +23,23 @@ public class Game {
         }
     }
 
+    public void endTurn() {
+        if (currentPlayerId < players.length - 1) {
+            turnManager.changeTurn(++currentPlayerId);
+        } else {
+            turnManager.changeTurn(0);
+        }
+    }
+
     public int getPlayerCount() {
         return players.length;
     }
 
+    public Store getStore() {
+        return store;
+    }
+
     public Player getCurrentPlayer() {
-        return currentPlayer;
+        return players[currentPlayerId];
     }
 }

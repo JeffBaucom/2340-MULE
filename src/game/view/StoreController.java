@@ -1,7 +1,9 @@
 package game.view;
 
 
+import game.model.Game;
 import game.model.Player;
+import game.model.Store;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -28,7 +30,9 @@ public class StoreController extends Controller{
     @FXML
     TextField muleField;
 
+    Game game;
     Player player;
+    Store store;
     int food, energy, smithore, crystite, mule;
 
     /**
@@ -36,6 +40,9 @@ public class StoreController extends Controller{
      * The constructor is called before the initialize() method.
      */
     public StoreController() {
+        game = main.getGame();
+        store = game.getStore();
+        player = game.getCurrentPlayer();
     }
 
     /**
@@ -44,11 +51,11 @@ public class StoreController extends Controller{
      */
     @FXML
     private void initialize() {
-        food = 16;
-        energy = 16;
-        smithore = 0;
-        crystite = 0;
-        mule = 0;
+        food = store.getStock("food");
+        energy = store.getStock("energy");
+        smithore = store.getStock("smithore");
+        crystite = store.getStock("crystite");
+        mule = store.getStock("mule");
 
         foodLabel.setText("Food: " + food);
         energyLabel.setText("Energy: " + energy);

@@ -1,62 +1,37 @@
 package game.model;
 
-public class Store {
+import java.util.HashMap;
 
-    private int smithoreStock, energyStock, foodStock, muleStock, money;
+public class Store {
+    HashMap<String, Integer> stock;
+
+    private int money;
     private int smithoreCost, foodCost, energyCost, muleCost;
 
     public Store() {
-        smithoreStock = 100;
-        energyStock = 100;
-        foodStock = 100;
+        stock = new HashMap<String, Integer>();
+        stock.put("food", 8);
+        stock.put("energy", 8);
+        stock.put("smithore", 8);
+        stock.put("crystite", 8);
+        stock.put("mule", 8);
+
         foodCost = 10;
         energyCost = 10;
         smithoreCost = 10;
         money = 1000;
     }
 
-    public void buySmithore(int amount, Player player) {
+    public int getStock(String resource) {
+        return stock.get(resource);
+    }
+
+    public void buy(String resource, int amount, Player player) {
 
     }
 
-    public void buyFood(int amount, Player player) {
+    public void sell(String resource, int amount, Player player) {
 
-    }
-
-    public void buyEnergy(int amount, Player player) {
-
-    }
-
-    public void buyMule(int amount, Player player) {
-
-    }
-
-    public void sellSmithore(int amount, Player player) {
-
-    }
-
-    public void sellFood(int amount, Player player) {
-
-    }
-
-    public void sellEnergy(int amount, Player player) {
-
-    }
-
-    public void sellMule(int amount, Player player) {
-
-    }
-    
-    public int getFood() {
-        return foodStock;
-    }
-
-    public int getEnergy() {
-        return energyStock;
-    }
-
-    public int getSmithore() {
-        return smithoreStock;
     }
 
     public int getMoney() {
