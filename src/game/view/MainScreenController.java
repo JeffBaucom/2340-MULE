@@ -12,7 +12,6 @@ public class MainScreenController extends Controller{
     @FXML
     RadioButton players4;
 
-
     int playerCount;
 
     // Reference to the main application.
