@@ -1,23 +1,15 @@
 package game;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 
-import game.control.Controller;
-import game.control.PlayerConfigController;
 import game.control.ScreenStackController;
-import game.control.WelcomeScreenController;
+import game.model.Game;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.scene.control.RadioButton;
 
 public class Main extends Application {
     private Stage primaryStage;
@@ -25,8 +17,10 @@ public class Main extends Application {
 
     private ScreenStackController screenStack;
 
-    private final String WELCOME_SCREEN = "/game/view/WelcomeScreen.fxml";
-    private final String PLAYER_CONFIG_SCREEN = "/game/view/PlayerConfig.fxml";
+    private final String MAIN = "/game/view/MainScreen.fxml";
+    private final String PLAYER_CONFIG = "/game/view/PlayerConfig.fxml";
+
+    private Game game;
 
     @Override
     public void start(Stage primaryStage) {
@@ -38,11 +32,11 @@ public class Main extends Application {
         screenStack = new ScreenStackController();
         screenStack.setMain(this);
 
-        screenStack.loadScreen("welcome", WELCOME_SCREEN);
-        screenStack.loadScreen("player config", PLAYER_CONFIG_SCREEN);
+        screenStack.loadScreen("main", MAIN);
+        screenStack.loadScreen("player config", PLAYER_CONFIG);
 
         initRootLayout();
-        showWelcomeScreen();
+        showMainScreen();
     }
 
     /**
@@ -65,22 +59,28 @@ public class Main extends Application {
         }
     }
 
+    public void newGame(int playerCount) {
+        game = new Game(playerCount);
+    }
+
     /**
      * Shows the game screen in the root layout.
      */
-    public void showWelcomeScreen() {
-        screenStack.setScreen("welcome");
+    public void showMainScreen() {
+        screenStack.setScreen("main");
     }
 
-    public void showConfigScreens(int players) {
-        for (int i = 0; i < players; i++) {
-            screenStack.loadScreen("player config" + i, PLAYER_CONFIG_SCREEN);
-            screenStack.setScreen("player config" + i);
-        }
+    public void showConfigScreens() {
+        screenStack.loadScreen("player config", PLAYER_CONFIG);
+        screenStack.setScreen("player config");
     }
 
     public void closeScreen() {
         screenStack.removeTop();
+    }
+
+    public Game getGame() {
+        return game;
     }
 
     /**

@@ -4,13 +4,16 @@ import game.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 
-public class WelcomeScreenController extends Controller{
+public class MainScreenController extends Controller{
     @FXML
     RadioButton players2;
     @FXML
     RadioButton players3;
     @FXML
     RadioButton players4;
+
+
+    int playerCount;
 
     // Reference to the main application.
     private Main main;
@@ -19,7 +22,7 @@ public class WelcomeScreenController extends Controller{
      * The constructor.
      * The constructor is called before the initialize() method.
      */
-    public WelcomeScreenController() {
+    public MainScreenController() {
     }
 
     /**
@@ -36,13 +39,13 @@ public class WelcomeScreenController extends Controller{
      */
     @FXML
     private void handleNewGame() {
-        int players;
-        if(players2.isSelected()) players = 2;
-        else if(players3.isSelected()) players = 3;
-        else players = 4;
+        if(players2.isSelected()) playerCount = 2;
+        else if(players3.isSelected()) playerCount = 3;
+        else playerCount = 4;
 
+        main.newGame(playerCount);
+        main.showConfigScreens();
         main.closeScreen();
-        main.showConfigScreens(players);
     }
 
     public void setMain(Main main) {

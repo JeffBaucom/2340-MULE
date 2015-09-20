@@ -1,12 +1,19 @@
 package game.control;
 
 import game.Main;
+import game.model.Color;
+import game.model.Game;
+import game.model.Race;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class PlayerConfigController extends Controller {
+public class PlayerConfigController extends Controller implements Initializable {
     @FXML
     RadioButton red;
     @FXML
@@ -15,20 +22,22 @@ public class PlayerConfigController extends Controller {
     RadioButton green;
     @FXML
     RadioButton yellow;
+    @FXML
+    Label playerText;
 
-    /**
-     * The constructor.
-     * The constructor is called before the initialize() method.
-     */
-    public PlayerConfigController() {
-    }
+    int playerIndex;
+    Color color;
+    Race race;
+    Game game;
 
     /**
      * Initializes the controller class. This method is automatically called
      * after the fxml file has been loaded.
      */
     @FXML
-    private void initialize() {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        playerIndex = 0;
+        playerText.setText("Player " + (playerIndex + 1));
     }
 
     /**
@@ -37,6 +46,17 @@ public class PlayerConfigController extends Controller {
      */
     @FXML
     private void handleNext() {
-        main.closeScreen();
+        game = main.getGame();
+
+        if (red.isSelected()) color = Color.RED;
+        else if (blue.isSelected()) color = Color.BLUE;
+        else if (yellow.isSelected()) color = Color.YELLOW;
+        else color = Color.GREEN;
+
+        if (playerIndex == game.getPlayerCount()) {
+            main.closeScreen();
+        }
+
+        playerIndex++;
     }
 }
