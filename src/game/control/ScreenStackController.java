@@ -1,5 +1,6 @@
 package game.control;
 
+import game.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -10,6 +11,7 @@ import java.util.HashMap;
 
 public class ScreenStackController extends StackPane {
     private HashMap<String, Node> screens = new HashMap<String, Node>();
+    private Main main;
 
     /** Add screen to HashMap screens
      */
@@ -25,6 +27,10 @@ public class ScreenStackController extends StackPane {
             FXMLLoader loader = new FXMLLoader(getClass()
                     .getResource(resource));
             Parent screen = loader.load();
+
+            // Give controller access to main
+            Controller controller = loader.getController();
+            controller.setMain(main);
 
             // Add screen to stack.
             addScreen(name, screen);
@@ -44,5 +50,15 @@ public class ScreenStackController extends StackPane {
         } else  {
             return false;
         }
+    }
+
+    public void removeTop() {
+        if (getChildren().size() > 0) {
+            getChildren().remove(getChildren().size() - 1);
+        }
+    }
+
+    public void setMain(Main main) {
+        this.main = main;
     }
 }

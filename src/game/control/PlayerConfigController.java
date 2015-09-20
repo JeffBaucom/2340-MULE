@@ -6,7 +6,7 @@ import javafx.scene.control.RadioButton;
 
 import java.util.ArrayList;
 
-public class PlayerConfigController {
+public class PlayerConfigController extends Controller {
     @FXML
     RadioButton red;
     @FXML
@@ -16,20 +16,11 @@ public class PlayerConfigController {
     @FXML
     RadioButton yellow;
 
-    // Reference to the main application.
-    private Main mainApp;
-    ArrayList<RadioButton> radioButtons;
-
     /**
      * The constructor.
      * The constructor is called before the initialize() method.
      */
     public PlayerConfigController() {
-        radioButtons = new ArrayList<RadioButton>();
-        radioButtons.add(red);
-        radioButtons.add(blue);
-        radioButtons.add(green);
-        radioButtons.add(yellow);
     }
 
     /**
@@ -46,33 +37,6 @@ public class PlayerConfigController {
      */
     @FXML
     private void handleNext() {
-        RadioButton chosen;
-        if(red.isSelected()) chosen = red;
-        else if(blue.isSelected()) chosen = blue;
-        else if(green.isSelected()) chosen = green;
-        else chosen = yellow;
-
-        mainApp.updatePlayerColors(chosen);
-        mainApp.closeConfigScreen();
-    }
-
-    @FXML
-    public void disableButtons(ArrayList<RadioButton> chosenColors) {
-        for (RadioButton b : chosenColors) {
-            for (RadioButton c : radioButtons) {
-                if (b.getId().equals(c.getId())) {
-                    c.setDisable(true);
-                }
-            }
-        }
-    }
-
-    /**
-     * Is called by the main application to give a reference back to itself.
-     *
-     * @param mainApp main App
-     */
-    public void setMainApp(Main mainApp) {
-        this.mainApp = mainApp;
+        main.closeScreen();
     }
 }

@@ -2,11 +2,15 @@ package game;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import game.control.Controller;
 import game.control.PlayerConfigController;
+import game.control.ScreenStackController;
 import game.control.WelcomeScreenController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -16,21 +20,29 @@ import javafx.stage.Stage;
 import javafx.scene.control.RadioButton;
 
 public class Main extends Application {
-
     private Stage primaryStage;
     private BorderPane rootLayout;
-    StackPane playerConfigStack;
-    private ArrayList<RadioButton> chosenColors = new ArrayList<RadioButton>(0);
+
+    private ScreenStackController screenStack;
+
+    private final String WELCOME_SCREEN = "/game/view/WelcomeScreen.fxml";
+    private final String PLAYER_CONFIG_SCREEN = "/game/view/PlayerConfig.fxml";
 
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("MULE Game");
+        this.primaryStage.getIcons().add(new Image
+                ("file:resources/images/mule-icon.png"));
+
+        screenStack = new ScreenStackController();
+        screenStack.setMain(this);
+
+        screenStack.loadScreen("welcome", WELCOME_SCREEN);
+        screenStack.loadScreen("player config", PLAYER_CONFIG_SCREEN);
 
         initRootLayout();
         showWelcomeScreen();
-        this.primaryStage.getIcons().add(new Image
-                ("file:resources/images/mule-icon.png"));
     }
 
     /**
@@ -42,8 +54,7 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/game/view/RootLayout.fxml"));
             rootLayout = loader.load();
-            playerConfigStack = new StackPane();
-            chosenColors = new ArrayList<RadioButton>();
+            rootLayout.setCenter(screenStack);
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
@@ -58,57 +69,18 @@ public class Main extends Application {
      * Shows the game screen in the root layout.
      */
     public void showWelcomeScreen() {
-        try {
-            // Load person overview.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource
-                    ("/game/view/WelcomeScreen.fxml"));
-            AnchorPane personOverview = loader.load();
-
-            // Set person overview into the center of root layout.
-            rootLayout.setCenter(personOverview);
-
-            // Give the controller access to the main app.
-            WelcomeScreenController controller = loader.getController();
-            controller.setMainApp(this);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        screenStack.setScreen("welcome");
     }
 
-    public void showAllConfigScreens(int players) {
+    public void showConfigScreens(int players) {
         for (int i = 0; i < players; i++) {
-            this.showConfigScreen();
-        }
-        // Set person overview into the center of root layout.
-        rootLayout.setCenter(playerConfigStack);
-    }
-
-    public void updatePlayerColors(RadioButton chosen) {
-        chosenColors.add(chosen);
-    }
-
-    public void showConfigScreen() {
-        try {//Load person overview
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource
-                    ("/game/view/PlayerConfig.fxml"));
-            AnchorPane playerConfigScreen = loader.load();
-            playerConfigStack.getChildren().add(playerConfigScreen);
-
-            // Give the controller access to the main app.
-            PlayerConfigController controller = loader.getController();
-            controller.disableButtons(chosenColors);
-            controller.setMainApp(this);
-        } catch (IOException e) {
-            e.printStackTrace();
+            screenStack.loadScreen("player config" + i, PLAYER_CONFIG_SCREEN);
+            screenStack.setScreen("player config" + i);
         }
     }
 
-    public void closeConfigScreen() {
-        playerConfigStack.getChildren().remove(playerConfigStack.getChildren
-                ().size() - 1);
+    public void closeScreen() {
+        screenStack.removeTop();
     }
 
     /**

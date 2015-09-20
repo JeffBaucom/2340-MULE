@@ -4,7 +4,7 @@ import game.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 
-public class WelcomeScreenController {
+public class WelcomeScreenController extends Controller{
     @FXML
     RadioButton players2;
     @FXML
@@ -13,7 +13,7 @@ public class WelcomeScreenController {
     RadioButton players4;
 
     // Reference to the main application.
-    private Main mainApp;
+    private Main main;
 
     /**
      * The constructor.
@@ -41,15 +41,11 @@ public class WelcomeScreenController {
         else if(players3.isSelected()) players = 3;
         else players = 4;
 
-        mainApp.showAllConfigScreens(players);
+        main.closeScreen();
+        main.showConfigScreens(players);
     }
 
-    /**
-     * Is called by the main application to give a reference back to itself.
-     *
-     * @param mainApp main App
-     */
-    public void setMainApp(Main mainApp) {
-        this.mainApp = mainApp;
+    public void setMain(Main main) {
+        this.main = main;
     }
 }
