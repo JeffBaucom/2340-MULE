@@ -28,9 +28,6 @@ public class ScreenStackController extends StackPane {
                     .getResource(resource));
             Parent screen = loader.load();
 
-            // Give controller access to main
-            Controller controller = loader.getController();
-            controller.setMain(main);
 
             // Add screen to stack.
             addScreen(name, screen);

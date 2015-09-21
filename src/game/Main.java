@@ -24,9 +24,12 @@ public class Main extends Application {
     private final String STORE = "/game/view/Store.fxml";
 
     private Game game;
+    private static Main main;
+
 
     @Override
     public void start(Stage primaryStage) {
+        main = this;
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("MULE Game");
         this.primaryStage.getIcons().add(new Image
@@ -37,9 +40,6 @@ public class Main extends Application {
 
         screenStack.loadScreen("main", MAIN);
         screenStack.loadScreen("player config", PLAYER_CONFIG);
-        screenStack.loadScreen("map", MAP);
-        screenStack.loadScreen("town",  TOWN);
-        screenStack.loadScreen("store", STORE);
 
         initRootLayout();
         showMainScreen();
@@ -65,8 +65,14 @@ public class Main extends Application {
         }
     }
 
+    public static Main getInstance() { return main; }
+
     public void newGame(int playerCount) {
         game = new Game(playerCount);
+
+        screenStack.loadScreen("map", MAP);
+        screenStack.loadScreen("town",  TOWN);
+        screenStack.loadScreen("store", STORE);
     }
 
     /**

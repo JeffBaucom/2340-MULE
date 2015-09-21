@@ -1,5 +1,6 @@
 package game.view;
 
+import game.Main;
 import game.model.Game;
 import game.model.Player;
 import game.model.Store;
@@ -47,27 +48,27 @@ public class StoreController extends Controller {
      */
     @FXML
     private void initialize() {
-//        game = main.getGame();
-//        store = game.getStore();
-//        player = game.getCurrentPlayer();
-//
-//        food = store.getStock("food");
-//        energy = store.getStock("energy");
-//        smithore = store.getStock("smithore");
-//        crystite = store.getStock("crystite");
-//        mule = store.getStock("mule");
-//
-//        foodField.setText("0");
-//        energyField.setText("0");
-//        smithoreField.setText("0");
-//        crystiteField.setText("0");
-//        muleField.setText("0");
-//
-//        foodLabel.setText("Food: " + food);
-//        energyLabel.setText("Energy: " + energy);
-//        smithoreLabel.setText("Smithore: " + smithore);
-//        crystiteLabel.setText("Crystite: " + crystite);
-//        muleLabel.setText("Mule: " + mule);
+        game = main.getGame();
+        store = game.getStore();
+        player = game.getCurrentPlayer();
+
+        food = store.getStock("food");
+        energy = store.getStock("energy");
+        smithore = store.getStock("smithore");
+        crystite = store.getStock("crystite");
+        mule = store.getStock("mule");
+
+        foodField.setText("0");
+        energyField.setText("0");
+        smithoreField.setText("0");
+        crystiteField.setText("0");
+        muleField.setText("0");
+
+        foodLabel.setText("Food: " + food);
+        energyLabel.setText("Energy: " + energy);
+        smithoreLabel.setText("Smithore: " + smithore);
+        crystiteLabel.setText("Crystite: " + crystite);
+        muleLabel.setText("Mule: " + mule);
     }
 
 }
