@@ -1,7 +1,8 @@
 package game.model;
 
 public class Game {
-    TurnManager turnManager;
+    Turn currentTurn;
+
     Player[] players;
     int currentPlayerId;
     public static Map gameMap = new Map();
@@ -11,7 +12,6 @@ public class Game {
     public Game(int playerCount) {
         this.players = new Player[playerCount];
 
-        turnManager = new TurnManager();
         currentPlayerId = 0;
 
         store = new Store();
@@ -26,9 +26,9 @@ public class Game {
 
     public void endTurn() {
         if (currentPlayerId < players.length - 1) {
-            turnManager.changeTurn(++currentPlayerId);
+            currentTurn = new Turn(++currentPlayerId);
         } else {
-            turnManager.changeTurn(0);
+            currentTurn = new Turn(0);
         }
     }
 
