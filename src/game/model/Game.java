@@ -11,7 +11,6 @@ public class Game {
 
     public Game(int playerCount) {
         this.players = new Player[playerCount];
-
         currentPlayerId = 0;
 
         store = new Store();

@@ -71,19 +71,28 @@ public class PlayerConfigController extends Controller {
 
         if (playerIndex == game.getPlayerCount() - 1) {
             main.closeScreen();
+        } else {
+            nextPlayer();
         }
-
-        playerIndex++;
-        playerText.setText("Player " + (playerIndex + 1));
-        System.out.println(playerName);
-        red.setDisable(true);
     }
 
     private void nextPlayer() {
         playerIndex++;
         playerText.setText("Player " + (playerIndex + 1));
-        System.out.println(playerName);
+
+        playerNameField.setText("");
+        red.setDisable(red.isSelected() || red.isDisabled());
+        blue.setDisable(blue.isSelected() || blue.isDisabled());
+        green.setDisable(green.isSelected() || green.isDisabled());
+        yellow.setDisable(yellow.isSelected() || yellow.isDisabled());
 
         red.setSelected(false);
+        blue.setSelected(false);
+        green.setSelected(false);
+        yellow.setSelected(false);
+
+        flapper.setSelected(false);
+        human.setSelected(false);
+        other.setSelected(false);
     }
 }

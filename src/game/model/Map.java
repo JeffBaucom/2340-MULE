@@ -6,6 +6,7 @@ public class Map {
     private Tile[][] tiles;
 
     public Map() {
+        tiles = new Tile[5][9];
         tiles[0][0] = new Tile("P");
         tiles[0][1] = new Tile("P");
         tiles[0][2] = new Tile("M1");
