@@ -57,6 +57,12 @@ public class StoreController extends Controller{
         crystite = store.getStock("crystite");
         mule = store.getStock("mule");
 
+        foodField.setText("0");
+        energyField.setText("0");
+        smithoreField.setText("0");
+        crystiteField.setText("0");
+        muleField.setText("0");
+
         foodLabel.setText("Food: " + food);
         energyLabel.setText("Energy: " + energy);
         smithoreLabel.setText("Smithore: " + smithore);

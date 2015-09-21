@@ -43,16 +43,16 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField />
-            <TextField GridPane.rowIndex="1" />
-            <TextField GridPane.rowIndex="2" />
-            <TextField GridPane.rowIndex="3" />
-            <TextField GridPane.rowIndex="4" />
-            <Label text="Food: #" GridPane.columnIndex="1" />
-            <Label text="Energy: #" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Smithore: #" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Crystite: #" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label text="Mule: #" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="foodField" />
+            <TextField fx:id="energyField" GridPane.rowIndex="1" />
+            <TextField fx:id="smithoreField" GridPane.rowIndex="2" />
+            <TextField fx:id="crystiteField" GridPane.rowIndex="3" />
+            <TextField fx:id="muleField" GridPane.rowIndex="4" />
+            <Label fx:id="foodLabel" text="Food: #" GridPane.columnIndex="1" />
+            <Label fx:id="energyLabel" text="Energy: #" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="smithoreLabel" text="Smithore: #" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="crystiteLabel" text="Crystite: #" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="muleLabel" text="Mule: #" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <ButtonBar layoutX="313.0" layoutY="351.0" prefHeight="40.0" prefWidth="200.0">
