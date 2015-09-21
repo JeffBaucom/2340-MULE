@@ -4,6 +4,7 @@ public class Game {
     TurnManager turnManager;
     Player[] players;
     int currentPlayerId;
+    public static Map gameMap = new Map();
 
     Store store;
 
