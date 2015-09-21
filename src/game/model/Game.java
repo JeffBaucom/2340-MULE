@@ -2,7 +2,7 @@ package game.model;
 
 public class Game {
     Turn currentTurn;
-
+    int roundCounter = 0;
     Player[] players;
     int currentPlayerId;
     public static Map gameMap = new Map();
@@ -28,6 +28,7 @@ public class Game {
             currentTurn = new Turn(++currentPlayerId);
         } else {
             currentTurn = new Turn(0);
+            roundCounter++;
         }
     }
 

@@ -5,7 +5,6 @@ public class Turn {
 
     private int playerID;
     protected int time;
-    private int[] currentLocation; // where the player is right now
 
     public Turn() {
 
