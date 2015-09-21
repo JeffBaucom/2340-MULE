@@ -7,5 +7,6 @@ public class Controller {
 
     public Controller() {
         main = Main.getInstance();
+        System.out.println(main);
     }
 }

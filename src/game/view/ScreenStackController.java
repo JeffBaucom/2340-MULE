@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 
+import javax.naming.ldap.Control;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -27,7 +28,6 @@ public class ScreenStackController extends StackPane {
             FXMLLoader loader = new FXMLLoader(getClass()
                     .getResource(resource));
             Parent screen = loader.load();
-
 
             // Add screen to stack.
             addScreen(name, screen);

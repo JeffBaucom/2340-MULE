@@ -23,18 +23,17 @@ public class Main extends Application {
     private final String TOWN = "/game/view/Town.fxml";
     private final String STORE = "/game/view/Store.fxml";
 
-    private Game game;
     private static Main main;
-
+    private Game game;
 
     @Override
     public void start(Stage primaryStage) {
-        main = this;
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("MULE Game");
         this.primaryStage.getIcons().add(new Image
                 ("file:resources/images/mule-icon.png"));
 
+        main = this;
         screenStack = new ScreenStackController();
         screenStack.setMain(this);
 
@@ -104,14 +103,6 @@ public class Main extends Application {
 
     public Game getGame() {
         return game;
-    }
-
-    /**
-     * Returns the main stage.
-     * @return null
-     */
-    public Stage getPrimaryStage() {
-        return primaryStage;
     }
 
     public static void main(String[] args) {

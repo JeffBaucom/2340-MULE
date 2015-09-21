@@ -19,6 +19,7 @@ public class MainScreenController extends Controller{
      * The constructor is called before the initialize() method.
      */
     public MainScreenController() {
+        super();
     }
 
     /**
