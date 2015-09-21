@@ -14,9 +14,6 @@ public class MainScreenController extends Controller{
 
     int playerCount;
 
-    // Reference to the main application.
-    private Main main;
-
     /**
      * The constructor.
      * The constructor is called before the initialize() method.
@@ -45,9 +42,5 @@ public class MainScreenController extends Controller{
         main.closeScreen();
         main.newGame(playerCount);
         main.showConfigScreen();
-    }
-
-    public void setMain(Main main) {
-        this.main = main;
     }
 }

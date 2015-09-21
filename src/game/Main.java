@@ -19,6 +19,9 @@ public class Main extends Application {
 
     private final String MAIN = "/game/view/MainScreen.fxml";
     private final String PLAYER_CONFIG = "/game/view/PlayerConfig.fxml";
+    private final String MAP = "/game/view/Map.fxml";
+    private final String TOWN = "/game/view/Town.fxml";
+    private final String STORE = "/game/view/Store.fxml";
 
     private Game game;
 
@@ -34,6 +37,9 @@ public class Main extends Application {
 
         screenStack.loadScreen("main", MAIN);
         screenStack.loadScreen("player config", PLAYER_CONFIG);
+        screenStack.loadScreen("map", MAP);
+        screenStack.loadScreen("town",  TOWN);
+        screenStack.loadScreen("store", STORE);
 
         initRootLayout();
         showMainScreen();
@@ -71,8 +77,19 @@ public class Main extends Application {
     }
 
     public void showConfigScreen() {
-        screenStack.loadScreen("player config", PLAYER_CONFIG);
         screenStack.setScreen("player config");
+    }
+
+    public void showMap() {
+        screenStack.setScreen("map");
+    }
+
+    public void showTown() {
+        screenStack.setScreen("town");
+    }
+
+    public void showStore() {
+        screenStack.setScreen("store");
     }
 
     public void closeScreen() {

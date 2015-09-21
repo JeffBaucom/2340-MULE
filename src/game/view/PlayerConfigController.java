@@ -71,6 +71,7 @@ public class PlayerConfigController extends Controller {
 
         if (playerIndex == game.getPlayerCount() - 1) {
             main.closeScreen();
+            main.showMap();
         } else {
             nextPlayer();
         }

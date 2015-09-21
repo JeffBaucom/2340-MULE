@@ -13,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="storeAnchor" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="true" prefHeight="500.0" prefWidth="600.0" snapToPixel="true" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.view.StoreController">
   <children>
-  <Button id="ReturnToTownButton" fx:id="leaveStoreButton" layoutX="439.0" layoutY="447.0" mnemonicParsing="false" onMouseClicked="#leaveStoreButtonPressed" text="Return to Town">
+  <Button id="ReturnToTownButton" layoutX="439.0" layoutY="447.0" mnemonicParsing="false" text="Return to Town">
     <effect>
       <Lighting diffuseConstant="1.78" specularConstant="0.6" specularExponent="22.22" surfaceScale="3.49">
         <bumpInput>
