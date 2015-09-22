@@ -45,15 +45,10 @@ public class PlayerConfigController extends Controller {
      */
     @FXML
     private void initialize() {
-        System.out.println("player config");
         playerIndex = 0;
         playerText.setText("Player 1");
     }
 
-    /**
-     * Called when the user clicks the new button. Opens a dialog to edit
-     * details for a new person.
-     */
     @FXML
     private void handleNext() {
         game = main.getGame();

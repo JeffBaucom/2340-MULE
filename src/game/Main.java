@@ -1,6 +1,7 @@
 package game;
 
 import java.io.IOException;
+import java.util.SplittableRandom;
 
 import game.view.ScreenStackController;
 import game.model.Game;
@@ -35,7 +36,6 @@ public class Main extends Application {
 
         main = this;
         screenStack = new ScreenStackController();
-        screenStack.setMain(this);
 
         screenStack.loadScreen("main", MAIN);
         screenStack.loadScreen("player config", PLAYER_CONFIG);

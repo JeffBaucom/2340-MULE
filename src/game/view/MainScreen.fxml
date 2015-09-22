@@ -17,7 +17,7 @@
          </font>
       </Label>
       <Button alignment="CENTER" layoutX="240.0" layoutY="408.0" mnemonicParsing="false" onAction="#handleNewGame" prefHeight="39.0" prefWidth="121.0" text="New Game" textAlignment="CENTER" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="408.0" />
-      <GridPane gridLinesVisible="true" layoutX="94.0" layoutY="111.0" maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="241.0" prefWidth="412.0" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="94.0">
+      <GridPane layoutX="94.0" layoutY="111.0" maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="241.0" prefWidth="412.0" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="94.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

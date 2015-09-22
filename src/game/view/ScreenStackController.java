@@ -54,8 +54,4 @@ public class ScreenStackController extends StackPane {
             getChildren().remove(getChildren().size() - 1);
         }
     }
-
-    public void setMain(Main main) {
-        this.main = main;
-    }
 }

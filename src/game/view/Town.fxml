@@ -11,9 +11,9 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" fx:id="storeAnchor" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="true" prefHeight="500.0" prefWidth="600.0" snapToPixel="true" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.view.TownController">
+<AnchorPane id="AnchorPane" fx:id="storeAnchor" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="true" prefHeight="560.0" prefWidth="800.0" snapToPixel="true" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.view.TownController">
   <children>
-  <Button id="leaveButton" layoutX="242.0" layoutY="431.0" mnemonicParsing="false" text="Return to Map">
+  <Button id="leaveButton" layoutX="646.0" layoutY="507.0" mnemonicParsing="false" text="Return to Map">
     <effect>
       <Lighting diffuseConstant="1.78" specularConstant="0.6" specularExponent="22.22" surfaceScale="3.49">
         <bumpInput>
@@ -25,11 +25,11 @@
       </Lighting>
     </effect>
   </Button>
-  <Button id="AssayOfficeButton" layoutX="369.0" layoutY="343.0" mnemonicParsing="false" text="Trade with Assay Office" />
-  <Button id="LandOfficeButton" layoutX="62.0" layoutY="343.0" mnemonicParsing="false" text="Trade with Land Office" />
-  <Button id="StoreButton" layoutX="102.0" layoutY="142.0" mnemonicParsing="false" onAction="#enterStore" text="Trade with Store" />
-  <Button id="GambleButton" layoutX="369.0" layoutY="142.0" mnemonicParsing="false" text="Gamble at Pub" />
-      <Text layoutX="231.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Town Square">
+  <Button id="AssayOfficeButton" layoutX="507.0" layoutY="343.0" mnemonicParsing="false" text="Trade with Assay Office" />
+  <Button id="LandOfficeButton" layoutX="128.0" layoutY="334.0" mnemonicParsing="false" text="Trade with Land Office" />
+  <Button id="StoreButton" layoutX="165.0" layoutY="142.0" mnemonicParsing="false" onAction="#enterStore" text="Trade with Store" />
+  <Button id="GambleButton" layoutX="507.0" layoutY="142.0" mnemonicParsing="false" text="Gamble at Pub" />
+      <Text layoutX="331.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Town Square">
          <font>
             <Font size="24.0" />
          </font>
