@@ -5,6 +5,7 @@ public class Game {
     int roundCounter = 0;
     Player[] players;
     int currentPlayerId;
+    int passCounter = 0;
     public static Map gameMap = new Map();
 
     Store store;
@@ -29,6 +30,22 @@ public class Game {
         } else {
             currentTurn = new Turn(0);
             roundCounter++;
+        }
+
+    }
+
+    public void passTurn() {
+        passCounter++;
+        endTurn();
+    }
+
+    public String getPhase() {
+        if (roundCounter == 0) {
+            return "Unpaid Selection";
+        } else if ((roundCounter > 0) && (passCounter < players.length)) {
+            return "Paid Selection";
+        } else {
+            return "Game";
         }
     }
 
