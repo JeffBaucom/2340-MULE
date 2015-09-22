@@ -29,8 +29,10 @@ public class Turn {
     }
 
     public void buyTile(int r, int c) {
-
         game.getMap().getTile(r, c).setOwner(playerID);
+        if (game.getPhase() <= 1) {
+            game.endTurn();
+        }
     }
 
 }

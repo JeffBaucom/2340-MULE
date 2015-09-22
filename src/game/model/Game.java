@@ -41,13 +41,13 @@ public class Game {
         endTurn();
     }
 
-    public String getPhase() {
+    public int getPhase() {
         if (roundCounter == 0) {
-            return "Unpaid Selection";
+            return 0;
         } else if ((roundCounter > 0) && (passCounter < players.length)) {
-            return "Paid Selection";
+            return 1;
         } else {
-            return "Game";
+            return 2;
         }
     }
 
