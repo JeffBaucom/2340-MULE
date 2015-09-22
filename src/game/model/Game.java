@@ -36,7 +36,7 @@ public class Game {
     }
 
     public void passTurn() {
-        if (passCounter < players.length) {
+        if ((roundCounter > 1) && (passCounter < players.length)) {
             passCounter++;
         }
         endTurn();
