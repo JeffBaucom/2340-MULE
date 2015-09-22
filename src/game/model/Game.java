@@ -6,7 +6,7 @@ public class Game {
     Player[] players;
     int currentPlayerId;
     int passCounter = 0;
-    public static Map gameMap = new Map();
+    Map gameMap;
 
     Store store;
 
@@ -15,6 +15,7 @@ public class Game {
         currentPlayerId = 0;
 
         store = new Store();
+        this.gameMap = new Map();
     }
 
     public void newPlayer(int playerIndex, String name, Color color, Race
@@ -26,12 +27,11 @@ public class Game {
 
     public void endTurn() {
         if (currentPlayerId < players.length - 1) {
-            currentTurn = new Turn(++currentPlayerId);
+            currentTurn = new Turn(++currentPlayerId, this);
         } else {
-            currentTurn = new Turn(0);
+            currentTurn = new Turn(0, this);
             roundCounter++;
         }
-
     }
 
     public void passTurn() {
@@ -49,6 +49,10 @@ public class Game {
         } else {
             return "Game";
         }
+    }
+
+    public Map getMap() {
+        return gameMap;
     }
 
     public int getPlayerCount() {

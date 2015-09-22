@@ -5,13 +5,15 @@ public class Turn {
 
     private int playerID;
     protected int time;
+    Game game;
 
     public Turn() {
 
     }
 
-    public Turn(int playerID) {
+    public Turn(int playerID, Game game) {
         this.playerID = playerID;
+        this.game = game;
     }
 
     public int getPlayer() {
@@ -27,7 +29,8 @@ public class Turn {
     }
 
     public void buyTile(int r, int c) {
-        Game.gameMap.getTile(r, c).setOwner(playerID);
+
+        game.getMap().getTile(r, c).setOwner(playerID);
     }
 
 }
