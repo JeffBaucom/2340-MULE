@@ -31,6 +31,7 @@ public class Game {
         } else {
             currentTurn = new Turn(0, this);
             roundCounter++;
+            passCounter = 0;
         }
     }
 

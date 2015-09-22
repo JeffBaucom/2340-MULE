@@ -52,8 +52,6 @@ public class Map {
         tiles[4][6] = new Tile("P");
         tiles[4][7] = new Tile("P");
         tiles[4][8] = new Tile("M2");
-
-
     }
 
     public Tile getTile(int r, int c) {
