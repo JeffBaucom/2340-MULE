@@ -31,20 +31,21 @@ public class Game {
         } else {
             currentTurn = new Turn(0, this);
             roundCounter++;
+            passCounter = 0;
         }
     }
 
     public void passTurn() {
-        if (passCounter < players.length) {
+        if ((roundCounter > 1) && (passCounter < players.length)) {
             passCounter++;
         }
         endTurn();
     }
 
     public int getPhase() {
-        if (roundCounter == 0) {
+        if (roundCounter <= 1) {
             return 0;
-        } else if ((roundCounter > 0) && (passCounter < players.length)) {
+        } else if ((roundCounter > 1) && (passCounter < players.length)) {
             return 1;
         } else {
             return 2;
