@@ -5,12 +5,14 @@ import game.model.Map;
 import game.model.Player;
 import game.model.Tile;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 import java.io.File;
@@ -41,6 +43,16 @@ public class MapController extends Controller {
                         + map.getTile(i, j).getType() + ".png");
                 tiles[i][j] = new ImageView(new Image(file.toURI().toString()));
 
+                if (map.getTile(i, j).getType() == "T") {
+                    tiles[i][j].addEventHandler(MouseEvent.MOUSE_CLICKED,
+                            new EventHandler<MouseEvent>() {
+
+                        @Override
+                        public void handle(MouseEvent event) {
+                            enterTown();
+                        }
+                    });
+                }
                 grid.add(tiles[i][j], j, i);
             }
         }

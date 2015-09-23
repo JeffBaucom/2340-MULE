@@ -29,7 +29,7 @@ public class Map {
         tiles[2][1] = new Tile("P");
         tiles[2][2] = new Tile("P");
         tiles[2][3] = new Tile("P");
-        tiles[2][4] = new Tile("Town");
+        tiles[2][4] = new Tile("T");
         tiles[2][5] = new Tile("P");
         tiles[2][6] = new Tile("P");
         tiles[2][7] = new Tile("P");
