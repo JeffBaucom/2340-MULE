@@ -52,6 +52,12 @@ public class MapController extends Controller {
         }
     }
 
+    @FXML
+    public void handlePass() {
+        nextTurn();
+
+    }
+
     private void enterTown(MouseEvent event) {
         main.closeScreen();
         main.showTown();
@@ -73,7 +79,11 @@ public class MapController extends Controller {
         }
     }
 
-    private String getType(int i, int j) {
-        return map.getTile(i, j).getType();
+    private void nextTurn() {
+        game.endTurn();
+        player = game.getCurrentPlayer();
+        grid.getChildren().remove(cursor);
+        cursor = new ImageView(new Image("/game/images/Border"
+                + player.getColor() + ".png"));
     }
 }
