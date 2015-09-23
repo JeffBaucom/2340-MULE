@@ -4,6 +4,7 @@ package game.model;
 public class Map {
 
     private Tile[][] tiles;
+    private Tile selectedTile;
 
     public Map() {
         tiles = new Tile[5][9];
@@ -57,6 +58,12 @@ public class Map {
     public Tile getTile(int r, int c) {
         return tiles[r][c];
     }
+
+    public void setSelectedTile(int r, int c) {
+        selectedTile = tiles[r][c];
+    }
+
+    public Tile getSelectedTile() { return selectedTile; }
 
 
 }
