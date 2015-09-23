@@ -28,9 +28,11 @@ public class Game {
 
     public void endTurn() {
         if (currentPlayerId < players.length - 1) {
-            currentTurn = new Turn(++currentPlayerId, this);
+            currentPlayerId++;
+            currentTurn = new Turn(currentPlayerId, this);
         } else {
-            currentTurn = new Turn(0, this);
+            currentPlayerId = 0;
+            currentTurn = new Turn(currentPlayerId, this);
             roundCounter++;
             passCounter = 0;
         }

@@ -54,6 +54,7 @@ public class MapController extends Controller {
 
     @FXML
     public void handlePass() {
+        game.passTurn();
         nextTurn();
 
     }
@@ -80,7 +81,6 @@ public class MapController extends Controller {
     }
 
     private void nextTurn() {
-        game.endTurn();
         player = game.getCurrentPlayer();
         grid.getChildren().remove(cursor);
         cursor = new ImageView(new Image("/game/images/Border"
