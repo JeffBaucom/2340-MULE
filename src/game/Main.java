@@ -1,7 +1,6 @@
 package game;
 
 import java.io.IOException;
-import java.util.SplittableRandom;
 
 import game.view.ScreenStackController;
 import game.model.Game;
@@ -44,22 +43,18 @@ public class Main extends Application {
         showMainScreen();
     }
 
-    /**
-     * Initializes the root layout.
-     */
     public void initRootLayout() {
         try {
-            // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class
                     .getResource("/game/view/RootLayout.fxml"));
             rootLayout = loader.load();
             rootLayout.setCenter(screenStack);
 
-            // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
+            primaryStage.setResizable(false);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -78,9 +73,6 @@ public class Main extends Application {
         screenStack.loadScreen("map", MAP);
     }
 
-    /**
-     * Shows the game screen in the root layout.
-     */
     public void showMainScreen() {
         screenStack.setScreen("main");
     }

@@ -18,7 +18,7 @@ public class MapController extends Controller {
     Player player;
     Map map;
     ImageView[][] tiles;
-    ImageView cursor;
+    ImageView cursor, flag;
 
     @FXML
     GridPane grid;
@@ -31,15 +31,16 @@ public class MapController extends Controller {
         game = main.getGame();
         player = game.getCurrentPlayer();
         map = game.getMap();
-        cursor = new ImageView(new Image("/game/images/cursor"
+        cursor = new ImageView(new Image("/game/images/cursor.png"));
+        flag = new ImageView(new Image("/game/images/flag"
                 + player.getColor() + ".png"));
 
         tiles = new ImageView[5][9];
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
                 ImageView tileImage = new ImageView(new Image
-                        ("/game/images/tile"
-                        + map.getTile(i, j).getType() + ".png"));
+                        ("/game/images/tile" + map.getTile(i, j).getType()
+                                + ".png"));
                 tiles[i][j] = tileImage;
 
                 if (map.getTile(i, j).getType() == "T") {
@@ -55,9 +56,9 @@ public class MapController extends Controller {
 
     @FXML
     public void handlePass() {
+        grid.getChildren().remove(cursor);
         game.passTurn();
         nextTurn();
-
     }
 
     private void enterTown(MouseEvent event) {
@@ -82,6 +83,8 @@ public class MapController extends Controller {
     }
 
     private void nextTurn() {
-        initialize();
+        player = game.getCurrentPlayer();
+        flag.setImage(new Image("/game/images/flag"
+                + player.getColor() + ".png"));
     }
 }
