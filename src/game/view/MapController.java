@@ -3,20 +3,12 @@ package game.view;
 import game.model.Game;
 import game.model.Map;
 import game.model.Player;
-import game.model.Tile;
-import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-
 import java.io.File;
-import java.util.Observable;
 
 public class MapController extends Controller {
     Game game;
@@ -45,13 +37,7 @@ public class MapController extends Controller {
 
                 if (map.getTile(i, j).getType() == "T") {
                     tiles[i][j].addEventHandler(MouseEvent.MOUSE_CLICKED,
-                            new EventHandler<MouseEvent>() {
-
-                        @Override
-                        public void handle(MouseEvent event) {
-                            enterTown();
-                        }
-                    });
+                            event -> enterTown());
                 }
                 grid.add(tiles[i][j], j, i);
             }
