@@ -22,10 +22,10 @@ public class MapController extends Controller {
     Game game;
     Player player;
     Map map;
+    ImageView[][] tiles;
 
     @FXML
     GridPane grid;
-    ImageView[][] tiles;
 
     public MapController() {
     }
@@ -58,15 +58,9 @@ public class MapController extends Controller {
         }
     }
 
-    @FXML
     public void enterTown() {
         main.closeScreen();
         main.showTown();
-    }
-
-    @FXML
-    public void select() {
-        ObservableList<Node> Tiles = grid.getChildren();
     }
 
     private String getType(int i, int j) {
