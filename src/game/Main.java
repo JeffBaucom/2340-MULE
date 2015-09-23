@@ -69,9 +69,12 @@ public class Main extends Application {
     public void newGame(int playerCount) {
         game = new Game(playerCount);
 
-        screenStack.loadScreen("map", MAP);
         screenStack.loadScreen("town",  TOWN);
         screenStack.loadScreen("store", STORE);
+    }
+
+    public void generateMap() {
+        screenStack.loadScreen("map", MAP);
     }
 
     /**

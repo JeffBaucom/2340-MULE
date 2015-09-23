@@ -31,8 +31,8 @@ public class MapController extends Controller {
         game = main.getGame();
         player = game.getCurrentPlayer();
         map = game.getMap();
-        cursor = new ImageView(new Image("/game/images/BorderBlack" +
-                ".png"));
+        cursor = new ImageView(new Image("/game/images/Border"
+                + player.getColor() + ".png"));
 
         tiles = new ImageView[5][9];
         for (int i = 0; i < 5; i++) {
@@ -45,7 +45,6 @@ public class MapController extends Controller {
                     tiles[i][j].setOnMouseClicked(this::enterTown);
                 } else if (map.getTile(i, j).getType() != "R") {
                     tiles[i][j].setOnMouseClicked(this::selectTile);
-                    System.out.println(i);
                 }
 
                 grid.add(tiles[i][j], j, i);

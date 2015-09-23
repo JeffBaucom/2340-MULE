@@ -1,19 +1,17 @@
 package game.view;
 
-import game.model.Color;
 import game.model.Game;
 import game.model.Race;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 
 public class PlayerConfigController extends Controller {
     @FXML
     Label playerText;
     @FXML
     TextField playerNameField;
+    @FXML
+    Button next;
     @FXML
     ToggleGroup race;
     @FXML
@@ -46,6 +44,16 @@ public class PlayerConfigController extends Controller {
     private void initialize() {
         playerIndex = 0;
         playerText.setText("Player 1");
+        playerNameField.setText("");
+        next.setDisable(true);
+
+    }
+
+    @FXML
+    public void enableNext() {
+        next.setDisable(playerNameField.getText().equals("")
+                || color.getSelectedToggle() == null
+                || race.getSelectedToggle() == null);
     }
 
     @FXML
@@ -67,6 +75,7 @@ public class PlayerConfigController extends Controller {
 
         if (playerIndex == game.getPlayerCount() - 1) {
             main.closeScreen();
+            main.generateMap();
             main.showMap();
         } else {
             nextPlayer();
