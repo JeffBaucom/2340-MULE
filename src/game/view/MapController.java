@@ -22,6 +22,7 @@ public class MapController extends Controller {
 
     @FXML
     GridPane grid;
+    ImageView[][] tiles;
 
     public MapController() {
     }
@@ -32,11 +33,14 @@ public class MapController extends Controller {
         player = game.getCurrentPlayer();
         map = game.getMap();
 
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 5; j++) {
-                File file = new File("src/game/res/images/tileM1.png");
-                Image image = new Image(file.toURI().toString());
-                grid.add(new ImageView(image), i, j);
+        tiles = new ImageView[5][9];
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 9; j++) {
+                File file = new File("src/game/images/"
+                        + map.getTile(i, j).getType() + ".png");
+                tiles[i][j] = new ImageView(new Image(file.toURI().toString()));
+
+                grid.add(tiles[i][j], j, i);
             }
         }
     }
