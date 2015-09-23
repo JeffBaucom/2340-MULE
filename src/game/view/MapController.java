@@ -31,13 +31,14 @@ public class MapController extends Controller {
         game = main.getGame();
         player = game.getCurrentPlayer();
         map = game.getMap();
-        cursor = new ImageView(new Image("/game/images/Border"
+        cursor = new ImageView(new Image("/game/images/cursor"
                 + player.getColor() + ".png"));
 
         tiles = new ImageView[5][9];
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
-                ImageView tileImage = new ImageView(new Image("/game/images/"
+                ImageView tileImage = new ImageView(new Image
+                        ("/game/images/tile"
                         + map.getTile(i, j).getType() + ".png"));
                 tiles[i][j] = tileImage;
 
@@ -81,9 +82,6 @@ public class MapController extends Controller {
     }
 
     private void nextTurn() {
-        player = game.getCurrentPlayer();
-        grid.getChildren().remove(cursor);
-        cursor = new ImageView(new Image("/game/images/Border"
-                + player.getColor() + ".png"));
+        initialize();
     }
 }
