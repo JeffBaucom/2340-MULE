@@ -32,7 +32,7 @@ public class Main extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("MULE Game");
         this.primaryStage.getIcons().add(new Image
-                ("file:resources/images/mule-icon.png"));
+                ("/game/images/mule-icon.png"));
 
         main = this;
         screenStack = new ScreenStackController();

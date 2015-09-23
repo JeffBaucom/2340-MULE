@@ -34,8 +34,7 @@ public class PlayerConfigController extends Controller {
     RadioButton yellow;
 
     int playerIndex;
-    String playerName;
-    Color colorValue;
+    String playerName, colorValue;
     Race raceValue;
     Game game;
 
@@ -55,14 +54,16 @@ public class PlayerConfigController extends Controller {
 
         playerName = playerNameField.getText();
 
-        if (red.isSelected()) colorValue = Color.RED;
-        else if (blue.isSelected()) colorValue = Color.BLUE;
-        else if (yellow.isSelected()) colorValue = Color.YELLOW;
-        else colorValue = Color.GREEN;
+        if (red.isSelected()) colorValue = "red";
+        else if (blue.isSelected()) colorValue = "blue";
+        else if (yellow.isSelected()) colorValue = "yellow";
+        else colorValue = "green";
 
         if (flapper.isSelected()) raceValue = Race.FLAPPER;
         else if (human.isSelected()) raceValue = Race.HUMAN;
         else raceValue = Race.OTHER;
+
+        game.newPlayer(playerIndex, playerName, colorValue, raceValue);
 
         if (playerIndex == game.getPlayerCount() - 1) {
             main.closeScreen();

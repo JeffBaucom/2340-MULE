@@ -31,14 +31,15 @@ public class MapController extends Controller {
         tiles = new ImageView[5][9];
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
-                File file = new File("src/game/images/"
-                        + map.getTile(i, j).getType() + ".png");
-                tiles[i][j] = new ImageView(new Image(file.toURI().toString()));
+                ImageView tileImage = new ImageView(new Image("/game/images/"
+                        + map.getTile(i, j).getType() + ".png"));
+                tiles[i][j] = tileImage;
 
                 if (map.getTile(i, j).getType() == "T") {
                     tiles[i][j].addEventHandler(MouseEvent.MOUSE_CLICKED,
                             event -> enterTown());
                 }
+
                 grid.add(tiles[i][j], j, i);
             }
         }

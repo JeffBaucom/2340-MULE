@@ -3,8 +3,7 @@ package game.model;
 /**
  */
 public class Player {
-    String name;
-    Color color;
+    String name, color;
     Race race;
     int money;
     int food;
@@ -14,7 +13,7 @@ public class Player {
     public Player() {
     }
 
-    public Player(String name, Color color, Race race) {
+    public Player(String name, String color, Race race) {
         this.name = name;
         this.color = color;
         this.race = race;
@@ -30,8 +29,8 @@ public class Player {
         this.ore = 0;
     }
 
-    public void setColor(Color color) { this.color = color; }
-    public Color getColor() { return this.color; }
+    public void setColor(String color) { this.color = color; }
+    public String getColor() { return this.color; }
 
     public void setRace(Race race) { this.race = race; }
     public Race getRace() { return this.race; }

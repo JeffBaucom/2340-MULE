@@ -18,7 +18,7 @@ public class Game {
         this.gameMap = new Map();
     }
 
-    public void newPlayer(int playerIndex, String name, Color color, Race
+    public void newPlayer(int playerIndex, String name, String color, Race
             race) {
         if (playerIndex < getPlayerCount()) {
             players[playerIndex] = new Player(name, color, race);
