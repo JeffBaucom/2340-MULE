@@ -27,6 +27,7 @@ public class Turn {
             game.getCurrentPlayer().setMoney(game.getCurrentPlayer().getMoney() - 300);
         }
         player.addProperty();
+        game.getMap().removeTile();
     }
 
 }
