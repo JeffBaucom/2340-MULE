@@ -52,11 +52,13 @@ public class Game {
         } else {
             phase = 2;
         }
-        System.out.println(phase);
 
-        if (currentId == players.length - 1) {
+        if (currentId == 0) {
             passCounter = 0;
         }
+
+        System.out.println("Player Id: " + getCurrentPlayer().getId() +
+                "\nRound: " + roundCounter + "\nPasses: " + passCounter + "\n");
     }
 
     public void passTurn() {
