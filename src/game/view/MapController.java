@@ -7,6 +7,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -22,6 +24,24 @@ public class MapController extends Controller {
 
     @FXML
     GridPane grid;
+    @FXML
+    Button landButton;
+    @FXML
+    Label landCost;
+    @FXML
+    Label playerName;
+    @FXML
+    Label playerMoney;
+    @FXML
+    Label playerFood;
+    @FXML
+    Label playerEnergy;
+    @FXML
+    Label playerSmithore;
+    @FXML
+    Label playerCrystite;
+    @FXML
+    Label playerMule;
 
     public MapController() {
     }
@@ -32,6 +52,20 @@ public class MapController extends Controller {
         player = game.getCurrentPlayer();
         map = game.getMap();
         cursor = new ImageView(new Image("/game/images/cursor.png"));
+
+        if (game.getPhase() == 0) {
+            landButton.setText("Acquire Land");
+            landCost.setText("Cost: FREE");
+        }
+
+        playerName.setText(player.getName());
+        playerMoney.setText("Money: " + player.getMoney());
+        playerFood.setText("Food: " + player.getFood());
+        playerEnergy.setText("Food: " + player.getEnergy());
+        playerSmithore.setText("Food: " + player.getSmithore());
+        playerCrystite.setText("Food: " + player.getCrystite());
+        playerMule.setText("Food: " + player.getMule());
+        playerFood.setText("Food: " + player.getFood());
         flag = new ImageView(new Image("/game/images/flag"
                 + player.getColor() + ".png"));
 
@@ -45,7 +79,7 @@ public class MapController extends Controller {
 
                 if (map.getTile(i, j).getType() == "T") {
                     tiles[i][j].setOnMouseClicked(this::enterTown);
-                } else if (map.getTile(i, j).getType() != "R") {
+                } else {
                     tiles[i][j].setOnMouseClicked(this::selectTile);
                 }
 
@@ -84,7 +118,21 @@ public class MapController extends Controller {
 
     private void nextTurn() {
         player = game.getCurrentPlayer();
-        flag.setImage(new Image("/game/images/flag"
+
+        if (game.getPhase() == 1) {
+            landButton.setText("Buy Land");
+            landCost.setText("Cost: 300");
+        }
+
+        playerName.setText(player.getName());
+        playerMoney.setText("Money: " + player.getMoney());
+        playerFood.setText("Food: " + player.getFood());
+        playerEnergy.setText("Food: " + player.getEnergy());
+        playerSmithore.setText("Food: " + player.getSmithore());
+        playerCrystite.setText("Food: " + player.getCrystite());
+        playerMule.setText("Food: " + player.getMule());
+        playerFood.setText("Food: " + player.getFood());
+        flag = new ImageView(new Image("/game/images/flag"
                 + player.getColor() + ".png"));
     }
 }

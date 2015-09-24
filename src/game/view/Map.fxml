@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -34,7 +35,64 @@
       </AnchorPane>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="864.0">
          <children>
-            <Button layoutX="791.0" layoutY="127.0" mnemonicParsing="false" onAction="#handlePass" text="Pass" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+            <Button layoutX="791.0" layoutY="127.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handlePass" prefHeight="40.0" prefWidth="60.0" text="Pass" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+            <GridPane layoutX="38.0" layoutY="51.0" prefWidth="225.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" percentWidth="50.0" prefWidth="110.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="326.0" minWidth="10.0" percentWidth="50.0" prefWidth="102.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" percentHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" percentHeight="25.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" percentHeight="25.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" percentHeight="25.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="playerName" text="Player #" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="playerMoney" text="Money: #" GridPane.rowIndex="1" />
+                  <Label fx:id="playerFood" text="Food: #" GridPane.rowIndex="2" />
+                  <Label fx:id="playerEnergy" text="Energy: #" GridPane.rowIndex="3" />
+                  <Label fx:id="playerSmithore" text="Smithore: #" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="playerCrystite" text="Crystite: #" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="playerMule" text="Mules: #" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+            <GridPane layoutX="305.0" layoutY="20.0" prefWidth="400.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="20.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" percentHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" percentHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" percentHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Information" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextFlow prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                  <GridPane prefHeight="171.0" prefWidth="864.0" GridPane.rowIndex="2">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="landCost" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Land Cost" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+                        <Button fx:id="landButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" text="Land Action" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+               </children>
+            </GridPane>
          </children>
       </AnchorPane>
    </children>

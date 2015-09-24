@@ -8,7 +8,9 @@ public class Player {
     int money;
     int food;
     int energy;
-    int ore;
+    int smithore;
+    int crystite;
+    int mule;
 
     public Player() {
     }
@@ -26,7 +28,9 @@ public class Player {
         }
         this.food = 8;
         this.energy = 4;
-        this.ore = 0;
+        this.smithore = 0;
+        this.crystite = 0;
+        this.mule = 0;
     }
 
     public void setColor(String color) { this.color = color; }
@@ -50,9 +54,13 @@ public class Player {
         return energy;
     }
 
-    public int getOre() {
-        return ore;
+    public int getSmithore() {
+        return smithore;
     }
+
+    public int getCrystite() { return crystite; }
+
+    public int getMule() { return mule; }
 
     public void setMoney(int money) {
         this.money = money;
@@ -66,8 +74,11 @@ public class Player {
         this.energy = energy;
     }
 
-    public void setOre(int ore) {
-        this.ore = ore;
+    public void setSmithore(int smithore) {
+        this.smithore = smithore;
     }
 
+    public void setCrystite(int crystite) { this.crystite = crystite;}
+
+    public void setMule(int mule) { this.mule = mule; }
 }
