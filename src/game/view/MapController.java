@@ -62,6 +62,7 @@ public class MapController extends Controller {
 
         landButton.setDisable(true);
         if (game.getPhase() == 0) {
+            nextButton.setDisable(true);
             landButton.setText("Acquire Land");
             landCost.setText("Cost: FREE");
         }
@@ -104,7 +105,7 @@ public class MapController extends Controller {
         }
 
         turnOver = false;
-        nextButton.setText("Pass");
+        nextButton.setText("Next Turn");
     }
 
     @FXML
@@ -113,6 +114,7 @@ public class MapController extends Controller {
         ImageView flag = new ImageView(new Image("/game/images/flag"
                 + player.getColor() + ".png"));
         grid.add(flag, currentTile.getCol(), currentTile.getRow());
+        nextButton.setDisable(false);
         landButton.setDisable(true);
 
         game.getTurn().buyTile(currentTile.getRow(), currentTile.getCol());
