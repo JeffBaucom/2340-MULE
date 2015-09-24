@@ -6,6 +6,9 @@ public class Map {
     private Tile[][] tiles;
     private Tile selectedTile;
 
+
+    public int tilesRemaining;
+
     public Map() {
         tiles = new Tile[5][9];
         tiles[0][0] = new Tile("P", 0, 0);
@@ -53,6 +56,7 @@ public class Map {
         tiles[4][6] = new Tile("P", 4, 6);
         tiles[4][7] = new Tile("P", 4, 7);
         tiles[4][8] = new Tile("M2", 4, 8);
+        this.tilesRemaining = 44;
     }
 
     public Tile getTile(int row, int col) {
@@ -61,6 +65,7 @@ public class Map {
 
 
     public Tile getSelectedTile() { return selectedTile; }
+
     public void setSelectedTile(int row, int col) {
         selectedTile = tiles[row][col];
     }
@@ -68,4 +73,13 @@ public class Map {
     public void setGame(Game game) {
         this.game = game;
     }
+
+    public void removeTile() {
+        this.tilesRemaining--;
+    }
+
+    public int getTilesRemaining() {
+        return tilesRemaining;
+    }
+
 }
