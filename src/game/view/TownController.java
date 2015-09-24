@@ -16,4 +16,10 @@ public class TownController extends Controller {
         main.closeScreen();
         main.showStore();
     }
+
+    @FXML
+    public void returnMap() {
+        main.closeScreen();
+        main.showMap();
+    }
 }

@@ -71,4 +71,9 @@ public class StoreController extends Controller {
         muleLabel.setText("Mule: " + mule);
     }
 
+    @FXML
+    public void returnTown() {
+        main.closeScreen();
+        main.showTown();
+    }
 }
