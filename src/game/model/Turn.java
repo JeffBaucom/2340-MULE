@@ -68,6 +68,8 @@ public class Turn {
         if (game.getPhase() == 1) {
             game.getCurrentPlayer().setMoney(game.getCurrentPlayer().getMoney() - 300);
         }
+        player.addProperty();
+        game.getMap().removeTile();
     }
 
 }

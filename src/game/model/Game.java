@@ -72,6 +72,8 @@ public class Game {
         return players[currentId];
     }
 
+    public Player getPlayer(int id) { return players[id]; }
+
     public Turn getTurn() {
         return currentTurn;
     }
@@ -88,12 +90,25 @@ public class Game {
         return store;
     }
 
+<<<<<<< HEAD
     public int getRoundCounter() {
         return roundCounter;
     }
 
     public Player[] getPlayers() {
         return players;
+=======
+    public String getLeaderBoard() {
+        String leaderBoard = "";
+        int index = 0;
+
+        for (Player p : players) {
+            leaderBoard += "Player " + index + ": " + p.getScore() + "\n";
+            index++;
+        }
+
+        return leaderBoard;
+>>>>>>> c1df938d620ed1099a1a94ca8a8f1de971342673
     }
 
 
