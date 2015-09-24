@@ -2,39 +2,50 @@ package game.model;
 
 public class Game {
     Turn currentTurn;
-    int roundCounter = 0;
+    int roundCounter, passCounter = 0;
+
     Player[] players;
-    int currentPlayerId;
-    int passCounter = 0;
-    Map gameMap;
+    int currentId;
+
+    Map map;
 
     Store store;
 
     public Game(int playerCount) {
         this.players = new Player[playerCount];
-        currentPlayerId = 0;
 
         store = new Store();
-        this.gameMap = new Map();
+        this.map = new Map();
+        map.setGame(this);
+    }
+
+    public void startGame() {
+        roundCounter = 0;
+        passCounter = 0;
+
+        currentId = 0;
+        currentTurn = new Turn(players[currentId], this);
     }
 
     public void newPlayer(int playerIndex, String name, String color, Race
             race) {
         if (playerIndex < getPlayerCount()) {
-            players[playerIndex] = new Player(name, color, race);
+            players[playerIndex] = new Player(playerIndex, name, color, race);
         }
     }
 
     public void endTurn() {
-        if (currentPlayerId < players.length - 1) {
-            currentPlayerId++;
-            currentTurn = new Turn(currentPlayerId, this);
+        if (currentId < players.length - 1) {
+            currentId++;
+            currentTurn = new Turn(players[currentId], this);
         } else {
-            currentPlayerId = 0;
-            currentTurn = new Turn(currentPlayerId, this);
+            currentId = 0;
+            currentTurn = new Turn(players[currentId], this);
             roundCounter++;
             passCounter = 0;
         }
+
+        map.updateMap();
     }
 
     public void passTurn() {
@@ -54,8 +65,16 @@ public class Game {
         }
     }
 
+    public Player getCurrentPlayer() {
+        return players[currentId];
+    }
+
+    public Turn getTurn() {
+        return currentTurn;
+    }
+
     public Map getMap() {
-        return gameMap;
+        return map;
     }
 
     public int getPlayerCount() {
@@ -66,7 +85,5 @@ public class Game {
         return store;
     }
 
-    public Player getCurrentPlayer() {
-        return players[currentPlayerId];
-    }
+
 }

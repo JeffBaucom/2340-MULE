@@ -2,8 +2,7 @@ package game.model;
 
 
 public class Turn {
-
-    private int playerID;
+    private Player player;
     protected int time;
     Game game;
 
@@ -11,26 +10,20 @@ public class Turn {
 
     }
 
-    public Turn(int playerID, Game game) {
-        this.playerID = playerID;
+    public Turn(Player player, Game game) {
+        this.player = player;
         this.game = game;
     }
 
-    public int getPlayer() {
-        return this.playerID;
-    }
-
     public void enterTown() {
-
     }
 
-    public void placeMule(int r, int c) {
-
+    public void placeMule(int row, int col) {
     }
 
-    public void buyTile(int r, int c) {
+    public void buyTile(int row, int col) {
         // TO DO: money handling for regular game phase
-        game.getMap().getTile(r, c).setOwner(playerID);
+        game.getMap().getTile(row, col).setOwner(player.getId());
         if (game.getPhase() == 1) {
             game.getCurrentPlayer().setMoney(game.getCurrentPlayer().getMoney() - 300);
         }

@@ -69,6 +69,7 @@ public class Main extends Application {
     }
 
     public void generateMap() {
+        game.startGame();
         screenStack.loadScreen("map", MAP);
     }
 

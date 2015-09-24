@@ -5,7 +5,6 @@ import game.model.Map;
 import game.model.Player;
 import game.model.Tile;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -14,7 +13,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import java.io.File;
 
 public class MapController extends Controller {
     Game game;
@@ -95,10 +93,11 @@ public class MapController extends Controller {
 
     @FXML
     public void landAction() {
+        game.getTurn().buyTile(currentTile.getRow(), currentTile.getCol());
+
         ImageView flag = new ImageView(new Image("/game/images/flag"
                 + player.getColor() + ".png"));
-        grid.add(flag, map.getSelectedTile().getCol(),
-                map.getSelectedTile().getRow());
+        grid.add(flag, currentTile.getCol(), currentTile.getRow());
     }
 
     @FXML
@@ -123,12 +122,13 @@ public class MapController extends Controller {
             if(grid.getRowIndex(node) == row && grid.getColumnIndex(node) ==
                     column) {
                 map.setSelectedTile(row, column);
+                currentTile = map.getSelectedTile();
                 grid.add(cursor, column, row);
                 break;
             }
         }
 
-        landButton.setDisable(false);
+        landButton.setDisable(currentTile.getOwner() != -1);
     }
 
     private void nextTurn() {

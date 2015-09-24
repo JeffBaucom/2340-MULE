@@ -5,17 +5,13 @@ package game.model;
 public class Player {
     String name, color;
     Race race;
-    int money;
-    int food;
-    int energy;
-    int smithore;
-    int crystite;
-    int mule;
+    int id, money, food, energy, smithore, crystite, mule;
 
     public Player() {
     }
 
-    public Player(String name, String color, Race race) {
+    public Player(int id, String name, String color, Race race) {
+        this.id = id;
         this.name = name;
         this.color = color;
         this.race = race;
@@ -33,14 +29,10 @@ public class Player {
         this.mule = 0;
     }
 
-    public void setColor(String color) { this.color = color; }
-    public String getColor() { return this.color; }
-
-    public void setRace(Race race) { this.race = race; }
-    public Race getRace() { return this.race; }
-
-    public void setName(String name) { this.name = name; }
+    public int getId() { return id; }
     public String getName() {return this.name; }
+    public String getColor() { return this.color; }
+    public Race getRace() { return this.race; }
 
     public int getMoney() {
         return money;
