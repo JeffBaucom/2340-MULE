@@ -93,11 +93,13 @@ public class MapController extends Controller {
 
     @FXML
     public void landAction() {
-        game.getTurn().buyTile(currentTile.getRow(), currentTile.getCol());
-
+        playerMoney.setText("Money: " + player.getMoney());
         ImageView flag = new ImageView(new Image("/game/images/flag"
                 + player.getColor() + ".png"));
         grid.add(flag, currentTile.getCol(), currentTile.getRow());
+
+        game.getTurn().buyTile(currentTile.getRow(), currentTile.getCol());
+        nextTurn();
     }
 
     @FXML
@@ -133,6 +135,7 @@ public class MapController extends Controller {
 
     private void nextTurn() {
         player = game.getCurrentPlayer();
+        System.out.println(player.getId());
 
         landButton.setDisable(true);
         if (game.getPhase() == 1) {
