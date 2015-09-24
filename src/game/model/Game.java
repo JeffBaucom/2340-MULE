@@ -90,14 +90,14 @@ public class Game {
         return store;
     }
 
-<<<<<<< HEAD
     public int getRoundCounter() {
         return roundCounter;
     }
 
     public Player[] getPlayers() {
         return players;
-=======
+    }
+
     public String getLeaderBoard() {
         String leaderBoard = "";
         int index = 0;
@@ -108,7 +108,6 @@ public class Game {
         }
 
         return leaderBoard;
->>>>>>> c1df938d620ed1099a1a94ca8a8f1de971342673
     }
 
 
