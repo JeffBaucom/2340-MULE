@@ -14,6 +14,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
+import java.util.Random;
+
 public class MapController extends Controller {
     Game game;
     Player player;
@@ -78,9 +80,18 @@ public class MapController extends Controller {
         tiles = new ImageView[5][9];
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
-                ImageView tileImage = new ImageView(new Image
-                        ("/game/images/tile" + map.getTile(i, j).getType()
-                                + ".png"));
+                String resFile;
+                Random rand = new Random();
+
+                if (map.getTile(i, j).getType() == "P") {
+                    resFile = "/game/images/tile" + map.getTile(i, j).getType()
+                            + rand.nextInt(3) + ".png";
+                } else {
+                    resFile = "/game/images/tile"
+                            + map.getTile(i, j).getType() + ".png";
+                }
+
+                ImageView tileImage = new ImageView(new Image(resFile));
                 tiles[i][j] = tileImage;
 
                 if (map.getTile(i, j).getType() == "T") {
