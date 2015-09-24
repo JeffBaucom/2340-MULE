@@ -6,8 +6,6 @@ public class Map {
     private Tile[][] tiles;
     private Tile selectedTile;
 
-    private int landCost;
-
     public Map() {
         tiles = new Tile[5][9];
         tiles[0][0] = new Tile("P", 0, 0);
@@ -55,19 +53,12 @@ public class Map {
         tiles[4][6] = new Tile("P", 4, 6);
         tiles[4][7] = new Tile("P", 4, 7);
         tiles[4][8] = new Tile("M2", 4, 8);
-
-        landCost = 0;
     }
 
     public Tile getTile(int row, int col) {
         return tiles[row][col];
     }
 
-    public void updateMap() {
-        if (game.getPhase() > 0) {
-            landCost = 300;
-        }
-    }
 
     public Tile getSelectedTile() { return selectedTile; }
     public void setSelectedTile(int row, int col) {

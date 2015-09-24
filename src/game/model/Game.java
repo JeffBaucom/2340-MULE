@@ -2,7 +2,7 @@ package game.model;
 
 public class Game {
     Turn currentTurn;
-    int roundCounter, passCounter = 0;
+    int roundCounter, passCounter, phase;
 
     Player[] players;
     int currentId;
@@ -22,6 +22,7 @@ public class Game {
     public void startGame() {
         roundCounter = 0;
         passCounter = 0;
+        phase = 0;
 
         currentId = 0;
         currentTurn = new Turn(players[currentId], this);
@@ -42,27 +43,29 @@ public class Game {
             currentId = 0;
             currentTurn = new Turn(players[currentId], this);
             roundCounter++;
-            passCounter = 0;
         }
 
-        map.updateMap();
+        if (roundCounter <= 1) {
+            phase = 0;
+        } else if ((roundCounter > 1) && (passCounter < players.length)) {
+            phase = 1;
+        } else {
+            phase = 2;
+        }
+        System.out.println(phase);
+
+        if (currentId == players.length - 1) {
+            passCounter = 0;
+        }
     }
 
     public void passTurn() {
-        if ((roundCounter > 1) && (passCounter < players.length)) {
-            passCounter++;
-        }
+        passCounter++;
         endTurn();
     }
 
     public int getPhase() {
-        if (roundCounter <= 1) {
-            return 0;
-        } else if ((roundCounter > 1) && (passCounter < players.length)) {
-            return 1;
-        } else {
-            return 2;
-        }
+        return phase;
     }
 
     public Player getCurrentPlayer() {
