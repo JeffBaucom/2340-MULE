@@ -20,6 +20,7 @@ public class MapController extends Controller {
     Map map;
 
     Tile currentTile;
+    boolean turnOver;
 
     ImageView[][] tiles;
     ImageView cursor, flag;
@@ -28,6 +29,8 @@ public class MapController extends Controller {
     GridPane grid;
     @FXML
     Button landButton;
+    @FXML
+    Button nextButton;
     @FXML
     Label landCost;
     @FXML
@@ -89,6 +92,9 @@ public class MapController extends Controller {
                 grid.add(tiles[i][j], j, i);
             }
         }
+
+        turnOver = false;
+        nextButton.setText("Pass");
     }
 
     @FXML
@@ -97,15 +103,20 @@ public class MapController extends Controller {
         ImageView flag = new ImageView(new Image("/game/images/flag"
                 + player.getColor() + ".png"));
         grid.add(flag, currentTile.getCol(), currentTile.getRow());
+        landButton.setDisable(true);
 
         game.getTurn().buyTile(currentTile.getRow(), currentTile.getCol());
-        nextTurn();
+
+        playerMoney.setText("Money: " + player.getMoney());
+        nextButton.setText("Next Turn");
+        turnOver = true;
     }
 
     @FXML
-    public void handlePass() {
+    public void handleNext() {
+        if (!turnOver) game.passTurn();
+
         grid.getChildren().remove(cursor);
-        game.passTurn();
         nextTurn();
     }
 
@@ -130,14 +141,12 @@ public class MapController extends Controller {
             }
         }
 
-        landButton.setDisable(currentTile.getOwner() != -1);
+        landButton.setDisable(currentTile.getOwner() != -1 || turnOver);
     }
 
     private void nextTurn() {
         player = game.getCurrentPlayer();
-        System.out.println(player.getId());
 
-        landButton.setDisable(true);
         if (game.getPhase() == 1) {
             landButton.setText("Buy Land");
             landCost.setText("Cost: 300");
@@ -153,5 +162,9 @@ public class MapController extends Controller {
         playerFood.setText("Food: " + player.getFood());
         flag = new ImageView(new Image("/game/images/flag"
                 + player.getColor() + ".png"));
+
+        turnOver = false;
+        landButton.setDisable(false);
+        nextButton.setText("Pass");
     }
 }

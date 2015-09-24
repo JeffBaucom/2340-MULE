@@ -35,7 +35,6 @@ public class Game {
     }
 
     public void endTurn() {
-        System.out.println("Turn End.");
         if (currentId < players.length - 1) {
             currentId++;
             currentTurn = new Turn(players[currentId], this);
