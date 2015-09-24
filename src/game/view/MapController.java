@@ -134,8 +134,10 @@ public class MapController extends Controller {
     }
 
     private void enterTown(MouseEvent event) {
-        main.closeScreen();
-        main.showTown();
+        if (game.getPhase() > 1) {
+            main.closeScreen();
+            main.showTown();
+        }
     }
 
     private void selectTile(MouseEvent event) {

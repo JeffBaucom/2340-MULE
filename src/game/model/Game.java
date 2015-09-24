@@ -57,8 +57,6 @@ public class Game {
             passCounter = 0;
         }
 
-        System.out.println("Player Id: " + getCurrentPlayer().getId() +
-                "\nRound: " + roundCounter + "\nPasses: " + passCounter + "\n");
     }
 
     public void passTurn() {
