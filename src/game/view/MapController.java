@@ -69,11 +69,10 @@ public class MapController extends Controller {
         playerName.setText(player.getName());
         playerMoney.setText("Money: " + player.getMoney());
         playerFood.setText("Food: " + player.getFood());
-        playerEnergy.setText("Food: " + player.getEnergy());
-        playerSmithore.setText("Food: " + player.getSmithore());
-        playerCrystite.setText("Food: " + player.getCrystite());
-        playerMule.setText("Food: " + player.getMule());
-        playerFood.setText("Food: " + player.getFood());
+        playerEnergy.setText("Energy: " + player.getEnergy());
+        playerSmithore.setText("Smithore: " + player.getSmithore());
+        playerCrystite.setText("Crystite: " + player.getCrystite());
+        playerMule.setText("Mule: " + player.getMule());
         flag = new ImageView(new Image("/game/images/flag"
                 + player.getColor() + ".png"));
 
@@ -166,11 +165,10 @@ public class MapController extends Controller {
         playerName.setText(player.getName());
         playerMoney.setText("Money: " + player.getMoney());
         playerFood.setText("Food: " + player.getFood());
-        playerEnergy.setText("Food: " + player.getEnergy());
-        playerSmithore.setText("Food: " + player.getSmithore());
-        playerCrystite.setText("Food: " + player.getCrystite());
-        playerMule.setText("Food: " + player.getMule());
-        playerFood.setText("Food: " + player.getFood());
+        playerEnergy.setText("Energy: " + player.getEnergy());
+        playerSmithore.setText("Smithore: " + player.getSmithore());
+        playerCrystite.setText("Crystite: " + player.getCrystite());
+        playerMule.setText("Mule: " + player.getMule());
         flag = new ImageView(new Image("/game/images/flag"
                 + player.getColor() + ".png"));
 
