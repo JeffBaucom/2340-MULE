@@ -88,6 +88,10 @@ public class Game {
         return store;
     }
 
+    public int getRoundCounter() {
+        return roundCounter;
+    }
+
     public Player[] getPlayers() {
         return players;
     }
