@@ -4,6 +4,7 @@ import game.model.Game;
 import game.model.Race;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import game.model.Player;
 
 public class PlayerConfigController extends Controller {
     @FXML
@@ -87,6 +88,7 @@ public class PlayerConfigController extends Controller {
         playerText.setText("Player " + (playerIndex + 1));
 
         playerNameField.setText("");
+        playerNameField.requestFocus();
         red.setDisable(red.isSelected() || red.isDisabled());
         blue.setDisable(blue.isSelected() || blue.isDisabled());
         green.setDisable(green.isSelected() || green.isDisabled());
