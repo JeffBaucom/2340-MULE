@@ -22,15 +22,10 @@ public class Turn {
     }
 
     public void buyTile(int row, int col) {
-        // TO DO: money handling for regular game phase
         game.getMap().getTile(row, col).setOwner(player.getId());
         if (game.getPhase() == 1) {
             game.getCurrentPlayer().setMoney(game.getCurrentPlayer().getMoney() - 300);
         }
-        if (game.getPhase() <= 1) {
-            game.endTurn();
-        }
-
     }
 
 }

@@ -127,6 +127,7 @@ public class MapController extends Controller {
     @FXML
     public void handleNext() {
         if (!turnOver) game.passTurn();
+        else game.endTurn();
 
         grid.getChildren().remove(cursor);
         nextTurn();
@@ -142,26 +143,34 @@ public class MapController extends Controller {
         int column = ((int) event.getSceneX()) / 96;
         grid.getChildren().remove(cursor);
 
-        ObservableList<Node> children = grid.getChildren();
-        for(Node node : children) {
-            if(grid.getRowIndex(node) == row && grid.getColumnIndex(node) ==
-                    column) {
-                map.setSelectedTile(row, column);
-                currentTile = map.getSelectedTile();
-                grid.add(cursor, column, row);
-                break;
+        if (game.getPhase() < 2) {
+            ObservableList<Node> children = grid.getChildren();
+            for (Node node : children) {
+                if (grid.getRowIndex(node) == row && grid.getColumnIndex(node) ==
+                        column) {
+                    map.setSelectedTile(row, column);
+                    currentTile = map.getSelectedTile();
+                    grid.add(cursor, column, row);
+                    break;
+                }
             }
-        }
 
-        landButton.setDisable(currentTile.getOwner() != -1 || turnOver);
+            landButton.setDisable(currentTile.getOwner() != -1 || turnOver);
+        }
     }
 
     private void nextTurn() {
         player = game.getCurrentPlayer();
 
-        if (game.getPhase() == 1) {
+        if (game.getPhase() == 0) {
+            nextButton.setDisable(true);
+        } else if (game.getPhase() == 1) {
             landButton.setText("Buy Land");
             landCost.setText("Cost: 300");
+            nextButton.setText("Pass");
+        } else if (game.getPhase() == 2) {
+            landButton.setVisible(false);
+            landCost.setVisible(false);
         }
 
         playerName.setText(player.getName());
@@ -175,6 +184,5 @@ public class MapController extends Controller {
                 + player.getColor() + ".png"));
 
         turnOver = false;
-        nextButton.setText("Pass");
     }
 }
