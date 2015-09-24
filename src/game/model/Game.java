@@ -47,7 +47,8 @@ public class Game {
 
         if (roundCounter <= 1) {
             phase = 0;
-        } else if ((roundCounter > 1) && (passCounter < players.length)) {
+        } else if ((roundCounter > 1) && (passCounter < players.length &&
+                phase <= 1)) {
             phase = 1;
         } else {
             phase = 2;
