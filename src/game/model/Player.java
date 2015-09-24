@@ -5,7 +5,7 @@ package game.model;
 public class Player {
     String name, color;
     Race race;
-    int id, money, food, energy, smithore, crystite, mule;
+    int id, money, food, energy, smithore, crystite, mule, score, properties;
 
     public Player() {
     }
@@ -27,6 +27,8 @@ public class Player {
         this.smithore = 0;
         this.crystite = 0;
         this.mule = 0;
+        this.score = this.money + this.food*30 + this.energy*25 + this.smithore*50;
+        this.properties = 0;
     }
 
     public int getId() { return id; }
@@ -73,4 +75,11 @@ public class Player {
     public void setCrystite(int crystite) { this.crystite = crystite;}
 
     public void setMule(int mule) { this.mule = mule; }
+
+    public int getScore() {return this.score; }
+
+    public void addProperty() {
+        this.properties++;
+    }
+
 }
