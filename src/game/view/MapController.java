@@ -175,7 +175,6 @@ public class MapController extends Controller {
                 + player.getColor() + ".png"));
 
         turnOver = false;
-        landButton.setDisable(false);
         nextButton.setText("Pass");
     }
 }
