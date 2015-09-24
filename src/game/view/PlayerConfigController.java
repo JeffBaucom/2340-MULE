@@ -87,6 +87,7 @@ public class PlayerConfigController extends Controller {
         playerText.setText("Player " + (playerIndex + 1));
 
         playerNameField.setText("");
+        playerNameField.requestFocus();
         red.setDisable(red.isSelected() || red.isDisabled());
         blue.setDisable(blue.isSelected() || blue.isDisabled());
         green.setDisable(green.isSelected() || green.isDisabled());
