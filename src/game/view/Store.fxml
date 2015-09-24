@@ -43,12 +43,8 @@
             <Label fx:id="muleLabel" text="Mule: #" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <ButtonBar layoutX="577.0" layoutY="473.0" prefHeight="40.0" prefWidth="200.0">
-        <buttons>
-          <Button mnemonicParsing="false" text="Buy" />
-            <Button mnemonicParsing="false" text="Sell" />
-        </buttons>
-      </ButtonBar>
+    <Button layoutX="657.0" layoutY="474.0" mnemonicParsing="false" text="Buy" />
+      <Button layoutX="719.0" layoutY="474.0" mnemonicParsing="false" text="Sell" />
       <Button layoutX="757.0" layoutY="599.0" mnemonicParsing="false" onAction="#returnTown" text="Return to Town" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
   </children>
 </AnchorPane>
