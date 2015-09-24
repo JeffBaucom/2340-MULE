@@ -4,6 +4,7 @@ import game.model.Game;
 import game.model.Race;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import game.model.Player;
 
 public class PlayerConfigController extends Controller {
     @FXML

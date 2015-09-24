@@ -85,5 +85,9 @@ public class Game {
         return store;
     }
 
+    public Player[] getPlayers() {
+        return players;
+    }
+
 
 }
