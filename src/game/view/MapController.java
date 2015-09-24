@@ -36,6 +36,8 @@ public class MapController extends Controller {
     @FXML
     Label landCost;
     @FXML
+    Label playerScore;
+    @FXML
     Label playerName;
     @FXML
     Label playerMoney;
@@ -67,6 +69,7 @@ public class MapController extends Controller {
             landCost.setText("Cost: FREE");
         }
 
+        playerScore.setText(game.getLeaderBoard());
         playerName.setText(player.getName());
         playerMoney.setText("Money: " + player.getMoney());
         playerFood.setText("Food: " + player.getFood());
@@ -119,6 +122,7 @@ public class MapController extends Controller {
 
         game.getTurn().buyTile(currentTile.getRow(), currentTile.getCol());
 
+        playerScore.setText(game.getLeaderBoard());
         playerMoney.setText("Money: " + player.getMoney());
         nextButton.setText("Next Turn");
         turnOver = true;
@@ -175,6 +179,7 @@ public class MapController extends Controller {
             landCost.setVisible(false);
         }
 
+        playerScore.setText(game.getLeaderBoard());
         playerName.setText(player.getName());
         playerMoney.setText("Money: " + player.getMoney());
         playerFood.setText("Food: " + player.getFood());
