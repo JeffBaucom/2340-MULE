@@ -3,16 +3,22 @@ package game.model;
 
 public class Tile {
 
-    private int ownerID;
+    private int ownerID, row, col;
     private String type;
     
     public Tile() {
         this.ownerID = -1;
     }
 
-    public Tile(String type) {
+    public Tile(String type, int row, int col) {
         this.type = type;
         this.ownerID = -1;
+        this.row = row;
+        this.col = col;
+    }
+
+    public String getType() {
+        return this.type;
     }
 
     public void setOwner(int playerID) {
@@ -23,8 +29,11 @@ public class Tile {
         return this.ownerID;
     }
 
-    public String getType() {
-        return this.type;
+    public int getRow() {
+        return row;
     }
 
+    public int getCol() {
+        return col;
+    }
 }

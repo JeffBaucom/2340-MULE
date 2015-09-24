@@ -23,7 +23,6 @@ public class Game {
         if (playerIndex < getPlayerCount()) {
             players[playerIndex] = new Player(name, color, race);
         }
-        System.out.println(players[playerIndex]);
     }
 
     public void endTurn() {

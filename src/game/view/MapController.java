@@ -3,6 +3,7 @@ package game.view;
 import game.model.Game;
 import game.model.Map;
 import game.model.Player;
+import game.model.Tile;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +20,9 @@ public class MapController extends Controller {
     Game game;
     Player player;
     Map map;
+
+    Tile currentTile;
+
     ImageView[][] tiles;
     ImageView cursor, flag;
 
@@ -53,6 +57,7 @@ public class MapController extends Controller {
         map = game.getMap();
         cursor = new ImageView(new Image("/game/images/cursor.png"));
 
+        landButton.setDisable(true);
         if (game.getPhase() == 0) {
             landButton.setText("Acquire Land");
             landCost.setText("Cost: FREE");
@@ -89,6 +94,14 @@ public class MapController extends Controller {
     }
 
     @FXML
+    public void landAction() {
+        ImageView flag = new ImageView(new Image("/game/images/flag"
+                + player.getColor() + ".png"));
+        grid.add(flag, map.getSelectedTile().getCol(),
+                map.getSelectedTile().getRow());
+    }
+
+    @FXML
     public void handlePass() {
         grid.getChildren().remove(cursor);
         game.passTurn();
@@ -114,11 +127,14 @@ public class MapController extends Controller {
                 break;
             }
         }
+
+        landButton.setDisable(false);
     }
 
     private void nextTurn() {
         player = game.getCurrentPlayer();
 
+        landButton.setDisable(true);
         if (game.getPhase() == 1) {
             landButton.setText("Buy Land");
             landCost.setText("Cost: 300");

@@ -88,7 +88,7 @@
                     </rowConstraints>
                      <children>
                         <Label fx:id="landCost" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Land Cost" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-                        <Button fx:id="landButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" text="Land Action" GridPane.rowIndex="1" />
+                        <Button fx:id="landButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#landAction" prefHeight="40.0" text="Land Action" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </children>
