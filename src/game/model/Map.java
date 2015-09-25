@@ -39,7 +39,7 @@ public class Map {
         String[] string = new String[45];
         for (int i = 0; i < 45; i++) {
             Random ran = new Random();
-            switch (ran.nextInt(5)) {
+            switch (ran.nextInt(6)) {
                 case 0:
                     string[i] = "P";
                     break;
@@ -55,6 +55,8 @@ public class Map {
                 case 4:
                     string[i] = "M3";
                     break;
+                case 5:
+                    string[i] = "F";
             }
         }
         return string;
