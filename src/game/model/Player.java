@@ -79,6 +79,18 @@ public class Player {
         return this.properties*500 + this.getMoney() + this.getEnergy()*25 + this.getSmithore()*50 + this.getFood()*30;
     }
 
+    public String getResourceString() {
+        String resourceString = "";
+        resourceString += "Money: " + String.format("%04d", money) +
+                "\t\tSmithore: " + smithore + "\n";
+        resourceString += "Food: " + food + "\t\t\tCrystite: " + crystite +
+                "\n";
+        resourceString += "Energy: " + energy + "\t\t\tMule: " + mule +
+                "\n";
+
+        return resourceString;
+    }
+
     public void addProperty() {
         this.properties++;
     }

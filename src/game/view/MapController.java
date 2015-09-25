@@ -40,17 +40,7 @@ public class MapController extends Controller {
     @FXML
     Label playerName;
     @FXML
-    Label playerMoney;
-    @FXML
-    Label playerFood;
-    @FXML
-    Label playerEnergy;
-    @FXML
-    Label playerSmithore;
-    @FXML
-    Label playerCrystite;
-    @FXML
-    Label playerMule;
+    Label playerInfo;
 
     public MapController() {
     }
@@ -71,12 +61,7 @@ public class MapController extends Controller {
 
         playerScore.setText(game.getLeaderBoard());
         playerName.setText(player.getName());
-        playerMoney.setText("Money: " + player.getMoney());
-        playerFood.setText("Food: " + player.getFood());
-        playerEnergy.setText("Energy: " + player.getEnergy());
-        playerSmithore.setText("Smithore: " + player.getSmithore());
-        playerCrystite.setText("Crystite: " + player.getCrystite());
-        playerMule.setText("Mule: " + player.getMule());
+        playerInfo.setText(player.getResourceString());
         flag = new ImageView(new Image("/game/images/flag"
                 + player.getColor() + ".png"));
 
@@ -113,7 +98,6 @@ public class MapController extends Controller {
 
     @FXML
     public void landAction() {
-        playerMoney.setText("Money: " + player.getMoney());
         ImageView flag = new ImageView(new Image("/game/images/flag"
                 + player.getColor() + ".png"));
         grid.add(flag, currentTile.getCol(), currentTile.getRow());
@@ -123,7 +107,7 @@ public class MapController extends Controller {
         game.getTurn().buyTile(currentTile.getRow(), currentTile.getCol());
 
         playerScore.setText(game.getLeaderBoard());
-        playerMoney.setText("Money: " + player.getMoney());
+        playerInfo.setText(player.getResourceString());
         nextButton.setText("Next Turn");
         turnOver = true;
     }
@@ -138,10 +122,10 @@ public class MapController extends Controller {
     }
 
     private void enterTown(MouseEvent event) {
-        if (game.getPhase() > 1) {
+        // if (game.getPhase() > 1) {
             main.closeScreen();
             main.showTown();
-        }
+        // }
     }
 
     private void selectTile(MouseEvent event) {
@@ -181,12 +165,7 @@ public class MapController extends Controller {
 
         playerScore.setText(game.getLeaderBoard());
         playerName.setText(player.getName());
-        playerMoney.setText("Money: " + player.getMoney());
-        playerFood.setText("Food: " + player.getFood());
-        playerEnergy.setText("Energy: " + player.getEnergy());
-        playerSmithore.setText("Smithore: " + player.getSmithore());
-        playerCrystite.setText("Crystite: " + player.getCrystite());
-        playerMule.setText("Mule: " + player.getMule());
+        playerInfo.setText(player.getResourceString());
         flag = new ImageView(new Image("/game/images/flag"
                 + player.getColor() + ".png"));
 

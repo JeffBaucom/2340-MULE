@@ -104,12 +104,10 @@ public class Game {
         int index = 0;
 
         for (Player p : players) {
-            leaderBoard += "Player " + index + ": " + p.getScore() + "\n";
+            leaderBoard += "Player " + (index + 1) + ": " + p.getScore() + "\n";
             index++;
         }
 
         return leaderBoard;
     }
-
-
 }
