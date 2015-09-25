@@ -123,8 +123,10 @@ public class MapController extends Controller {
 
     private void enterTown(MouseEvent event) {
         // if (game.getPhase() > 1) {
+        if (!turnOver) {
             main.closeScreen();
             main.showTown();
+        }
         // }
     }
 
