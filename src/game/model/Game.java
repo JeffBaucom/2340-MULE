@@ -47,7 +47,8 @@ public class Game {
 
         if (roundCounter <= 1) {
             phase = 0;
-        } else if ((roundCounter > 1) && (passCounter < players.length)) {
+        } else if ((roundCounter > 1) && (passCounter < players.length &&
+                phase <= 1)) {
             phase = 1;
         } else {
             phase = 2;
@@ -56,7 +57,6 @@ public class Game {
         if (currentId == 0) {
             passCounter = 0;
         }
-
     }
 
     public void passTurn() {
@@ -103,12 +103,10 @@ public class Game {
         int index = 0;
 
         for (Player p : players) {
-            leaderBoard += "Player " + index + ": " + p.getScore() + "\n";
+            leaderBoard += "Player " + (index + 1) + ": " + p.getScore() + "\n";
             index++;
         }
 
         return leaderBoard;
     }
-
-
 }
