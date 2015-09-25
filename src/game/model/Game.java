@@ -57,7 +57,6 @@ public class Game {
         if (currentId == 0) {
             passCounter = 0;
         }
-
     }
 
     public void passTurn() {

@@ -81,7 +81,7 @@ public class Player {
 
     public String getResourceString() {
         String resourceString = "";
-        resourceString += "Money: " + String.format("%04d", money) +
+        resourceString += "Money: " + money +
                 "\t\tSmithore: " + smithore + "\n";
         resourceString += "Food: " + food + "\t\t\tCrystite: " + crystite +
                 "\n";
