@@ -5,17 +5,18 @@ public class Game {
     int roundCounter, passCounter, phase;
 
     Player[] players;
+    boolean isRandom;
     int currentId;
 
     Map map;
 
     Store store;
 
-    public Game(int playerCount) {
+    public Game(int playerCount, boolean mapType) {
         this.players = new Player[playerCount];
-
+        this.isRandom = mapType;
         store = new Store();
-        this.map = new Map();
+        this.map = new Map(isRandom);
         map.setGame(this);
     }
 

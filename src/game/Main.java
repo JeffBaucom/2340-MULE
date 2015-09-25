@@ -61,8 +61,8 @@ public class Main extends Application {
 
     public static Main getInstance() { return main; }
 
-    public void newGame(int playerCount) {
-        game = new Game(playerCount);
+    public void newGame(int playerCount, boolean isRandom) {
+        game = new Game(playerCount, isRandom);
 
         screenStack.loadScreen("town",  TOWN);
         screenStack.loadScreen("store", STORE);
