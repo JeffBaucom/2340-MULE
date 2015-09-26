@@ -10,6 +10,9 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
 
 public class Main extends Application {
     private Stage primaryStage;
@@ -28,6 +31,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        String musicFile1 = "src/game/images/background1.mp3";
+        Media sound = new Media(new File(musicFile1).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("MULE Game");
         this.primaryStage.getIcons().add(new Image("/game/images/icon.png"));
@@ -61,8 +68,8 @@ public class Main extends Application {
 
     public static Main getInstance() { return main; }
 
-    public void newGame(int playerCount) {
-        game = new Game(playerCount);
+    public void newGame(int playerCount, boolean isRandom) {
+        game = new Game(playerCount, isRandom);
 
         screenStack.loadScreen("town",  TOWN);
         screenStack.loadScreen("store", STORE);

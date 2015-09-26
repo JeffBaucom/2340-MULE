@@ -1,16 +1,68 @@
 package game.model;
 
+import java.util.Random;
+
 
 public class Map {
     private Game game;
     private Tile[][] tiles;
     private Tile selectedTile;
+    private String [] rt; // random string tiles
 
 
     public int tilesRemaining;
 
-    public Map() {
+    public Map(boolean isRandom) {
         tiles = new Tile[5][9];
+        if (isRandom) {
+            rt = randomizeMap();
+            int k = 0;
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 9; j++) {
+                    tiles[i][j] = new Tile(rt[k], i, j);
+                    k++;
+                }
+            }
+            tiles[2][4] = new Tile("T", 2, 4);
+        } else {
+            standardizeMap();
+        }
+
+        this.tilesRemaining = 44;
+    }
+
+    public Tile getTile(int row, int col) {
+        return tiles[row][col];
+    }
+
+    public String[] randomizeMap() {
+        String[] string = new String[45];
+        for (int i = 0; i < 45; i++) {
+            Random ran = new Random();
+            switch (ran.nextInt(6)) {
+                case 0:
+                    string[i] = "P";
+                    break;
+                case 1:
+                    string[i] = "R";
+                    break;
+                case 2:
+                    string[i] = "M1";
+                    break;
+                case 3:
+                    string[i] = "M2";
+                    break;
+                case 4:
+                    string[i] = "M3";
+                    break;
+                case 5:
+                    string[i] = "F";
+            }
+        }
+        return string;
+    }
+
+    public void standardizeMap() {
         tiles[0][0] = new Tile("P", 0, 0);
         tiles[0][1] = new Tile("P", 0, 1);
         tiles[0][2] = new Tile("M1", 0, 2);
@@ -56,13 +108,7 @@ public class Map {
         tiles[4][6] = new Tile("P", 4, 6);
         tiles[4][7] = new Tile("P", 4, 7);
         tiles[4][8] = new Tile("M2", 4, 8);
-        this.tilesRemaining = 44;
     }
-
-    public Tile getTile(int row, int col) {
-        return tiles[row][col];
-    }
-
 
     public Tile getSelectedTile() { return selectedTile; }
 

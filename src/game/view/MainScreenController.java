@@ -11,8 +11,13 @@ public class MainScreenController extends Controller{
     RadioButton players3;
     @FXML
     RadioButton players4;
+    @FXML
+    RadioButton random;
+    @FXML
+    RadioButton standard;
 
     int playerCount;
+    boolean isRandom;
 
     /**
      * The constructor.
@@ -39,9 +44,11 @@ public class MainScreenController extends Controller{
         if(players2.isSelected()) playerCount = 2;
         else if(players3.isSelected()) playerCount = 3;
         else playerCount = 4;
+        if(random.isSelected()) isRandom = true;
+        else if(standard.isSelected()) isRandom = false;
 
         main.closeScreen();
-        main.newGame(playerCount);
+        main.newGame(playerCount, isRandom);
         main.showConfigScreen();
     }
 }
