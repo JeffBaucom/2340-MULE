@@ -54,10 +54,7 @@
                   </Label>
                   <Label fx:id="playerInfo" text="Player Info" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                   <Button fx:id="landButton" alignment="BOTTOM_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#landAction" text="Land Action" GridPane.rowIndex="2" />
-                  <Label fx:id="landCost" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Land Cost" textAlignment="RIGHT" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                     <padding>
-                        <Insets left="140.0" />
-                     </padding>
+                  <Label fx:id="landCost" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Land Cost" textAlignment="RIGHT" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                      <GridPane.margin>
                         <Insets top="3.0" />
                      </GridPane.margin>
@@ -73,12 +70,12 @@
                   <RowConstraints minHeight="10.0" percentHeight="75.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Information" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+                  <Text fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Log" GridPane.halignment="LEFT" GridPane.valignment="TOP">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Text>
-                  <TextFlow prefHeight="200.0" prefWidth="427.0" GridPane.rowIndex="1" />
+                  <TextArea fx:id="gameLog" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <GridPane layoutX="524.0" layoutY="30.0" prefHeight="140.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="540.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0">

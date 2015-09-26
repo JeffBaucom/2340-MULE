@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -41,6 +42,8 @@ public class MapController extends Controller {
     Label playerName;
     @FXML
     Label playerInfo;
+    @FXML
+    TextArea gameLog;
 
     public MapController() {
     }
@@ -52,11 +55,14 @@ public class MapController extends Controller {
         map = game.getMap();
         cursor = new ImageView(new Image("/game/images/cursor.png"));
 
+        gameLog.setEditable(false);
+        gameLog.setText("Welcome to MULE Game.");
+
         landButton.setDisable(true);
         if (game.getPhase() == 0) {
             nextButton.setDisable(true);
             landButton.setText("Acquire Land");
-            landCost.setText("Cost: FREE");
+            landCost.setText("Land is currently free.");
         }
 
         playerScore.setText(game.getLeaderBoard());
@@ -105,12 +111,15 @@ public class MapController extends Controller {
         ImageView flag = new ImageView(new Image("/game/images/flag"
                 + player.getColor() + ".png"));
         grid.add(flag, currentTile.getCol(), currentTile.getRow());
+        grid.getChildren().remove(cursor);
         nextButton.setDisable(false);
         landButton.setDisable(true);
 
         game.getTurn().buyTile(currentTile.getRow(), currentTile.getCol());
 
         update();
+        logEvent(player.getName() + " acquired " + "land plot ("
+                + currentTile.getRow() + ", " + currentTile.getCol() + ").");
         nextButton.setText("Next Turn");
         turnOver = true;
     }
@@ -124,12 +133,14 @@ public class MapController extends Controller {
     }
 
     private void enterTown(MouseEvent event) {
-        // if (game.getPhase() > 1) {
-        if (!turnOver) {
-            main.closeScreen();
-            main.showTown();
+        if (game.getPhase() > 1) {
+            if (!turnOver) {
+                main.closeScreen();
+                main.showTown();
+            }
+        } else {
+            logEvent("You can't go to town yet!");
         }
-        // }
     }
 
     private void selectTile(MouseEvent event) {
@@ -137,11 +148,11 @@ public class MapController extends Controller {
         int column = ((int) event.getSceneX()) / 96;
         grid.getChildren().remove(cursor);
 
-        if (game.getPhase() < 2) {
+        if (game.getPhase() < 2 && !turnOver) {
             ObservableList<Node> children = grid.getChildren();
             for (Node node : children) {
-                if (grid.getRowIndex(node) == row && grid.getColumnIndex(node) ==
-                        column) {
+                if (grid.getRowIndex(node) == row
+                        && grid.getColumnIndex(node) == column) {
                     map.setSelectedTile(row, column);
                     currentTile = map.getSelectedTile();
                     grid.add(cursor, column, row);
@@ -160,7 +171,7 @@ public class MapController extends Controller {
             nextButton.setDisable(true);
         } else if (game.getPhase() == 1) {
             landButton.setText("Buy Land");
-            landCost.setText("Cost: 300");
+            landCost.setText("Land is currently $300.");
             nextButton.setText("Pass");
         } else if (game.getPhase() == 2) {
             landButton.setVisible(false);
@@ -171,8 +182,12 @@ public class MapController extends Controller {
         turnOver = false;
     }
 
+    public void logEvent(String event) {
+        gameLog.appendText("\n" + event);
+        gameLog.setScrollTop(Double.MAX_VALUE);
+    }
+
     public void update() {
-        System.out.println("Update");
         playerName.setText(player.getName());
         playerInfo.setText(player.getResourceString());
         playerScore.setText(game.getLeaderBoard());
