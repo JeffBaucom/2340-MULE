@@ -11,9 +11,12 @@ public class Game {
 
     Store store;
 
+    Pub pub;
+
     public Game(int playerCount, String mapType) {
         this.players = new Player[playerCount];
         store = new Store();
+        pub = new Pub();
         this.map = new Map(mapType);
         map.setGame(this);
     }
@@ -87,6 +90,10 @@ public class Game {
 
     public Store getStore() {
         return store;
+    }
+
+    public Pub getPub() {
+        return pub;
     }
 
     public int getRoundCounter() {

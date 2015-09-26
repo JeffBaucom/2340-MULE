@@ -10,6 +10,7 @@ public class PubController extends Controller {
 
     Game game;
     Player player;
+    Pub pub;
 
     /**
      * The constructor.
@@ -25,7 +26,7 @@ public class PubController extends Controller {
     @FXML
     private void initialize() {
         game = main.getGame();
-        store = game.getPub();
+        pub = game.getPub();
         player = game.getCurrentPlayer();
     }
 

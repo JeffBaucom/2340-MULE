@@ -16,7 +16,7 @@
   <Button id="AssayOfficeButton" layoutX="501.0" layoutY="343.0" mnemonicParsing="false" text="Trade with Assay Office" />
   <Button id="LandOfficeButton" layoutX="160.0" layoutY="343.0" mnemonicParsing="false" text="Trade with Land Office" />
   <Button id="StoreButton" layoutX="208.0" layoutY="142.0" mnemonicParsing="false" onAction="#enterStore" text="Trade with Store" />
-  <Button id="GambleButton" layoutX="501.0" layoutY="142.0" mnemonicParsing="false" onAction="#gamblePub" text="Gamble at Pub" />
+  <Button id="PubButton" layoutX="501.0" layoutY="142.0" mnemonicParsing="false" onAction="#enterPub" text="Visit the Pub" />
       <Text layoutX="363.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Town Square">
          <font>
             <Font size="24.0" />
