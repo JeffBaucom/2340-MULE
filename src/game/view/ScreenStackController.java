@@ -6,18 +6,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 
-import javax.naming.ldap.Control;
 import java.io.IOException;
 import java.util.HashMap;
 
 public class ScreenStackController extends StackPane {
     private HashMap<String, Node> screens = new HashMap<String, Node>();
-    private Main main;
+    private HashMap<String, Controller> controllers = new HashMap<String, Controller>();
 
-    /** Add screen to HashMap screens
+    /** Add screen and controller to relevant HashMaps
      */
-    public void addScreen(String name, Node screen) {
+    public void addScreen(String name, Node screen, Controller controller) {
         screens.put(name, screen);
+        controllers.put(name, controller);
     }
 
     /** Load screen from fxml file
@@ -29,8 +29,8 @@ public class ScreenStackController extends StackPane {
                     .getResource(resource));
             Parent screen = loader.load();
 
-            // Add screen to stack.
-            addScreen(name, screen);
+            // Add screen and controller to stack.
+            addScreen(name, screen, loader.getController());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -43,6 +43,7 @@ public class ScreenStackController extends StackPane {
     public boolean setScreen(String name) {
         if (screens.get(name) != null) {
             getChildren().add(screens.get(name));
+            controllers.get(name).update();
             return true;
         } else  {
             return false;

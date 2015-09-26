@@ -8,4 +8,6 @@ public class Controller {
     public Controller() {
         main = Main.getInstance();
     }
+
+    public void update() {}
 }

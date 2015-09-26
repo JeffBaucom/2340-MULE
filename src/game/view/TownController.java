@@ -22,4 +22,11 @@ public class TownController extends Controller {
         main.closeScreen();
         main.showMap();
     }
+
+    @FXML
+    public void gamblePub() {
+        main.getGame().getTurn().gamble();
+        main.closeScreen();
+        main.showMap();
+    }
 }

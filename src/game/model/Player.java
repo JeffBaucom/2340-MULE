@@ -76,7 +76,8 @@ public class Player {
     public void setMule(int mule) { this.mule = mule; }
 
     public int getScore() {
-        return this.properties*500 + this.getMoney() + this.getEnergy()*25 + this.getSmithore()*50 + this.getFood()*30;
+        return this.properties * 500 + this.getMoney() + this.getEnergy() * 25 +
+                this.getSmithore() * 50 + this.getFood() * 30;
     }
 
     public String getResourceString() {

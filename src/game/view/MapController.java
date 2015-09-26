@@ -106,8 +106,7 @@ public class MapController extends Controller {
 
         game.getTurn().buyTile(currentTile.getRow(), currentTile.getCol());
 
-        playerScore.setText(game.getLeaderBoard());
-        playerInfo.setText(player.getResourceString());
+        update();
         nextButton.setText("Next Turn");
         turnOver = true;
     }
@@ -115,7 +114,6 @@ public class MapController extends Controller {
     @FXML
     public void handleNext() {
         if (!turnOver) game.passTurn();
-        else game.endTurn();
 
         grid.getChildren().remove(cursor);
         nextTurn();
@@ -165,12 +163,22 @@ public class MapController extends Controller {
             landCost.setVisible(false);
         }
 
-        playerScore.setText(game.getLeaderBoard());
+        update();
+        turnOver = false;
+    }
+
+    public void update() {
+        System.out.println("Update");
         playerName.setText(player.getName());
         playerInfo.setText(player.getResourceString());
+        playerScore.setText(game.getLeaderBoard());
         flag = new ImageView(new Image("/game/images/flag"
                 + player.getColor() + ".png"));
 
-        turnOver = false;
+        if (game.getCurrentPlayer() != player) {
+            turnOver = true;
+            nextButton.setText("Next Turn");
+            nextButton.setDisable(false);
+        }
     }
 }
