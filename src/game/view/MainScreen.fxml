@@ -59,12 +59,12 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <RadioButton fx:id="random" mnemonicParsing="false" selected="true" toggleGroup="$mapType" text="Random" GridPane.valignment="TOP">
+                  <RadioButton fx:id="random" mnemonicParsing="false" text="Random" toggleGroup="$mapType" GridPane.rowIndex="1" GridPane.valignment="TOP">
                      <toggleGroup>
                         <ToggleGroup fx:id="mapType" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="standard" mnemonicParsing="false" text="Standard" toggleGroup="$mapType" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                  <RadioButton fx:id="standard" mnemonicParsing="false" selected="true" text="Standard" toggleGroup="$mapType" />
                </children>
             </GridPane>
             <GridPane maxHeight="120.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">

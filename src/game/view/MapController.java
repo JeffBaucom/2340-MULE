@@ -69,15 +69,15 @@ public class MapController extends Controller {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
                 String resFile;
-                Random rand1 = new Random();
-                Random rand2 = new Random();
+                Random pRand = new Random();
+                Random fRand = new Random();
 
                 if (map.getTile(i, j).getType() == "P") {
                     resFile = "/game/images/tile" + map.getTile(i, j).getType()
-                            + rand1.nextInt(3) + ".png";
+                            + pRand.nextInt(3) + ".png";
                 } else if (map.getTile(i, j).getType() == "F") {
                     resFile = "/game/images/tile" + map.getTile(i, j).getType()
-                            + rand2.nextInt(6) + ".png";
+                            + fRand.nextInt(6) + ".png";
                 } else {
                     resFile = "/game/images/tile"
                             + map.getTile(i, j).getType() + ".png";
