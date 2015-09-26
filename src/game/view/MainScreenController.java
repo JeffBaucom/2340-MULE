@@ -17,7 +17,7 @@ public class MainScreenController extends Controller{
     RadioButton standard;
 
     int playerCount;
-    boolean isRandom;
+    String mapType;
 
     /**
      * The constructor.
@@ -44,11 +44,12 @@ public class MainScreenController extends Controller{
         if(players2.isSelected()) playerCount = 2;
         else if(players3.isSelected()) playerCount = 3;
         else playerCount = 4;
-        if(random.isSelected()) isRandom = true;
-        else if(standard.isSelected()) isRandom = false;
+
+        if(standard.isSelected()) mapType = "standard";
+        else mapType = "random";
 
         main.closeScreen();
-        main.newGame(playerCount, isRandom);
+        main.newGame(playerCount, mapType);
         main.showConfigScreen();
     }
 }
