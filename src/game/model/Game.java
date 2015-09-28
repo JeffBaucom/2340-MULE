@@ -3,12 +3,12 @@ package game.model;
 public class Game {
     Turn currentTurn;
     int roundCounter, passCounter, phase;
+    String gameLog;
 
     Player[] players;
     int currentId;
 
     Map map;
-
     Store store;
 
     Pub pub;
@@ -25,13 +25,14 @@ public class Game {
         roundCounter = 0;
         passCounter = 0;
         phase = 0;
+        gameLog = "Welcome to MULE Game.\n";
 
         currentId = 0;
         currentTurn = new Turn(players[currentId], this);
     }
 
-    public void newPlayer(int playerIndex, String name, String color, Race
-            race) {
+    public void newPlayer(int playerIndex, String name, String color,
+                          Race race) {
         if (playerIndex < getPlayerCount()) {
             players[playerIndex] = new Player(playerIndex, name, color, race);
         }
@@ -40,10 +41,8 @@ public class Game {
     public void endTurn() {
         if (currentId < players.length - 1) {
             currentId++;
-            currentTurn = new Turn(players[currentId], this);
         } else {
             currentId = 0;
-            currentTurn = new Turn(players[currentId], this);
             roundCounter++;
         }
 
@@ -59,6 +58,8 @@ public class Game {
         if (currentId == 0) {
             passCounter = 0;
         }
+
+        currentTurn = new Turn(players[currentId], this);
     }
 
     public void passTurn() {
@@ -102,6 +103,14 @@ public class Game {
 
     public Player[] getPlayers() {
         return players;
+    }
+
+    public String getGameLog() {
+        return gameLog;
+    }
+
+    public void logEvent(String event) {
+        gameLog += event + "\n";
     }
 
     public String getLeaderBoard() {

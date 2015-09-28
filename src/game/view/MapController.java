@@ -56,7 +56,7 @@ public class MapController extends Controller {
         cursor = new ImageView(new Image("/game/images/cursor.png"));
 
         gameLog.setEditable(false);
-        gameLog.setText("Welcome to MULE Game.");
+        gameLog.setText(game.getGameLog());
 
         landButton.setDisable(true);
         if (game.getPhase() == 0) {
@@ -117,11 +117,11 @@ public class MapController extends Controller {
 
         game.getTurn().buyTile(currentTile.getRow(), currentTile.getCol());
 
-        update();
-        logEvent(player.getName() + " acquired " + "land plot ("
+        game.logEvent(player.getName() + " acquired " + "land plot ("
                 + currentTile.getRow() + ", " + currentTile.getCol() + ").");
         nextButton.setText("Next Turn");
         turnOver = true;
+        update();
     }
 
     @FXML
@@ -133,13 +133,14 @@ public class MapController extends Controller {
     }
 
     private void enterTown(MouseEvent event) {
-        if (game.getPhase() > 1) {
+        if (game.getPhase() > 0) {
             if (!turnOver) {
                 main.closeScreen();
                 main.showTown();
             }
         } else {
-            logEvent("You can't go to town yet!");
+            game.logEvent("You can't go to town yet!");
+            update();
         }
     }
 
@@ -182,17 +183,15 @@ public class MapController extends Controller {
         turnOver = false;
     }
 
-    public void logEvent(String event) {
-        gameLog.appendText("\n" + event);
-        gameLog.setScrollTop(Double.MAX_VALUE);
-    }
-
     public void update() {
         playerName.setText(player.getName());
         playerInfo.setText(player.getResourceString());
         playerScore.setText(game.getLeaderBoard());
         flag = new ImageView(new Image("/game/images/flag"
                 + player.getColor() + ".png"));
+
+        gameLog.setText(game.getGameLog());
+        gameLog.setScrollTop(Double.MAX_VALUE);
 
         if (game.getCurrentPlayer() != player) {
             turnOver = true;
