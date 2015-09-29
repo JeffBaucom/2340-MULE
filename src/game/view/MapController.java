@@ -33,7 +33,6 @@ public class MapController extends Controller {
     ImageView cursor, flag;
 
     Timer timer;
-
     int timeLeft;
 
     @FXML
@@ -132,6 +131,10 @@ public class MapController extends Controller {
         game.logEvent(player.getName() + " acquired " + "land plot ("
                 + currentTile.getRow() + ", " + currentTile.getCol() + ").");
         nextButton.setText("Next Turn");
+
+        timer.cancel();
+        timer = new Timer();
+        clock.setText("Turn Over.");
         turnOver = true;
         update();
     }
@@ -141,6 +144,10 @@ public class MapController extends Controller {
         if (!turnOver) game.passTurn();
 
         grid.getChildren().remove(cursor);
+
+        timer.cancel();
+        timer = new Timer();
+        getTimerTask();
         nextTurn();
     }
 
@@ -266,8 +273,8 @@ public class MapController extends Controller {
                 @Override
                 public void run() {
                     turnOver = true;
-                    handleNext();
                     game.endTurn();
+                    handleNext();
                     timer.cancel();
                     timer = new Timer();
                     getTimerTask();
