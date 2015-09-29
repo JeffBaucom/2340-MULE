@@ -6,6 +6,7 @@ import game.model.Player;
 import game.model.Tile;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,6 +15,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import java.util.Random;
 
@@ -27,6 +30,8 @@ public class MapController extends Controller {
 
     ImageView[][] tiles;
     ImageView cursor, flag;
+
+    Timer timer;
 
     @FXML
     GridPane grid;
@@ -104,6 +109,8 @@ public class MapController extends Controller {
 
         turnOver = false;
         nextButton.setText("Next Turn");
+        timer = new Timer();
+        getTimerTask();
     }
 
     @FXML
@@ -197,6 +204,52 @@ public class MapController extends Controller {
             turnOver = true;
             nextButton.setText("Next Turn");
             nextButton.setDisable(false);
+        }
+    }
+
+    public void getTimerTask() {
+        int round = game.getRoundCounter();
+        int food = player.getFood();
+        if (round < 4) {
+            if (food == 0) {
+                timer.schedule(new TurnEnder(), 5*1000);
+            } else if (food >= 3) {
+                timer.schedule(new TurnEnder(), 50*1000);
+            } else {
+                timer.schedule(new TurnEnder(), 30*1000);
+            }
+        } else if (round > 7) {
+            if (food == 0) {
+                timer.schedule(new TurnEnder(), 5*1000);
+            } else if (food >= 5) {
+                timer.schedule(new TurnEnder(), 50*1000);
+            } else {
+                timer.schedule(new TurnEnder(), 30*1000);
+            }
+        } else {
+            if (food == 0) {
+                timer.schedule(new TurnEnder(), 5*1000);
+            } else if (food >= 4) {
+                timer.schedule(new TurnEnder(), 50*1000);
+            } else {
+                timer.schedule(new TurnEnder(), 30*1000);
+            }
+        }
+    }
+
+    private class TurnEnder extends TimerTask {
+        public void run() {
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    turnOver = true;
+                    handleNext();
+                    game.endTurn();
+                    timer.cancel();
+                    timer = new Timer();
+                    getTimerTask();
+                }
+            });
         }
     }
 }
