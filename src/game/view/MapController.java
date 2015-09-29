@@ -221,7 +221,7 @@ public class MapController extends Controller {
 
     public void getTimerTask() {
         int round = game.getRoundCounter();
-        int food = player.getFood();
+        int food = player.get("food");
         if (round < 4) {
             if (food == 0) {
                 timeLeft = 5;

@@ -1,33 +1,35 @@
 package game.model;
 
+import java.util.HashMap;
+
 /**
  */
 public class Player {
     String name, color;
     Race race;
-    int id, money, food, energy, smithore, crystite, mule, properties;
+    int id, properties, mule;
+    HashMap<String, Integer> resources;
 
     public Player() {
     }
 
     public Player(int id, String name, String color, Race race) {
+        resources = new HashMap<String, Integer>();
         this.id = id;
         this.name = name;
         this.color = color;
         this.race = race;
         if (race == Race.FLAPPER) {
-            this.money = 1600;
+            resources.put("money", 1600);
         } else if (race == Race.HUMAN) {
-            this.money = 600;
+            resources.put("money", 600);
         } else {
-            this.money = 1000;
+            resources.put("money", 1000);
         }
-        this.food = 8;
-        this.energy = 4;
-        this.smithore = 0;
-        this.crystite = 0;
-        this.mule = 0;
-        this.properties = 0;
+        resources.put("food", 8);
+        resources.put("energy", 4);
+        resources.put("smithore", 0);
+        resources.put("crystite", 0);
     }
 
     public int getId() { return id; }
@@ -35,58 +37,29 @@ public class Player {
     public String getColor() { return this.color; }
     public Race getRace() { return this.race; }
 
-    public int getMoney() {
-        return money;
+    public int get(String resource) {
+        return resources.get(resource);
     }
-
-    public int getFood() {
-        return food;
+    public void set(String resource, int amount) {
+        resources.replace(resource, amount);
     }
-
-    public int getEnergy() {
-        return energy;
-    }
-
-    public int getSmithore() {
-        return smithore;
-    }
-
-    public int getCrystite() { return crystite; }
-
     public int getMule() { return mule; }
 
-    public void setMoney(int money) {
-        this.money = money;
-    }
-
-    public void setFood(int food) {
-        this.food = food;
-    }
-
-    public void setEnergy(int energy) {
-        this.energy = energy;
-    }
-
-    public void setSmithore(int smithore) {
-        this.smithore = smithore;
-    }
-
-    public void setCrystite(int crystite) { this.crystite = crystite;}
 
     public void setMule(int mule) { this.mule = mule; }
 
     public int getScore() {
-        return this.properties * 500 + this.getMoney() + this.getEnergy() * 25 +
-                this.getSmithore() * 50 + this.getFood() * 30;
+        return this.properties * 500 + resources.get("money") + resources.get("energy") * 25 +
+                resources.get("smithore") * 50 + resources.get("food") * 30;
     }
 
     public String getResourceString() {
         String resourceString = "";
-        resourceString += "Money: " + money +
-                "\t\tSmithore: " + smithore + "\n";
-        resourceString += "Food: " + food + "\t\t\tCrystite: " + crystite +
+        resourceString += "Money: " + resources.get("money") +
+                "\t\tSmithore: " + resources.get("smithore") + "\n";
+        resourceString += "Food: " + resources.get("food") + "\t\t\tCrystite: " + resources.get("crystite") +
                 "\n";
-        resourceString += "Energy: " + energy + "\t\t\tMule: " + mule +
+        resourceString += "Energy: " + resources.get("energy") + "\t\t\tMule: " + mule +
                 "\n";
 
         return resourceString;

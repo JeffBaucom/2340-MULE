@@ -20,9 +20,9 @@ public class Turn {
     public boolean buyTile(int row, int col) {
         boolean boughtTile = false;
         game.getMap().getTile(row, col).setOwner(player.getId());
-        if (game.getPhase() == 1 && player.getMoney() >= 300) {
-            game.getCurrentPlayer().setMoney(game.getCurrentPlayer()
-                    .getMoney() - 300);
+        if (game.getPhase() == 1 && player.get("money") >= 300) {
+            game.getCurrentPlayer().set("money", game.getCurrentPlayer()
+                    .get("money") - 300);
             boughtTile = true;
         }
 
@@ -60,7 +60,25 @@ public class Turn {
 //        player.setMoney(player.getMoney() + roundBonus + rand.nextInt
 //                (timeBonus));
         System.out.println("Gamble");
-        player.setMoney(player.getMoney() + 100);
+        player.set("money", player.get("money") + 100);
         game.endTurn();
+    }
+
+    public boolean buyStore(String resource, int amount) {
+        if (game.store.getCost(resource) * amount > player.get("money")) {
+            return false; // not enough money
+        } else {
+            game.store.buy(resource, amount, player);
+            return true;
+        }
+    }
+
+    public boolean sellStore(String resource, int amount) {
+        if (amount > player.get(resource)) {
+            return false;
+        } else {
+            game.store.sell(resource, amount, player);
+            return true;
+        }
     }
 }
