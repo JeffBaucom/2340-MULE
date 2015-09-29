@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.Date;
 
 import java.util.Random;
 
@@ -32,6 +33,8 @@ public class MapController extends Controller {
     ImageView cursor, flag;
 
     Timer timer;
+
+    int timeLeft;
 
     @FXML
     GridPane grid;
@@ -49,6 +52,8 @@ public class MapController extends Controller {
     Label playerInfo;
     @FXML
     TextArea gameLog;
+    @FXML
+    Label clock;
 
     public MapController() {
     }
@@ -212,27 +217,45 @@ public class MapController extends Controller {
         int food = player.getFood();
         if (round < 4) {
             if (food == 0) {
+                timeLeft = 5;
                 timer.schedule(new TurnEnder(), 5*1000);
+                timer.schedule(new ClockUpdater(), new Date(), 1000);
             } else if (food >= 3) {
+                timeLeft = 50;
                 timer.schedule(new TurnEnder(), 50*1000);
+                timer.schedule(new ClockUpdater(), new Date(), 1000);
             } else {
+                timeLeft = 30;
                 timer.schedule(new TurnEnder(), 30*1000);
+                timer.schedule(new ClockUpdater(), new Date(), 1000);
             }
         } else if (round > 7) {
             if (food == 0) {
+                timeLeft = 5;
                 timer.schedule(new TurnEnder(), 5*1000);
+                timer.schedule(new ClockUpdater(), new Date(), 1000);
             } else if (food >= 5) {
+                timeLeft = 50;
                 timer.schedule(new TurnEnder(), 50*1000);
+                timer.schedule(new ClockUpdater(), new Date(), 1000);
             } else {
+                timeLeft = 30;
                 timer.schedule(new TurnEnder(), 30*1000);
+                timer.schedule(new ClockUpdater(), new Date(), 1000);
             }
         } else {
             if (food == 0) {
+                timeLeft = 5;
                 timer.schedule(new TurnEnder(), 5*1000);
+                timer.schedule(new ClockUpdater(), new Date(), 1000);
             } else if (food >= 4) {
+                timeLeft = 50;
                 timer.schedule(new TurnEnder(), 50*1000);
+                timer.schedule(new ClockUpdater(), new Date(), 1000);
             } else {
+                timeLeft = 30;
                 timer.schedule(new TurnEnder(), 30*1000);
+                timer.schedule(new ClockUpdater(), new Date(), 1000);
             }
         }
     }
@@ -248,6 +271,18 @@ public class MapController extends Controller {
                     timer.cancel();
                     timer = new Timer();
                     getTimerTask();
+                }
+            });
+        }
+    }
+
+    private class ClockUpdater extends TimerTask {
+        public void run() {
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    clock.setText("Time Remaining in Turn: " + timeLeft);
+                    timeLeft--;
                 }
             });
         }
