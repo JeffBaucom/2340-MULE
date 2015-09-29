@@ -294,4 +294,8 @@ public class MapController extends Controller {
             });
         }
     }
+
+    public void setTurnOver(boolean b) {
+        turnOver = b;
+    }
 }
