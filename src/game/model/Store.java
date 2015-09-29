@@ -31,9 +31,18 @@ public class Store {
     }
 
     public void buy(String resource, int amount, Player player) {
+        if (amount <= stock.get(resource)) {
+            int initialAmt = stock.get(resource);
+            player.set(resource, player.get(resource) + amount);
+            stock.replace(resource, initialAmt - amount);
+        }
     }
 
     public void sell(String resource, int amount, Player player) {
+        int initialAmt = stock.get(resource);
+        player.set(resource, player.get(resource) - amount);
+        stock.replace(resource, initialAmt + amount);
+        player.set("money", player.get("money") + amount * cost.get(resource));
     }
 
     public int getMoney() {
