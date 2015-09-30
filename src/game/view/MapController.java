@@ -30,7 +30,7 @@ public class MapController extends Controller {
     boolean turnOver;
 
     ImageView[][] tiles;
-    ImageView cursor, flag;
+    ImageView cursor, flag, mule;
 
     Timer timer;
     int timeLeft;
@@ -176,6 +176,13 @@ public class MapController extends Controller {
                     map.setSelectedTile(row, column);
                     currentTile = map.getSelectedTile();
                     grid.add(cursor, column, row);
+                    if ((currentTile.getMule() == 0) && (currentTile.getOwner() == player.getId())) {
+                        currentTile.setMule(player.getMule());
+                        mule = new ImageView(new Image("/game/images/mule"
+                                + player.getMule() + ".png"));
+                        grid.add(mule, column, row);
+                    }
+                    player.setMule(0);
                     break;
                 }
             }

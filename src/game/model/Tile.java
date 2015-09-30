@@ -5,7 +5,8 @@ public class Tile {
 
     private int ownerID, row, col;
     private String type;
-    
+    private int mule;
+
     public Tile() {
         this.ownerID = -1;
     }
@@ -15,6 +16,7 @@ public class Tile {
         this.ownerID = -1;
         this.row = row;
         this.col = col;
+        this.mule = 0;
     }
 
     public String getType() {
@@ -23,6 +25,10 @@ public class Tile {
 
     public void setOwner(int playerID) {
         this.ownerID = playerID;
+    }
+
+    public void setMule(int mule) {
+        this.mule = mule;
     }
 
     public int getOwner() {
@@ -36,4 +42,6 @@ public class Tile {
     public int getCol() {
         return col;
     }
+
+    public int getMule() { return mule; }
 }
