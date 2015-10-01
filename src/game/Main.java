@@ -71,14 +71,15 @@ public class Main extends Application {
 
     public void newGame(int playerCount, String mapType) {
         game = new Game(playerCount, mapType);
-
-        screenStack.loadScreen("town",  TOWN);
-        screenStack.loadScreen("store", STORE);
     }
 
     public void generateMap() {
         game.startGame();
+        game.reorderPlayers();
+
         screenStack.loadScreen("map", MAP);
+        screenStack.loadScreen("town",  TOWN);
+        screenStack.loadScreen("store", STORE);
     }
 
     public void showScreen(String name) { screenStack.setScreen(name); }

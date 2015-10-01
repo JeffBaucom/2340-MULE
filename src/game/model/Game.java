@@ -2,10 +2,10 @@ package game.model;
 
 public class Game {
     Turn currentTurn;
-    int roundCounter, passCounter, phase, timeLeft;
+    int playerCounter, roundCounter, passCounter, phase, timeLeft;
     String gameLog;
 
-    Player[] players;
+    Player[] players, playerOrder;
     int currentId;
 
     Map map;
@@ -13,12 +13,14 @@ public class Game {
 
     public Game(int playerCount, String mapType) {
         this.players = new Player[playerCount];
+        this.playerOrder = new Player[playerCount];
         store = new Store();
         this.map = new Map(mapType);
         map.setGame(this);
     }
 
     public void startGame() {
+        playerCounter = 0;
         roundCounter = 0;
         passCounter = 0;
         phase = 0;
@@ -32,14 +34,16 @@ public class Game {
                           Race race) {
         if (playerIndex < getPlayerCount()) {
             players[playerIndex] = new Player(playerIndex, name, color, race);
+            playerOrder[playerIndex] = players[playerIndex];
         }
     }
 
     public void endTurn() {
-        if (currentId < players.length - 1) {
-            currentId++;
+        if (playerCounter < players.length - 1) {
+            playerCounter++;
         } else {
-            currentId = 0;
+            reorderPlayers();
+            playerCounter = 0;
             roundCounter++;
         }
 
@@ -56,7 +60,8 @@ public class Game {
             passCounter = 0;
         }
 
-        currentTurn = new Turn(players[currentId], this);
+        currentId = playerOrder[playerCounter].getId();
+        currentTurn = new Turn(playerOrder[playerCounter], this);
     }
 
     public void passTurn() {
@@ -77,7 +82,7 @@ public class Game {
     }
 
     public Player getCurrentPlayer() {
-        return players[currentId];
+        return playerOrder[playerCounter];
     }
 
     public Player getPlayer(int id) { return players[id]; }
@@ -124,5 +129,21 @@ public class Game {
         }
 
         return leaderBoard;
+    }
+
+    public void reorderPlayers() {
+        for (int i = 0; i < playerOrder.length - 1; i++) {
+            int maxIndex = i;
+            for (int j = i + 1; j < playerOrder.length; j++) {
+
+                if (playerOrder[i].getScore() < playerOrder[j].getScore()) {
+                    maxIndex = j;
+                }
+            }
+            Player temp = playerOrder[i];
+            playerOrder[i] = playerOrder[maxIndex];
+            playerOrder[maxIndex] = temp;
+
+        }
     }
 }
