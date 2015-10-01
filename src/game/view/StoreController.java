@@ -27,8 +27,6 @@ public class StoreController extends Controller {
     TextField smithoreField;
     @FXML
     TextField crystiteField;
-    @FXML
-    TextField muleField;
 
     Game game;
     Player player;
@@ -62,7 +60,6 @@ public class StoreController extends Controller {
         energyField.setText("0");
         smithoreField.setText("0");
         crystiteField.setText("0");
-        muleField.setText("0");
 
         foodLabel.setText("Food: " + food );
         energyLabel.setText("Energy: " + energy);
@@ -75,5 +72,20 @@ public class StoreController extends Controller {
     public void returnTown() {
         main.closeScreen();
         main.showScreen("town");
+    }
+
+    @FXML
+    public void buyFoodMule() {
+        store.buyMule(1, player);
+    }
+
+    @FXML
+    public void buyEnergyMule() {
+        store.buyMule(2, player);
+    }
+
+    @FXML
+    public void buyOreMule() {
+        store.buyMule(3, player);
     }
 }

@@ -45,6 +45,10 @@ public class Store {
         player.set("money", player.get("money") + amount * cost.get(resource));
     }
 
+    public void buyMule(int muleType, Player player) {
+            player.setMule(muleType);
+    }
+
     public int getMoney() {
         return money;
     }
