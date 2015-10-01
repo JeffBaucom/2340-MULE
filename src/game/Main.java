@@ -31,10 +31,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        String musicFile1 = "src/game/images/background1.mp3";
-        Media sound = new Media(new File(musicFile1).toURI().toString());
+        String musicFile = "src/game/images/background.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
+
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("MULE Game");
         this.primaryStage.getIcons().add(new Image("/game/images/icon.png"));
@@ -79,26 +80,6 @@ public class Main extends Application {
         game.startGame();
         screenStack.loadScreen("map", MAP);
     }
-
-//    public void showMainScreen() {
-//        screenStack.setScreen("main");
-//    }
-//
-//    public void showConfigScreen() {
-//        screenStack.setScreen("player config");
-//    }
-//
-//    public void showMap() {
-//        screenStack.setScreen("map");
-//    }
-//
-//    public void showTown() {
-//        screenStack.setScreen("town");
-//    }
-//
-//    public void showStore() {
-//        screenStack.setScreen("store");
-//    }
 
     public void showScreen(String name) { screenStack.setScreen(name); }
 
