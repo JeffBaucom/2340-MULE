@@ -1,13 +1,11 @@
 package game.model;
 
+import java.util.Random;
+
 public class Turn {
 
     private Player player;
-    Game game;
-
-    public Turn() {
-
-    }
+    private Game game;
 
     public Turn(Player player, Game game) {
         this.player = player;
@@ -33,34 +31,39 @@ public class Turn {
         return boughtTile;
     }
 
-    public void gamble() {
-//        Random rand = new Random();
-//        int roundBonus, timeBonus, round = game.getRoundCounter() + 1;
-//
-//        if (round >= 1 && round < 3) {
-//            roundBonus = 50;
-//        } else if (round >= 4 && round < 7) {
-//            roundBonus = 100;
-//        } else if (round >= 8 && round < 11) {
-//            roundBonus = 150;
-//        } else {
-//            roundBonus = 200;
-//        }
-//
-//        if (timeLeft >= 37) {
-//            timeBonus = 200;
-//        } else if (timeLeft >= 25 && timeLeft < 37) {
-//            timeBonus = 150;
-//        } else if (timeLeft >= 12 && timeLeft < 25) {
-//            timeBonus = 100;
-//        } else {
-//            timeBonus = 50;
-//        }
-//
-//        player.setMoney(player.getMoney() + roundBonus + rand.nextInt
-//                (timeBonus));
-        System.out.println("Gamble");
-        player.set("money", player.get("money") + 100);
+    public void gamble(int timeLeft) {
+        Random rand = new Random();
+        int roundBonus, timeBonus, round = game.getRoundCounter() + 1;
+
+        if (round >= 1 && round < 3) {
+            roundBonus = 50;
+        } else if (round >= 4 && round < 7) {
+            roundBonus = 100;
+        } else if (round >= 8 && round < 11) {
+            roundBonus = 150;
+        } else {
+            roundBonus = 200;
+        }
+
+        if (timeLeft >= 37) {
+            timeBonus = 200;
+        } else if (timeLeft >= 25 && timeLeft < 37) {
+            timeBonus = 150;
+        } else if (timeLeft >= 12 && timeLeft < 25) {
+            timeBonus = 100;
+        } else {
+            timeBonus = 50;
+        }
+
+        int winnings = roundBonus + rand.nextInt
+                (timeBonus);
+        if (winnings > 250) {
+            winnings = 250;
+        }
+
+        player.set("money", player.get("money") + winnings);
+        game.logEvent(player.getName() + " won " + winnings
+                + " gold gambling.");
         game.endTurn();
     }
 

@@ -2,7 +2,7 @@ package game.model;
 
 public class Game {
     Turn currentTurn;
-    int roundCounter, passCounter, phase;
+    int roundCounter, passCounter, phase, timeLeft;
     String gameLog;
 
     Player[] players;
@@ -69,6 +69,14 @@ public class Game {
 
     public int getPhase() {
         return phase;
+    }
+
+    public int getTimeLeft() {
+        return timeLeft;
+    }
+
+    public void setTimeLeft(int timeLeft) {
+        this.timeLeft = timeLeft;
     }
 
     public Player getCurrentPlayer() {

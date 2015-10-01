@@ -16,12 +16,13 @@
   <Button id="AssayOfficeButton" layoutX="501.0" layoutY="343.0" mnemonicParsing="false" text="Trade with Assay Office" />
   <Button id="LandOfficeButton" layoutX="160.0" layoutY="343.0" mnemonicParsing="false" text="Trade with Land Office" />
   <Button id="StoreButton" layoutX="208.0" layoutY="142.0" mnemonicParsing="false" onAction="#enterStore" text="Trade with Store" />
-  <Button id="PubButton" layoutX="501.0" layoutY="142.0" mnemonicParsing="false" onAction="#enterPub" text="Visit the Pub" />
+  <Button id="PubButton" layoutX="501.0" layoutY="142.0" mnemonicParsing="false" onAction="#gamblePub" text="Visit the Pub" />
       <Text layoutX="363.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Town Square">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
       <Button layoutX="772.0" layoutY="607.0" mnemonicParsing="false" onAction="#returnMap" text="Return to Map" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+      <Label fx:id="clock" layoutX="55.0" layoutY="607.0" text="Time Left" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" />
   </children>
 </AnchorPane>

@@ -154,6 +154,7 @@ public class MapController extends Controller {
     private void enterTown(MouseEvent event) {
         if (game.getPhase() > 0) {
             if (!turnOver) {
+                game.setTimeLeft(timeLeft);
                 main.closeScreen();
                 main.showTown();
             }
@@ -220,9 +221,12 @@ public class MapController extends Controller {
         gameLog.setScrollTop(Double.MAX_VALUE);
 
         if (game.getCurrentPlayer() != player) {
-            turnOver = true;
+            timer.cancel();
+            timer = new Timer();
+            clock.setText("Turn Over.");
             nextButton.setText("Next Turn");
             nextButton.setDisable(false);
+            turnOver = true;
         }
     }
 
