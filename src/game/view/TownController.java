@@ -34,13 +34,8 @@ public class TownController extends Controller {
     }
 
     @FXML
-    public void enterPub() {
-        main.closeScreen();
-        main.showPub();
-    }
-
-    @FXML
     public void returnMap() {
+        timer.cancel();
         main.closeScreen();
         main.showMap();
     }

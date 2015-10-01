@@ -25,7 +25,6 @@ public class Main extends Application {
     private final String MAP = "/game/view/Map.fxml";
     private final String TOWN = "/game/view/Town.fxml";
     private final String STORE = "/game/view/Store.fxml";
-    private final String PUB = "/game/view/Pub.fxml";
 
     private static Main main;
     private Game game;
@@ -74,7 +73,6 @@ public class Main extends Application {
 
         screenStack.loadScreen("town",  TOWN);
         screenStack.loadScreen("store", STORE);
-        screenStack.loadScreen("pub", PUB);
     }
 
     public void generateMap() {
@@ -100,10 +98,6 @@ public class Main extends Application {
 
     public void showStore() {
         screenStack.setScreen("store");
-    }
-
-    public void showPub() {
-        screenStack.setScreen("pub");
     }
 
     public void closeScreen() {
