@@ -74,6 +74,6 @@ public class StoreController extends Controller {
     @FXML
     public void returnTown() {
         main.closeScreen();
-        main.showTown();
+        main.showScreen("town");
     }
 }

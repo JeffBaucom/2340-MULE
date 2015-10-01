@@ -156,7 +156,7 @@ public class MapController extends Controller {
             if (!turnOver) {
                 game.setTimeLeft(timeLeft);
                 main.closeScreen();
-                main.showTown();
+                main.showScreen("town");
             }
         } else {
             game.logEvent("You can't go to town yet!");

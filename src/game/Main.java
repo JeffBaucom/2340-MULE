@@ -46,7 +46,7 @@ public class Main extends Application {
         screenStack.loadScreen("player config", PLAYER_CONFIG);
 
         initRootLayout();
-        showMainScreen();
+        showScreen("main");
     }
 
     public void initRootLayout() {
@@ -80,25 +80,27 @@ public class Main extends Application {
         screenStack.loadScreen("map", MAP);
     }
 
-    public void showMainScreen() {
-        screenStack.setScreen("main");
-    }
+//    public void showMainScreen() {
+//        screenStack.setScreen("main");
+//    }
+//
+//    public void showConfigScreen() {
+//        screenStack.setScreen("player config");
+//    }
+//
+//    public void showMap() {
+//        screenStack.setScreen("map");
+//    }
+//
+//    public void showTown() {
+//        screenStack.setScreen("town");
+//    }
+//
+//    public void showStore() {
+//        screenStack.setScreen("store");
+//    }
 
-    public void showConfigScreen() {
-        screenStack.setScreen("player config");
-    }
-
-    public void showMap() {
-        screenStack.setScreen("map");
-    }
-
-    public void showTown() {
-        screenStack.setScreen("town");
-    }
-
-    public void showStore() {
-        screenStack.setScreen("store");
-    }
+    public void showScreen(String name) { screenStack.setScreen(name); }
 
     public void closeScreen() {
         screenStack.removeTop();

@@ -50,6 +50,6 @@ public class MainScreenController extends Controller{
 
         main.closeScreen();
         main.newGame(playerCount, mapType);
-        main.showConfigScreen();
+        main.showScreen("player config");
     }
 }

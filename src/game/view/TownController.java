@@ -29,28 +29,32 @@ public class TownController extends Controller {
 
     @FXML
     public void enterStore() {
-        main.closeScreen();
-        main.showStore();
+        leaveTown();
+        main.showScreen("store");
     }
 
     @FXML
     public void returnMap() {
-        timer.cancel();
-        main.closeScreen();
-        main.showMap();
+        leaveTown();
+        main.showScreen("map");
     }
 
     @FXML
     public void gamblePub() {
-        timer.cancel();
         main.getGame().getTurn().gamble(timeLeft);
-        main.closeScreen();
-        main.showMap();
+        leaveTown();
+        main.showScreen("map");
     }
 
     public void update() {
         timer = new Timer();
         getTimerTask();
+    }
+
+    private void leaveTown() {
+        timer.cancel();
+        game.setTimeLeft(timeLeft);
+        main.closeScreen();
     }
 
     public void getTimerTask() {
