@@ -16,11 +16,11 @@ public class Store {
         stock.put("mule", 16);
 
         cost = new HashMap<String, Integer>();
-        stock.put("food", 10);
-        stock.put("energy", 10);
-        stock.put("smithore", 10);
-        stock.put("crystite", 10);
-        stock.put("mule", 10);
+        cost.put("food", 10);
+        cost.put("energy", 10);
+        cost.put("smithore", 10);
+        cost.put("crystite", 10);
+        cost.put("mule", 10);
         money = 1000;
     }
 

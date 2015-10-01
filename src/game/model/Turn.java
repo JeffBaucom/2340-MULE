@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Turn {
 
-    private Player player;
+    Player player;
     private Game game;
 
     public Turn(Player player, Game game) {

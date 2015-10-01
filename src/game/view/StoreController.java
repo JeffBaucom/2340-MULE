@@ -88,4 +88,39 @@ public class StoreController extends Controller {
     public void buyOreMule() {
         store.buyMule(3, player);
     }
+
+    private void updateResources() {
+        food = store.getStock("food");
+        energy = store.getStock("energy");
+        smithore = store.getStock("smithore");
+        crystite = store.getStock("crystite");
+        // TO DO: Add Mule stock
+        foodLabel.setText("Food: " + food );
+        energyLabel.setText("Energy: " + energy);
+        smithoreLabel.setText("Smithore: " + smithore);
+        crystiteLabel.setText("Crystite: " + crystite);
+        muleLabel.setText("Mule: " + mule);
+    }
+
+    @FXML
+    public void buyResource() {
+        int food = Integer.parseInt(foodField.getText());
+        int energy = Integer.parseInt(energyField.getText());
+        int smithore = Integer.parseInt(smithoreField.getText());
+        int crystite = Integer.parseInt(crystiteField.getText());
+        int cost = food * store.getCost("food") + energy * store.getCost("energy") + smithore * store.getCost("smithore") + crystite * store.getCost("crystite");
+        if (cost <= game.getCurrentPlayer().get("money")) {
+            game.getTurn().buyStore("food", food);
+            game.getTurn().buyStore("energy", energy);
+            game.getTurn().buyStore("smithore", smithore);
+            game.getTurn().buyStore("crystite", crystite);
+        }
+        updateResources();
+        returnTown();
+    }
+
+    @FXML
+    public void sellResource() {
+
+    }
 }
