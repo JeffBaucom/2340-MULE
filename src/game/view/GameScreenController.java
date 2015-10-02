@@ -14,6 +14,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,8 +26,6 @@ public class GameScreenController extends Controller {
     Game game;
     Player player;
     Map map;
-
-    Tile currentTile;
 
     Timer timer;
     int timeLeft;
@@ -76,6 +75,7 @@ public class GameScreenController extends Controller {
     @FXML
     public void landAction() {
         // TODO have MapScreen add flag to tile
+        Tile currentTile = map.getSelectedTile();
         nextButton.setDisable(false);
         landButton.setDisable(true);
 

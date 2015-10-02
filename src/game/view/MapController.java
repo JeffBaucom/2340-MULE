@@ -23,6 +23,10 @@ public class MapController extends Controller {
     ImageView[][] tiles;
     ImageView cursor, flag, mule;
 
+    private final String MAP = "/game/view/GameScreen.fxml";
+    private final String TOWN = "/game/view/Town.fxml";
+    private final String STORE = "/game/view/Store.fxml";
+
     @FXML
     GridPane grid;
 
@@ -69,7 +73,8 @@ public class MapController extends Controller {
     }
 
     public void enterTown(MouseEvent event) {
-        // TODO change GameScreen interface, display Town
+        main.closeScreen();
+        main.showScreen("town");
     }
 
     public void selectTile(MouseEvent event) {
@@ -84,6 +89,7 @@ public class MapController extends Controller {
                         && grid.getColumnIndex(node) == column) {
                     map.setSelectedTile(row, column);
                     grid.add(cursor, column, row);
+                    break;
                 }
             }
 

@@ -22,7 +22,8 @@ public class Main extends Application {
 
     private final String MAIN = "/game/view/MainScreen.fxml";
     private final String PLAYER_CONFIG = "/game/view/PlayerConfig.fxml";
-    private final String MAP = "/game/view/GameScreen.fxml";
+    private final String GAME_SCREEN = "/game/view/GameScreen.fxml";
+    private final String MAP = "/game/view/Map.fxml";
     private final String TOWN = "/game/view/Town.fxml";
     private final String STORE = "/game/view/Store.fxml";
 
@@ -73,7 +74,15 @@ public class Main extends Application {
         game = new Game(playerCount, mapType);
     }
 
-    public void generateMap() {
+    public void generateGameScreen() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class
+                    .getResource(GAME_SCREEN));
+            rootLayout.setBottom(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         game.startGame();
         game.reorderPlayers();
 
@@ -84,9 +93,7 @@ public class Main extends Application {
 
     public void showScreen(String name) { screenStack.setScreen(name); }
 
-    public void closeScreen() {
-        screenStack.removeTop();
-    }
+    public void closeScreen() { screenStack.removeTop(); }
 
     public Game getGame() {
         return game;
