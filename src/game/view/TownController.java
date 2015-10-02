@@ -14,12 +14,6 @@ public class TownController extends Controller {
     Game game = main.getGame();
     Player player = game.getCurrentPlayer();
 
-    Timer timer;
-    int timeLeft;
-
-    @FXML
-    Label clock;
-
     public TownController() {
     }
 
@@ -41,50 +35,15 @@ public class TownController extends Controller {
 
     @FXML
     public void gamblePub() {
-        main.getGame().getTurn().gamble(timeLeft);
+        main.getGame().getTurn().gamble();
         leaveTown();
         main.showScreen("map");
     }
 
-    public void update() {
-        timer = new Timer();
-        getTimerTask();
-    }
-
     private void leaveTown() {
-        timer.cancel();
-        game.setTimeLeft(timeLeft);
         main.closeScreen();
     }
 
-    public void getTimerTask() {
-        timeLeft = game.getTimeLeft();
-
-        int seconds = timeLeft;
-        timer.schedule(new TurnEnder(), seconds * 1000);
-        timer.schedule(new ClockUpdater(), new Date(), 1000);
-    }
-
-    private class TurnEnder extends TimerTask {
-        public void run() {
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    returnMap();
-                }
-            });
-        }
-    }
-
-    private class ClockUpdater extends TimerTask {
-        public void run() {
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    clock.setText("Time Remaining in Turn: " + timeLeft);
-                    timeLeft--;
-                }
-            });
-        }
+    public void update() {
     }
 }

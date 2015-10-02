@@ -22,7 +22,7 @@ public class Main extends Application {
 
     private final String MAIN = "/game/view/MainScreen.fxml";
     private final String PLAYER_CONFIG = "/game/view/PlayerConfig.fxml";
-    private final String MAP = "/game/view/Map.fxml";
+    private final String MAP = "/game/view/GameScreen.fxml";
     private final String TOWN = "/game/view/Town.fxml";
     private final String STORE = "/game/view/Store.fxml";
 

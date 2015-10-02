@@ -3,6 +3,7 @@ package game.model;
 public class Game {
     Turn currentTurn;
     int playerCounter, roundCounter, passCounter, phase, timeLeft;
+    boolean turnover;
     String gameLog;
 
     Player[] players, playerOrder;
@@ -28,6 +29,7 @@ public class Game {
 
         currentId = 0;
         currentTurn = new Turn(players[currentId], this);
+        turnover = false;
     }
 
     public void newPlayer(int playerIndex, String name, String color,
@@ -76,6 +78,12 @@ public class Game {
     public int getTimeLeft() {
         return timeLeft;
     }
+
+    public void setTurnover(boolean turnover) {
+        this.turnover = turnover;
+    }
+
+    public boolean getTurnOver() { return turnover; }
 
     public void setTimeLeft(int timeLeft) {
         this.timeLeft = timeLeft;
