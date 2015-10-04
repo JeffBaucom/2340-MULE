@@ -2,6 +2,7 @@ package game;
 
 import java.io.IOException;
 
+import game.view.GameScreenController;
 import game.view.ScreenStackController;
 import game.model.Game;
 import javafx.application.Application;
@@ -28,6 +29,7 @@ public class Main extends Application {
     private final String STORE = "/game/view/Store.fxml";
 
     private static Main main;
+    private GameScreenController gameScreenController;
     private Game game;
 
     @Override
@@ -75,17 +77,20 @@ public class Main extends Application {
     }
 
     public void generateGameScreen() {
+        game.startGame();
+        game.reorderPlayers();
+
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class
                     .getResource(GAME_SCREEN));
             rootLayout.setBottom(loader.load());
+            gameScreenController = loader.getController();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        game.startGame();
-        game.reorderPlayers();
 
+        System.out.println(gameScreenController);
         screenStack.loadScreen("map", MAP);
         screenStack.loadScreen("town",  TOWN);
         screenStack.loadScreen("store", STORE);
@@ -94,6 +99,9 @@ public class Main extends Application {
     public void showScreen(String name) { screenStack.setScreen(name); }
 
     public void closeScreen() { screenStack.removeTop(); }
+
+    public GameScreenController getGameScreenController() { return
+            gameScreenController; }
 
     public Game getGame() {
         return game;

@@ -45,9 +45,6 @@ public class GameScreenController extends Controller {
     @FXML
     Label clock;
 
-    public GameScreenController() {
-    }
-
     @FXML
     public void initialize() {
         game = main.getGame();
@@ -74,21 +71,17 @@ public class GameScreenController extends Controller {
 
     @FXML
     public void landAction() {
-        // TODO have MapScreen add flag to tile
         Tile currentTile = map.getSelectedTile();
         nextButton.setDisable(false);
         landButton.setDisable(true);
 
         game.getTurn().buyTile(currentTile.getRow(), currentTile.getCol());
-
         game.logEvent(player.getName() + " acquired " + "land plot ("
                 + currentTile.getRow() + ", " + currentTile.getCol() + ").");
-        nextButton.setText("Next Turn");
-
-        timer.cancel();
-        timer = new Timer();
-        clock.setText("Turn Over.");
         game.setTurnover(true);
+
+        main.closeScreen();
+        main.showScreen("map");
         update();
     }
 
@@ -102,8 +95,21 @@ public class GameScreenController extends Controller {
         nextTurn();
     }
 
-    private void enterTown() {
-        // TODO show town screen, update interface
+    public void enableLandButton() {
+        landButton.setDisable(false);
+    }
+
+    public void enterTown() {
+        if (!game.getTurnOver()) {
+            if (game.getPhase() > 0) {
+                landButton.setVisible(false);
+                main.closeScreen();
+                main.showScreen("town");
+            } else {
+                game.logEvent("You cannot go to town yet!");
+                update();
+            }
+        }
     }
 
     private void nextTurn() {
@@ -118,8 +124,8 @@ public class GameScreenController extends Controller {
             landButton.setVisible(false);
         }
 
-        update();
         game.setTurnover(false);
+        update();
     }
 
     public void update() {
@@ -137,6 +143,13 @@ public class GameScreenController extends Controller {
             nextButton.setText("Next Turn");
             nextButton.setDisable(false);
             game.setTurnover(true);
+        }
+
+        if (game.getTurnOver()) {
+            timer.cancel();
+            timer = new Timer();
+            nextButton.setText("Next Turn");
+            clock.setText("Turn Over");
         }
     }
 

@@ -1,6 +1,5 @@
 package game.view;
 
-import game.Main;
 import game.model.Game;
 import game.model.Map;
 import game.model.Player;
@@ -26,6 +25,7 @@ public class MapController extends Controller {
     private final String MAP = "/game/view/GameScreen.fxml";
     private final String TOWN = "/game/view/Town.fxml";
     private final String STORE = "/game/view/Store.fxml";
+    GameScreenController gameScreenController;
 
     @FXML
     GridPane grid;
@@ -36,6 +36,7 @@ public class MapController extends Controller {
         player = game.getCurrentPlayer();
         map = game.getMap();
 
+        gameScreenController = main.getGameScreenController();
         cursor = new ImageView(new Image("/game/images/cursor.png"));
         flag = new ImageView(new Image("/game/images/flag"
                 + player.getColor() + ".png"));
@@ -73,8 +74,7 @@ public class MapController extends Controller {
     }
 
     public void enterTown(MouseEvent event) {
-        main.closeScreen();
-        main.showScreen("town");
+        gameScreenController.enterTown();
     }
 
     public void selectTile(MouseEvent event) {
@@ -93,13 +93,24 @@ public class MapController extends Controller {
                 }
             }
 
-            // TODO update GameScreen to show correct action
+            gameScreenController.enableLandButton();
         }
     }
 
     public void update() {
-        player = game.getCurrentPlayer();
-        flag = new ImageView(new Image("/game/images/flag"
-                + player.getColor() + ".png"));
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 9; j++) {
+                int ownerId = map.getTile(i, j).getOwner();
+                if (ownerId > -1) {
+                    flag = new ImageView(new Image("/game/images/flag"
+                            + game.getPlayer(ownerId).getColor() + ".png"));
+                    grid.add(flag, j, i);
+                }
+            }
+        }
+
+        if (game.getTurnOver()) {
+            grid.getChildren().remove(cursor);
+        }
     }
 }

@@ -8,7 +8,6 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 
-
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.view.GameScreenController">
    <children>
       <Button fx:id="nextButton" layoutX="758.0" layoutY="121.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleNext" text="Next" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
