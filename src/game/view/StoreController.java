@@ -102,6 +102,13 @@ public class StoreController extends Controller {
         muleLabel.setText("Mule: " + mule);
     }
 
+    private void clearFields() {
+        foodField.setText("0");
+        energyField.setText("0");
+        smithoreField.setText("0");
+        crystiteField.setText("0");
+    }
+
     @FXML
     public void buyResource() {
         int food = Integer.parseInt(foodField.getText());
@@ -116,11 +123,31 @@ public class StoreController extends Controller {
             game.getTurn().buyStore("crystite", crystite);
         }
         updateResources();
+        clearFields();
         returnTown();
     }
 
     @FXML
     public void sellResource() {
-
+        int food = Integer.parseInt(foodField.getText());
+        int energy = Integer.parseInt(energyField.getText());
+        int smithore = Integer.parseInt(smithoreField.getText());
+        int crystite = Integer.parseInt(crystiteField.getText());
+        // TO DO: Use else statements to return input error
+        if (game.getTurn().sellStore("food", food)) {
+            updateResources();
+        }
+        if (game.getTurn().sellStore("energy", energy)) {
+            updateResources();
+        }
+        if (game.getTurn().sellStore("smithore", smithore)) {
+            updateResources();
+        }
+        if (game.getTurn().sellStore("crystite", crystite)) {
+            updateResources();
+        }
+        updateResources();
+        clearFields();
+        returnTown();
     }
 }
