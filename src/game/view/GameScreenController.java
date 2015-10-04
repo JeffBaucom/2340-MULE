@@ -87,12 +87,15 @@ public class GameScreenController extends Controller {
 
     @FXML
     public void handleNext() {
-        if (!game.getTurnOver()) game.passTurn();
-
-        timer.cancel();
-        timer = new Timer();
-        getTimerTask();
-        nextTurn();
+        if (!game.getTurnOver())  {
+            game.passTurn();
+            game.setTurnover(true);
+            timer.cancel();
+            timer = new Timer();
+            update();
+        } else {
+            nextTurn();
+        }
     }
 
     public void enableLandButton() {
@@ -112,6 +115,16 @@ public class GameScreenController extends Controller {
         }
     }
 
+    public void returnMap() {
+        main.closeScreen();
+        main.showScreen("map");
+        if (game.getPhase() < 2) {
+            landButton.setVisible(true);
+        }
+
+        update();
+    }
+
     private void nextTurn() {
         player = game.getCurrentPlayer();
 
@@ -122,9 +135,11 @@ public class GameScreenController extends Controller {
             nextButton.setText("Pass");
         } else if (game.getPhase() == 2) {
             landButton.setVisible(false);
+            nextButton.setText("Pass");
         }
 
         game.setTurnover(false);
+        getTimerTask();
         update();
     }
 
@@ -148,6 +163,7 @@ public class GameScreenController extends Controller {
         if (game.getTurnOver()) {
             timer.cancel();
             timer = new Timer();
+            landButton.setDisable(true);
             nextButton.setText("Next Turn");
             clock.setText("Turn Over");
         }
@@ -208,10 +224,10 @@ public class GameScreenController extends Controller {
                 public void run() {
                     game.setTurnover(true);
                     game.endTurn();
-                    handleNext();
+                    returnMap();
+
                     timer.cancel();
                     timer = new Timer();
-                    getTimerTask();
                 }
             });
         }

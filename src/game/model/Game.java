@@ -27,7 +27,8 @@ public class Game {
         phase = 0;
         gameLog = "Welcome to MULE Game.\n";
 
-        currentId = 0;
+        reorderPlayers();
+        currentId = playerOrder[0].getId();
         currentTurn = new Turn(players[currentId], this);
         turnover = false;
     }
@@ -58,7 +59,7 @@ public class Game {
             phase = 2;
         }
 
-        if (currentId == 0) {
+        if (playerCounter == 0) {
             passCounter = 0;
         }
 
@@ -129,11 +130,9 @@ public class Game {
 
     public String getLeaderBoard() {
         String leaderBoard = "";
-        int index = 0;
 
-        for (Player p : players) {
-            leaderBoard += "Player " + (index + 1) + ": " + p.getScore() + "\n";
-            index++;
+        for (Player p : playerOrder) {
+            leaderBoard += p.getName() + ": " + p.getScore() + "\n";
         }
 
         return leaderBoard;

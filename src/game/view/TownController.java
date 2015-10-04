@@ -11,10 +11,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class TownController extends Controller {
-    Game game = main.getGame();
-    Player player = game.getCurrentPlayer();
+    Game game;
+    GameScreenController gameScreenController;
 
     public TownController() {
+        game = main.getGame();
+        gameScreenController = main.getGameScreenController();
     }
 
     @FXML
@@ -35,9 +37,9 @@ public class TownController extends Controller {
 
     @FXML
     public void gamblePub() {
-        main.getGame().getTurn().gamble();
-        leaveTown();
-        main.showScreen("map");
+        game.getTurn().gamble();
+        game.setTurnover(true);
+        gameScreenController.returnMap();
     }
 
     private void leaveTown() {
