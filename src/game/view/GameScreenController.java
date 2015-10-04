@@ -92,6 +92,7 @@ public class GameScreenController extends Controller {
             game.setTurnover(true);
             timer.cancel();
             timer = new Timer();
+            returnMap();
             update();
         } else {
             nextTurn();

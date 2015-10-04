@@ -101,5 +101,7 @@ public class PlayerConfigController extends Controller {
         flapper.setSelected(false);
         human.setSelected(false);
         other.setSelected(false);
+
+        next.setDisable(true);
     }
 }

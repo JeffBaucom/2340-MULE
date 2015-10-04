@@ -25,14 +25,12 @@ public class TownController extends Controller {
 
     @FXML
     public void enterStore() {
-        leaveTown();
-        main.showScreen("store");
+        // TODO implement store
     }
 
     @FXML
     public void returnMap() {
-        leaveTown();
-        main.showScreen("map");
+        gameScreenController.returnMap();
     }
 
     @FXML
@@ -40,10 +38,6 @@ public class TownController extends Controller {
         game.getTurn().gamble();
         game.setTurnover(true);
         gameScreenController.returnMap();
-    }
-
-    private void leaveTown() {
-        main.closeScreen();
     }
 
     public void update() {
