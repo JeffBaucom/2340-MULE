@@ -20,7 +20,7 @@ public class Store {
         cost.put("energy", 10);
         cost.put("smithore", 10);
         cost.put("crystite", 10);
-        cost.put("mule", 10);
+        cost.put("mule", 100);
         money = 1000;
     }
 
@@ -48,6 +48,9 @@ public class Store {
     public void buyMule(int muleType, Player player) {
             if (stock.get("mule") > 0 && player.getMule() == 0) {
                 player.setMule(muleType);
+                stock.replace("mule", stock.get("mule") - 1);
+                int muleCost = cost.get("mule") + muleType*25;
+                player.set("money", player.get("money") - muleCost);
             }
     }
 
