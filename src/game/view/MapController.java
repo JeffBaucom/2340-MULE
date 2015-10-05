@@ -182,7 +182,7 @@ public class MapController extends Controller {
                         mule = new ImageView(new Image("/game/images/mule"
                                 + player.getMule() + ".png"));
                         grid.add(mule, column, row);
-                        game.logEvent("Mule placed down <temp>");
+                        player.setMule(0);
                     }
                     player.setMule(0);
                     break;
