@@ -3,6 +3,7 @@ package game.model;
 public class Game {
     Turn currentTurn;
     int playerCounter, roundCounter, passCounter, phase, timeLeft;
+    boolean turnover;
     String gameLog;
 
     Player[] players, playerOrder;
@@ -26,8 +27,10 @@ public class Game {
         phase = 0;
         gameLog = "Welcome to MULE Game.\n";
 
-        currentId = 0;
+        reorderPlayers();
+        currentId = playerOrder[0].getId();
         currentTurn = new Turn(players[currentId], this);
+        turnover = false;
     }
 
     public void newPlayer(int playerIndex, String name, String color,
@@ -56,7 +59,7 @@ public class Game {
             phase = 2;
         }
 
-        if (currentId == 0) {
+        if (playerCounter == 0) {
             passCounter = 0;
         }
 
@@ -76,6 +79,12 @@ public class Game {
     public int getTimeLeft() {
         return timeLeft;
     }
+
+    public void setTurnover(boolean turnover) {
+        this.turnover = turnover;
+    }
+
+    public boolean getTurnOver() { return turnover; }
 
     public void setTimeLeft(int timeLeft) {
         this.timeLeft = timeLeft;
@@ -121,11 +130,9 @@ public class Game {
 
     public String getLeaderBoard() {
         String leaderBoard = "";
-        int index = 0;
 
-        for (Player p : players) {
-            leaderBoard += "Player " + (index + 1) + ": " + p.getScore() + "\n";
-            index++;
+        for (Player p : playerOrder) {
+            leaderBoard += p.getName() + ": " + p.getScore() + "\n";
         }
 
         return leaderBoard;

@@ -2,6 +2,7 @@ package game;
 
 import java.io.IOException;
 
+import game.view.GameScreenController;
 import game.view.ScreenStackController;
 import game.model.Game;
 import javafx.application.Application;
@@ -22,11 +23,13 @@ public class Main extends Application {
 
     private final String MAIN = "/game/view/MainScreen.fxml";
     private final String PLAYER_CONFIG = "/game/view/PlayerConfig.fxml";
+    private final String GAME_SCREEN = "/game/view/GameScreen.fxml";
     private final String MAP = "/game/view/Map.fxml";
     private final String TOWN = "/game/view/Town.fxml";
     private final String STORE = "/game/view/Store.fxml";
 
     private static Main main;
+    private GameScreenController gameScreenController;
     private Game game;
 
     @Override
@@ -73,10 +76,21 @@ public class Main extends Application {
         game = new Game(playerCount, mapType);
     }
 
-    public void generateMap() {
+    public void generateGameScreen() {
         game.startGame();
         game.reorderPlayers();
 
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class
+                    .getResource(GAME_SCREEN));
+            rootLayout.setBottom(loader.load());
+            gameScreenController = loader.getController();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(gameScreenController);
         screenStack.loadScreen("map", MAP);
         screenStack.loadScreen("town",  TOWN);
         screenStack.loadScreen("store", STORE);
@@ -84,9 +98,10 @@ public class Main extends Application {
 
     public void showScreen(String name) { screenStack.setScreen(name); }
 
-    public void closeScreen() {
-        screenStack.removeTop();
-    }
+    public void closeScreen() { screenStack.removeTop(); }
+
+    public GameScreenController getGameScreenController() { return
+            gameScreenController; }
 
     public Game getGame() {
         return game;

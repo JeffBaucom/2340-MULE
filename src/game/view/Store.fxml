@@ -11,14 +11,14 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" fx:id="storeAnchor" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="true" prefHeight="660.0" prefWidth="864.0" snapToPixel="true" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.view.StoreController">
+<AnchorPane id="AnchorPane" fx:id="storeAnchor" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="true" prefHeight="480.0" prefWidth="864.0" snapToPixel="true" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.view.StoreController">
   <children>
       <Text layoutX="385.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Store" AnchorPane.leftAnchor="385.0" AnchorPane.rightAnchor="385.0">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <GridPane layoutX="153.0" layoutY="110.0" prefHeight="340.0" prefWidth="594.0" AnchorPane.leftAnchor="153.0" AnchorPane.rightAnchor="153.0">
+      <GridPane layoutX="153.0" layoutY="110.0" prefHeight="227.0" prefWidth="558.0" AnchorPane.leftAnchor="153.0" AnchorPane.rightAnchor="153.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="224.0" minWidth="10.0" prefWidth="86.0" />
           <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="375.0" minWidth="10.0" prefWidth="282.0" />
@@ -28,25 +28,24 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="foodField" />
-            <TextField fx:id="energyField" GridPane.rowIndex="1" />
-            <TextField fx:id="smithoreField" GridPane.rowIndex="2" />
-            <TextField fx:id="crystiteField" GridPane.rowIndex="3" />
+            <TextField fx:id="foodField" GridPane.valignment="CENTER" />
+            <TextField fx:id="energyField" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <TextField fx:id="smithoreField" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <TextField fx:id="crystiteField" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
             <Label fx:id="foodLabel" text="Food: #" GridPane.columnIndex="1" />
             <Label fx:id="energyLabel" text="Energy: #" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="smithoreLabel" text="Smithore: #" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label fx:id="crystiteLabel" text="Crystite: #" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
-    <Button layoutX="608.0" layoutY="435.0" mnemonicParsing="false" onAction="#buyResource" text="Buy" />
-      <Button layoutX="670.0" layoutY="435.0" mnemonicParsing="false" onAction="#sellResource" text="Sell" />
+    <Button layoutX="637.0" layoutY="357.0" mnemonicParsing="false" onAction="#buyResource" text="Buy" />
+      <Button layoutX="698.0" layoutY="357.0" mnemonicParsing="false" onAction="#sellResource" text="Sell" />
       <Button layoutX="757.0" layoutY="599.0" mnemonicParsing="false" onAction="#returnTown" text="Return to Town" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
-      <Button layoutX="153.0" layoutY="516.0" mnemonicParsing="false" onAction="#buyFoodMule" text="Buy Food Mule" />
-      <Button layoutX="300.0" layoutY="516.0" mnemonicParsing="false" onAction="#buyEnergyMule" text="Buy Energy Mule" />
-      <Label fx:id="muleLabel" layoutX="664.0" layoutY="521.0" text="Mule: #" />
-      <Button layoutX="458.0" layoutY="516.0" mnemonicParsing="false" onAction="#buyOreMule" text="Buy Ore Mule" />
+      <Button layoutX="153.0" layoutY="357.0" mnemonicParsing="false" onAction="#buyFoodMule" text="Buy Food Mule" />
+      <Button layoutX="306.0" layoutY="357.0" mnemonicParsing="false" onAction="#buyEnergyMule" text="Buy Energy Mule" />
+      <Label fx:id="muleLabel" layoutX="153.0" layoutY="408.0" text="Mule: #" />
+      <Button layoutX="472.0" layoutY="357.0" mnemonicParsing="false" onAction="#buyOreMule" text="Buy Ore Mule" />
   </children>
 </AnchorPane>

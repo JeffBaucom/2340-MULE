@@ -31,7 +31,8 @@ public class Turn {
         return boughtTile;
     }
 
-    public void gamble(int timeLeft) {
+    public void gamble() {
+        int timeLeft = game.getTimeLeft();
         Random rand = new Random();
         int roundBonus, timeBonus, round = game.getRoundCounter() + 1;
 

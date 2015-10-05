@@ -4,7 +4,6 @@ import game.model.Game;
 import game.model.Race;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import game.model.Player;
 
 public class PlayerConfigController extends Controller {
     @FXML
@@ -76,7 +75,7 @@ public class PlayerConfigController extends Controller {
 
         if (playerIndex == game.getPlayerCount() - 1) {
             main.closeScreen();
-            main.generateMap();
+            main.generateGameScreen();
             main.showScreen("map");
         } else {
             nextPlayer();
@@ -102,5 +101,7 @@ public class PlayerConfigController extends Controller {
         flapper.setSelected(false);
         human.setSelected(false);
         other.setSelected(false);
+
+        next.setDisable(true);
     }
 }
