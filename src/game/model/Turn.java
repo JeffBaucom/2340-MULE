@@ -84,4 +84,13 @@ public class Turn {
             return true;
         }
     }
+
+    public boolean buyMuleStore(int muleType) {
+        if (game.store.getCost("mule") > player.get("money")) {
+            return false;
+        } else {
+            game.store.buyMule(muleType, player);
+            return true;
+        }
+    }
 }

@@ -46,7 +46,9 @@ public class Store {
     }
 
     public void buyMule(int muleType, Player player) {
-            player.setMule(muleType);
+            if (stock.get("mule") > 0 && player.getMule() == 0) {
+                player.setMule(muleType);
+            }
     }
 
     public int getMoney() {

@@ -76,17 +76,22 @@ public class StoreController extends Controller {
 
     @FXML
     public void buyFoodMule() {
-        store.buyMule(1, player);
+        game.getTurn().buyMuleStore(1);
+        returnTown();
     }
 
     @FXML
     public void buyEnergyMule() {
-        store.buyMule(2, player);
+
+        game.getTurn().buyMuleStore(2);
+        returnTown();
     }
 
     @FXML
     public void buyOreMule() {
-        store.buyMule(3, player);
+
+        game.getTurn().buyMuleStore(3);
+        returnTown();
     }
 
     private void updateResources() {
