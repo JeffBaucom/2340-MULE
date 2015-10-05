@@ -75,10 +75,23 @@ public class GameScreenController extends Controller {
         nextButton.setDisable(false);
         landButton.setDisable(true);
 
-        game.getTurn().buyTile(currentTile.getRow(), currentTile.getCol());
-        game.logEvent(player.getName() + " acquired " + "land plot ("
-                + currentTile.getRow() + ", " + currentTile.getCol() + ").");
-        game.setTurnover(true);
+        if (player.getMule() > 0) {
+            if (currentTile.getOwner() == player.getId()
+                    && currentTile.getMule() == 0) {
+                game.getTurn().placeMule(currentTile.getRow(),
+                        currentTile.getCol());
+            } else {
+                game.getTurn().loseMule();
+                game.logEvent("You lost your Mule!");
+            }
+            player.setMule(0);
+            game.setTurnover(true);
+        } else {
+            game.getTurn().buyTile(currentTile.getRow(), currentTile.getCol());
+            game.logEvent(player.getName() + " acquired " + "land plot ("
+                    + currentTile.getRow() + ", " + currentTile.getCol() + ").");
+            game.setTurnover(true);
+        }
 
         main.closeScreen();
         main.showScreen("map");
@@ -100,7 +113,13 @@ public class GameScreenController extends Controller {
     }
 
     public void enableLandButton() {
-        landButton.setDisable(false);
+        if (player.getMule() > 0 || (map.getSelectedTile().getOwner() ==
+                -1 && game.getPhase() < 2)) {
+            landButton.setDisable(false);
+            landButton.setVisible(true);
+        } else {
+            landButton.setDisable(true);
+        }
     }
 
     public void enterTown() {
@@ -124,8 +143,13 @@ public class GameScreenController extends Controller {
     public void returnMap() {
         main.closeScreen();
         main.showScreen("map");
+
         if (game.getPhase() < 2) {
             landButton.setVisible(true);
+        }
+
+        if (player.getMule() > 0) {
+            landButton.setText("Place Mule");
         }
 
         update();
@@ -133,16 +157,6 @@ public class GameScreenController extends Controller {
 
     private void nextTurn() {
         player = game.getCurrentPlayer();
-
-        if (game.getPhase() == 0) {
-            nextButton.setDisable(true);
-        } else if (game.getPhase() == 1) {
-            landButton.setText("Buy Land");
-            nextButton.setText("Pass");
-        } else if (game.getPhase() == 2) {
-            landButton.setVisible(false);
-            nextButton.setText("Pass");
-        }
 
         game.setTurnover(false);
         getTimerTask();
@@ -157,6 +171,16 @@ public class GameScreenController extends Controller {
         gameLog.setText(game.getGameLog());
         gameLog.setScrollTop(Double.MAX_VALUE);
 
+        if (game.getPhase() == 0) {
+            nextButton.setDisable(true);
+        } else if (game.getPhase() == 1) {
+            landButton.setText("Buy Land");
+            nextButton.setText("Pass");
+        } else if (game.getPhase() == 2) {
+            landButton.setVisible(false);
+            nextButton.setText("Pass");
+        }
+
         if (game.getCurrentPlayer() != player) {
             timer.cancel();
             timer = new Timer();
@@ -164,6 +188,10 @@ public class GameScreenController extends Controller {
             nextButton.setText("Next Turn");
             nextButton.setDisable(false);
             game.setTurnover(true);
+        }
+
+        if (player.getMule() < 1 && game.getPhase() >= 1) {
+            landButton.setText("Buy Land");
         }
 
         if (game.getTurnOver()) {

@@ -13,6 +13,12 @@ public class Turn {
     }
 
     public void placeMule(int row, int col) {
+        game.getMap().getTile(row, col).setMule(player.getMule());
+        game.endTurn();
+    }
+
+    public void loseMule() {
+        game.endTurn();
     }
 
     public boolean buyTile(int row, int col) {

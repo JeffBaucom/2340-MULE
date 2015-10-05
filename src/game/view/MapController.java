@@ -79,8 +79,7 @@ public class MapController extends Controller {
         int column = ((int) event.getSceneX()) / 96;
         grid.getChildren().remove(cursor);
 
-
-        if (game.getPhase() < 2 && !game.getTurnOver()) {
+        if (!game.getTurnOver()) {
             ObservableList<Node> children = grid.getChildren();
             for (Node node : children) {
                 if (grid.getRowIndex(node) == row
@@ -103,6 +102,14 @@ public class MapController extends Controller {
                     flag = new ImageView(new Image("/game/images/flag"
                             + game.getPlayer(ownerId).getColor() + ".png"));
                     grid.add(flag, j, i);
+                }
+
+                int muleId = map.getTile(i, j).getMule();
+                if (muleId > 0) {
+                    ImageView muleImage = new ImageView(new Image("/game/images/mule"
+                            + muleId + ".png"));
+
+                    grid.add(muleImage, j, i);
                 }
             }
         }
