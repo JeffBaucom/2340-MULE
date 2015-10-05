@@ -90,7 +90,6 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
-        System.out.println(gameScreenController);
         screenStack.loadScreen("map", MAP);
         screenStack.loadScreen("town",  TOWN);
         screenStack.loadScreen("store", STORE);
