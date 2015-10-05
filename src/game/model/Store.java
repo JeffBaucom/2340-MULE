@@ -41,8 +41,7 @@ public class Store {
             player.set("money", player.get("money") - amount * cost.get
                     (resource));
         } else {
-            game.logEvent("The store does not have enough " + resource + " to" +
-                    " sell.");
+            game.logEvent("The store does not have enough " + resource + ".");
         }
     }
 

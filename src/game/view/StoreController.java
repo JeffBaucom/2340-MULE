@@ -102,7 +102,8 @@ public class StoreController extends Controller {
         energy = store.getStock("energy");
         smithore = store.getStock("smithore");
         crystite = store.getStock("crystite");
-        // TO DO: Add Mule stock
+
+        // TODO: Add Mule stock
         foodLabel.setText("Food: " + food );
         energyLabel.setText("Energy: " + energy);
         smithoreLabel.setText("Smithore: " + smithore);
@@ -119,10 +120,14 @@ public class StoreController extends Controller {
 
     @FXML
     public void buyResource() {
-        int food = Integer.parseInt(foodField.getText());
-        int energy = Integer.parseInt(energyField.getText());
-        int smithore = Integer.parseInt(smithoreField.getText());
-        int crystite = Integer.parseInt(crystiteField.getText());
+        int food = Integer.parseInt(foodField.getText().matches("\\d") ?
+                foodField.getText() : "0");
+        int energy = Integer.parseInt(energyField.getText().matches("\\d") ?
+                energyField.getText() : "0");
+        int smithore = Integer.parseInt(smithoreField.getText().matches("\\d") ?
+                smithoreField.getText() : "0");
+        int crystite = Integer.parseInt(crystiteField.getText().matches("\\d") ?
+                crystiteField.getText() : "0");
 
         int cost = food * store.getCost("food") + energy
                 * store.getCost("energy") + smithore
@@ -138,16 +143,21 @@ public class StoreController extends Controller {
 
         updateResources();
         clearFields();
-        returnTown();
+        gameScreenController.update();
     }
 
     @FXML
     public void sellResource() {
-        int food = Integer.parseInt(foodField.getText());
-        int energy = Integer.parseInt(energyField.getText());
-        int smithore = Integer.parseInt(smithoreField.getText());
-        int crystite = Integer.parseInt(crystiteField.getText());
-        // TO DO: Use else statements to return input error
+        int food = Integer.parseInt(foodField.getText().matches("\\d") ?
+                foodField.getText() : "0");
+        int energy = Integer.parseInt(energyField.getText().matches("\\d") ?
+                energyField.getText() : "0");
+        int smithore = Integer.parseInt(smithoreField.getText().matches("\\d") ?
+                smithoreField.getText() : "0");
+        int crystite = Integer.parseInt(crystiteField.getText().matches("\\d") ?
+                crystiteField.getText() : "0");
+
+        // TODO: Use else statements to return input error
         if (game.getTurn().sellStore("food", food)) {
             updateResources();
         }
@@ -160,8 +170,9 @@ public class StoreController extends Controller {
         if (game.getTurn().sellStore("crystite", crystite)) {
             updateResources();
         }
+
         updateResources();
         clearFields();
-        returnTown();
+        gameScreenController.update();
     }
 }
