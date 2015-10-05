@@ -70,7 +70,9 @@ public class Turn {
 
     public boolean buyStore(String resource, int amount) {
         if (game.store.getCost(resource) * amount > player.get("money")) {
-            return false; // not enough money
+            game.logEvent("You don't have enough money to buy " + amount + " "
+                + resource + ".");
+            return false;
         } else {
             game.store.buy(resource, amount, player);
             return true;
@@ -79,6 +81,7 @@ public class Turn {
 
     public boolean sellStore(String resource, int amount) {
         if (amount > player.get(resource)) {
+            game.logEvent("You don't have enough " + resource + ".");
             return false;
         } else {
             game.store.sell(resource, amount, player);

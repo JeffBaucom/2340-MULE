@@ -116,6 +116,11 @@ public class GameScreenController extends Controller {
         }
     }
 
+    public void enterStore() {
+        main.closeScreen();
+        main.showScreen("store");
+    }
+
     public void returnMap() {
         main.closeScreen();
         main.showScreen("map");

@@ -3,11 +3,12 @@ package game.model;
 import java.util.HashMap;
 
 public class Store {
+    Game game;
     HashMap<String, Integer> stock, cost;
 
     private int money;
 
-    public Store() {
+    public Store(Game game) {
         stock = new HashMap<String, Integer>();
         stock.put("food", 8);
         stock.put("energy", 8);
@@ -22,6 +23,8 @@ public class Store {
         cost.put("crystite", 10);
         cost.put("mule", 100);
         money = 1000;
+
+        this.game = game;
     }
 
     public int getStock(String resource) { return stock.get(resource); }
@@ -35,6 +38,11 @@ public class Store {
             int initialAmt = stock.get(resource);
             player.set(resource, player.get(resource) + amount);
             stock.replace(resource, initialAmt - amount);
+            player.set("money", player.get("money") - amount * cost.get
+                    (resource));
+        } else {
+            game.logEvent("The store does not have enough " + resource + " to" +
+                    " sell.");
         }
     }
 

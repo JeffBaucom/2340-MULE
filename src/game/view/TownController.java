@@ -25,7 +25,7 @@ public class TownController extends Controller {
 
     @FXML
     public void enterStore() {
-        // TODO implement store
+        gameScreenController.enterStore();
     }
 
     @FXML

@@ -31,6 +31,7 @@ public class StoreController extends Controller {
     Game game;
     Player player;
     Store store;
+    GameScreenController gameScreenController;
     int food, energy, smithore, crystite, mule;
 
     /**
@@ -38,6 +39,7 @@ public class StoreController extends Controller {
      * The constructor is called before the initialize() method.
      */
     public StoreController() {
+        gameScreenController = main.getGameScreenController();
     }
 
     /**
@@ -70,13 +72,11 @@ public class StoreController extends Controller {
 
     @FXML
     public void returnTown() {
-        main.closeScreen();
-        main.showScreen("town");
+        gameScreenController.enterTown();
     }
 
     public void returnMap() {
-        main.closeScreen();
-        main.showScreen("map");
+        gameScreenController.returnMap();
     }
 
     @FXML
@@ -87,14 +87,12 @@ public class StoreController extends Controller {
 
     @FXML
     public void buyEnergyMule() {
-
         game.getTurn().buyMuleStore(2);
         returnMap();
     }
 
     @FXML
     public void buyOreMule() {
-
         game.getTurn().buyMuleStore(3);
         returnMap();
     }
@@ -125,13 +123,19 @@ public class StoreController extends Controller {
         int energy = Integer.parseInt(energyField.getText());
         int smithore = Integer.parseInt(smithoreField.getText());
         int crystite = Integer.parseInt(crystiteField.getText());
-        int cost = food * store.getCost("food") + energy * store.getCost("energy") + smithore * store.getCost("smithore") + crystite * store.getCost("crystite");
+
+        int cost = food * store.getCost("food") + energy
+                * store.getCost("energy") + smithore
+                * store.getCost("smithore") + crystite
+                * store.getCost("crystite");
+
         if (cost <= game.getCurrentPlayer().get("money")) {
             game.getTurn().buyStore("food", food);
             game.getTurn().buyStore("energy", energy);
             game.getTurn().buyStore("smithore", smithore);
             game.getTurn().buyStore("crystite", crystite);
         }
+
         updateResources();
         clearFields();
         returnTown();

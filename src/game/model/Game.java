@@ -15,7 +15,7 @@ public class Game {
     public Game(int playerCount, String mapType) {
         this.players = new Player[playerCount];
         this.playerOrder = new Player[playerCount];
-        store = new Store();
+        store = new Store(this);
         this.map = new Map(mapType);
         map.setGame(this);
     }
