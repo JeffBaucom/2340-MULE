@@ -226,9 +226,6 @@ public class GameScreenController extends Controller {
                     game.setTurnover(true);
                     game.endTurn();
                     returnMap();
-
-                    timer.cancel();
-                    timer = new Timer();
                 }
             });
         }
