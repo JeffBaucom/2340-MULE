@@ -158,6 +158,16 @@ public class GameScreenController extends Controller {
     private void nextTurn() {
         player = game.getCurrentPlayer();
 
+        if (game.getPhase() == 0) {
+            nextButton.setDisable(true);
+        } else if (game.getPhase() == 1) {
+            landButton.setText("Buy Land");
+            nextButton.setText("Pass");
+        } else if (game.getPhase() == 2) {
+            landButton.setVisible(false);
+            nextButton.setText("Pass");
+        }
+
         game.setTurnover(false);
         getTimerTask();
         update();
@@ -170,16 +180,6 @@ public class GameScreenController extends Controller {
 
         gameLog.setText(game.getGameLog());
         gameLog.setScrollTop(Double.MAX_VALUE);
-
-        if (game.getPhase() == 0) {
-            nextButton.setDisable(true);
-        } else if (game.getPhase() == 1) {
-            landButton.setText("Buy Land");
-            nextButton.setText("Pass");
-        } else if (game.getPhase() == 2) {
-            landButton.setVisible(false);
-            nextButton.setText("Pass");
-        }
 
         if (game.getCurrentPlayer() != player) {
             timer.cancel();
