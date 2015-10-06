@@ -72,8 +72,8 @@ public class Main extends Application {
 
     public static Main getInstance() { return main; }
 
-    public void newGame(int playerCount, String mapType) {
-        game = new Game(playerCount, mapType);
+    public void newGame(int playerCount, int difficulty, String mapType) {
+        game = new Game(playerCount, difficulty, mapType);
     }
 
     public void generateGameScreen() {
