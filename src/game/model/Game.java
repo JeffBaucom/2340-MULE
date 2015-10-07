@@ -8,13 +8,15 @@ public class Game {
 
     Player[] players, playerOrder;
     int currentId;
+    int difficulty;
 
     Map map;
     Store store;
 
-    public Game(int playerCount, String mapType) {
+    public Game(int playerCount, int difficulty, String mapType) {
         this.players = new Player[playerCount];
         this.playerOrder = new Player[playerCount];
+        this.difficulty = difficulty;
         store = new Store(this);
         this.map = new Map(mapType);
         map.setGame(this);
@@ -33,10 +35,10 @@ public class Game {
         turnover = false;
     }
 
-    public void newPlayer(int playerIndex, String name, String color,
+    public void newPlayer(int playerIndex, int difficulty, String name, String color,
                           Race race) {
         if (playerIndex < getPlayerCount()) {
-            players[playerIndex] = new Player(playerIndex, name, color, race);
+            players[playerIndex] = new Player(playerIndex, difficulty, name, color, race);
             playerOrder[playerIndex] = players[playerIndex];
         }
     }
@@ -123,6 +125,8 @@ public class Game {
     public String getGameLog() {
         return gameLog;
     }
+
+    public int getDifficulty() { return difficulty; }
 
     public void logEvent(String event) {
         gameLog += event + "\n";

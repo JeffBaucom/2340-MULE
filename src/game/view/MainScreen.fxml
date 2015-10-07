@@ -41,13 +41,13 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <RadioButton mnemonicParsing="false" selected="true" text="Beginner" GridPane.valignment="TOP">
+                  <RadioButton fx:id="beginner" mnemonicParsing="false" selected="true" text="Beginner" GridPane.valignment="TOP">
                      <toggleGroup>
                         <ToggleGroup fx:id="difficulty" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" text="Standard" toggleGroup="$difficulty" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                  <RadioButton mnemonicParsing="false" text="Tournament" toggleGroup="$difficulty" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                  <RadioButton fx:id="standardDiff" mnemonicParsing="false" text="Standard" toggleGroup="$difficulty" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                  <RadioButton fx:id="tournament" mnemonicParsing="false" text="Tournament" toggleGroup="$difficulty" GridPane.rowIndex="2" GridPane.valignment="TOP" />
                </children>
             </GridPane>
             <GridPane maxHeight="80.0" prefWidth="356.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">

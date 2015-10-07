@@ -13,7 +13,7 @@ public class Player {
     public Player() {
     }
 
-    public Player(int id, String name, String color, Race race) {
+    public Player(int id, int difficulty, String name, String color, Race race) {
         resources = new HashMap<String, Integer>();
         this.id = id;
         this.name = name;
@@ -26,10 +26,18 @@ public class Player {
         } else {
             resources.put("money", 1000);
         }
-        resources.put("food", 8);
-        resources.put("energy", 4);
-        resources.put("smithore", 0);
-        resources.put("crystite", 0);
+        if (difficulty == 0) {
+            resources.put("food", 8);
+            resources.put("energy", 4);
+            resources.put("smithore", 0);
+            resources.put("crystite", 0);
+        } else {
+            resources.put("food", 4);
+            resources.put("energy", 2);
+            resources.put("smithore", 0);
+            resources.put("crystite", 0);
+        }
+
     }
 
     public int getId() { return id; }

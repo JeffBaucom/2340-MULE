@@ -9,12 +9,22 @@ public class Store {
     private int money;
 
     public Store(Game game) {
+        this.game = game;
+
         stock = new HashMap<String, Integer>();
-        stock.put("food", 8);
-        stock.put("energy", 8);
-        stock.put("smithore", 0);
-        stock.put("crystite", 0);
-        stock.put("mule", 16);
+        if (this.game.getDifficulty() == 0) {
+            stock.put("food", 16);
+            stock.put("energy", 16);
+            stock.put("smithore", 0);
+            stock.put("crystite", 0);
+            stock.put("mule", 25);
+        } else {
+            stock.put("food", 8);
+            stock.put("energy", 8);
+            stock.put("smithore", 8);
+            stock.put("crystite", 0);
+            stock.put("mule", 16);
+        }
 
         cost = new HashMap<String, Integer>();
         cost.put("food", 10);
@@ -24,7 +34,6 @@ public class Store {
         cost.put("mule", 100);
         money = 1000;
 
-        this.game = game;
     }
 
     public int getStock(String resource) { return stock.get(resource); }
@@ -35,11 +44,14 @@ public class Store {
 
     public void buy(String resource, int amount, Player player) {
         if (amount <= stock.get(resource)) {
-            int initialAmt = stock.get(resource);
-            player.set(resource, player.get(resource) + amount);
-            stock.replace(resource, initialAmt - amount);
-            player.set("money", player.get("money") - amount * cost.get
-                    (resource));
+            if (amount > 0) {
+                int initialAmt = stock.get(resource);
+                player.set(resource, player.get(resource) + amount);
+                stock.replace(resource, initialAmt - amount);
+                player.set("money", player.get("money") - amount * cost.get
+                        (resource));
+                game.logEvent(player.getName() + " has purchased " + amount + " " + resource + ".");
+            }
         } else {
             game.logEvent("The store does not have enough " + resource + ".");
         }

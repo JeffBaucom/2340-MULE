@@ -71,7 +71,7 @@ public class PlayerConfigController extends Controller {
         else if (human.isSelected()) raceValue = Race.HUMAN;
         else raceValue = Race.OTHER;
 
-        game.newPlayer(playerIndex, playerName, colorValue, raceValue);
+        game.newPlayer(playerIndex, game.getDifficulty(), playerName, colorValue, raceValue);
 
         if (playerIndex == game.getPlayerCount() - 1) {
             main.closeScreen();
