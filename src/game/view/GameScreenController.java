@@ -87,10 +87,12 @@ public class GameScreenController extends Controller {
             player.setMule(0);
             game.setTurnover(true);
         } else {
-            game.getTurn().buyTile(currentTile.getRow(), currentTile.getCol());
-            game.logEvent(player.getName() + " acquired " + "land plot ("
-                    + currentTile.getRow() + ", " + currentTile.getCol() + ").");
-            game.setTurnover(true);
+            if (game.getTurn().buyTile(currentTile.getRow(), currentTile
+                    .getCol())) {
+                game.logEvent(player.getName() + " acquired " + "land plot ("
+                        + currentTile.getRow() + ", " + currentTile.getCol() + ").");
+                game.setTurnover(true);
+            }
         }
 
         main.closeScreen();

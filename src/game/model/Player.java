@@ -1,5 +1,6 @@
 package game.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -9,16 +10,20 @@ public class Player {
     Race race;
     int id, properties, mule;
     HashMap<String, Integer> resources;
+    ArrayList<Tile> tiles;
 
     public Player() {
     }
 
     public Player(int id, int difficulty, String name, String color, Race race) {
         resources = new HashMap<String, Integer>();
+        tiles = new ArrayList<Tile>();
+
         this.id = id;
         this.name = name;
         this.color = color;
         this.race = race;
+
         if (race == Race.FLAPPER) {
             resources.put("money", 1600);
         } else if (race == Race.HUMAN) {
@@ -73,7 +78,9 @@ public class Player {
         return resourceString;
     }
 
-    public void addProperty() {
+    // TODO: take in parameter tile
+    public void addProperty(Tile tile) {
+        tiles.add(tile);
         this.properties++;
     }
 
