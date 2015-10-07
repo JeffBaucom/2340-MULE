@@ -139,6 +139,8 @@ public class StoreController extends Controller {
             game.getTurn().buyStore("energy", energy);
             game.getTurn().buyStore("smithore", smithore);
             game.getTurn().buyStore("crystite", crystite);
+        } else {
+            game.logEvent("You don't have enough money.");
         }
 
         updateResources();

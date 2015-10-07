@@ -76,8 +76,6 @@ public class Turn {
 
     public boolean buyStore(String resource, int amount) {
         if (game.store.getCost(resource) * amount > player.get("money")) {
-            game.logEvent("You don't have enough money to buy " + amount + " "
-                + resource + ".");
             return false;
         } else {
             game.store.buy(resource, amount, player);
@@ -96,11 +94,17 @@ public class Turn {
     }
 
     public boolean buyMuleStore(int muleType) {
-        if (game.store.getCost("mule") > player.get("money")) {
-            return false;
+        if (player.getMule() == 0) {
+            if (game.store.getCost("mule") > player.get("money")) {
+                game.logEvent("You don't have enough money.");
+                return false;
+            } else {
+                game.store.buyMule(muleType, player);
+                return true;
+            }
         } else {
-            game.store.buyMule(muleType, player);
-            return true;
+            game.logEvent("You already have a Mule.");
+            return false;
         }
     }
 }
