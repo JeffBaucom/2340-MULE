@@ -1,18 +1,16 @@
 package game.view;
 
 import game.model.Game;
-import game.model.Player;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 
 public class TownController extends Controller {
     Game game;
     GameScreenController gameScreenController;
+
+    @FXML
+    AnchorPane background;
 
     public TownController() {
         game = main.getGame();
@@ -21,6 +19,12 @@ public class TownController extends Controller {
 
     @FXML
     public void initialize() {
+        BackgroundImage myBI= new BackgroundImage(new Image
+                ("/game/images/townSquare.png"),
+                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+
+        background.setBackground(new Background(myBI));
     }
 
     @FXML
