@@ -5,14 +5,13 @@ public class Tile {
 
     private int ownerID, row, col;
     private String type;
-    private int mule;
+    private String mule;
 
     public Tile(String type, int row, int col) {
         this.type = type;
         this.ownerID = -1;
         this.row = row;
         this.col = col;
-        this.mule = 0;
     }
 
     public String getType() {
@@ -28,10 +27,26 @@ public class Tile {
     }
 
     public void setMule(int mule) {
-        this.mule = mule;
+        if (mule == 1) {
+            this.mule = "food";
+        } else if (mule == 2) {
+            this.mule = "energy";
+        } else if (mule == 3) {
+            this.mule = "smithore";
+        }
     }
 
-    public int getMule() { return mule; }
+    public int getMule() {
+        if (mule == null) {
+            return 0;
+        } else if (mule == "food") {
+            return 1;
+        } else if (mule == "energy") {
+            return 2;
+        } else {
+            return 3;
+        }
+    }
 
     public int getRow() {
         return row;
@@ -44,7 +59,24 @@ public class Tile {
     public int getProduction(String resource) {
         int production = 0;
 
-        // TODO: Figure out production calculations
+        if (resource == mule) {
+            if (resource == "food") {
+                if (type == "R") production += 4;
+                else if (type == "P") production += 2;
+                else production += 1;
+            } else if (resource == "energy"){
+                if (type == "R") production += 2;
+                else if (type == "P") production += 3;
+                else production += 1;
+            } else if (resource == "smithore") {
+                if (type == "R") production += 0;
+                else if (type == "P") production += 1;
+                else if (type == "M1") production += 2;
+                else if (type == "M2") production += 3;
+                else production += 4;
+            }
+        }
+
         return production;
     }
 }

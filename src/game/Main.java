@@ -18,7 +18,6 @@ import java.io.File;
 public class Main extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
-
     private ScreenStackController screenStack;
 
     private final String MAIN = "/game/view/MainScreen.fxml";
@@ -32,11 +31,13 @@ public class Main extends Application {
     private GameScreenController gameScreenController;
     private Game game;
 
+    MediaPlayer mediaPlayer;
+
     @Override
     public void start(Stage primaryStage) {
         String musicFile = "src/game/images/background.mp3";
         Media sound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
         this.primaryStage = primaryStage;
@@ -79,6 +80,7 @@ public class Main extends Application {
     public void generateGameScreen() {
         game.startGame();
         game.reorderPlayers();
+        mediaPlayer.stop();
 
         try {
             FXMLLoader loader = new FXMLLoader();
