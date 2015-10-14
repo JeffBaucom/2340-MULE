@@ -16,6 +16,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Date;
@@ -29,6 +33,7 @@ public class GameScreenController extends Controller {
 
     Timer timer;
     int timeLeft;
+    MediaPlayer mediaPlayer;
 
     @FXML
     Button landButton;
@@ -63,6 +68,11 @@ public class GameScreenController extends Controller {
         playerScore.setText(game.getLeaderBoard());
         playerName.setText(player.getName());
         playerInfo.setText(player.getResourceString());
+
+        String musicFile = "src/game/music/map.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
 
         nextButton.setText("Next Turn");
         timer = new Timer();
@@ -130,6 +140,12 @@ public class GameScreenController extends Controller {
                 landButton.setVisible(false);
                 main.closeScreen();
                 main.showScreen("town");
+
+                mediaPlayer.stop();
+                String musicFile = "src/game/music/town.mp3";
+                Media sound = new Media(new File(musicFile).toURI().toString());
+                mediaPlayer = new MediaPlayer(sound);
+                mediaPlayer.play();
             } else {
                 game.logEvent("You cannot go to town yet!");
                 update();
@@ -140,6 +156,12 @@ public class GameScreenController extends Controller {
     public void enterStore() {
         main.closeScreen();
         main.showScreen("store");
+
+        mediaPlayer.stop();
+        String musicFile = "src/game/music/shop.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
     }
 
     public void returnMap() {
@@ -154,6 +176,11 @@ public class GameScreenController extends Controller {
             landButton.setText("Place Mule");
         }
 
+        mediaPlayer.stop();
+        String musicFile = "src/game/music/map.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         update();
     }
 
