@@ -6,12 +6,20 @@ public class Turn {
 
     Player player;
     private Game game;
+    RandomEvents randomEvents;
 
     public Turn(Player player, Game game) {
         this.player = player;
         this.game = game;
+        randomEvents = new RandomEvents(game);
 
         player.updateProduction();
+        Random rand = new Random();
+        int randInt = rand.nextInt(100) + 1;
+        if (randInt <= 27) {
+            String message = randomEvents.getRandomEvent(player);
+            game.logEvent(message);
+        }
     }
 
     public void placeMule(int row, int col) {
