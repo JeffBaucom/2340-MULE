@@ -7,10 +7,6 @@ public class Tile {
     private String type;
     private int mule;
 
-    public Tile() {
-        this.ownerID = -1;
-    }
-
     public Tile(String type, int row, int col) {
         this.type = type;
         this.ownerID = -1;
@@ -27,13 +23,15 @@ public class Tile {
         this.ownerID = playerID;
     }
 
+    public int getOwner() {
+        return this.ownerID;
+    }
+
     public void setMule(int mule) {
         this.mule = mule;
     }
 
-    public int getOwner() {
-        return this.ownerID;
-    }
+    public int getMule() { return mule; }
 
     public int getRow() {
         return row;
@@ -43,5 +41,10 @@ public class Tile {
         return col;
     }
 
-    public int getMule() { return mule; }
+    public int getProduction(String resource) {
+        int production = 0;
+
+        // TODO: Figure out production calculations
+        return production;
+    }
 }

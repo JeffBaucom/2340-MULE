@@ -46,18 +46,26 @@ public class Player {
     }
 
     public int getId() { return id; }
+
     public String getName() {return this.name; }
+
     public String getColor() { return this.color; }
+
     public Race getRace() { return this.race; }
 
     public int get(String resource) {
         return resources.get(resource);
     }
+
     public void set(String resource, int amount) {
         resources.replace(resource, amount);
     }
-    public int getMule() { return mule; }
 
+    public void add(String resource, int amount) {
+        resources.replace(resource, resources.get(resource) + amount);
+    }
+
+    public int getMule() { return mule; }
 
     public void setMule(int mule) { this.mule = mule; }
 
@@ -78,7 +86,15 @@ public class Player {
         return resourceString;
     }
 
-    // TODO: take in parameter tile
+    public void updateProduction() {
+        for (Tile t : tiles) {
+            add("food", t.getProduction("food"));
+            add("energy", t.getProduction("energy"));
+            add("crystite", t.getProduction("crystite"));
+            add("smithore", t.getProduction("smithore"));
+        }
+    }
+
     public void addProperty(Tile tile) {
         tiles.add(tile);
         this.properties++;

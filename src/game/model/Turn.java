@@ -10,6 +10,8 @@ public class Turn {
     public Turn(Player player, Game game) {
         this.player = player;
         this.game = game;
+
+        player.updateProduction();
     }
 
     public void placeMule(int row, int col) {
