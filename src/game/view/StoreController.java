@@ -120,13 +120,13 @@ public class StoreController extends Controller {
 
     @FXML
     public void buyResource() {
-        int food = Integer.parseInt(foodField.getText().matches("\\d") ?
+        int food = Integer.parseInt(foodField.getText().matches("\\d+") ?
                 foodField.getText() : "0");
-        int energy = Integer.parseInt(energyField.getText().matches("\\d") ?
+        int energy = Integer.parseInt(energyField.getText().matches("\\d+") ?
                 energyField.getText() : "0");
-        int smithore = Integer.parseInt(smithoreField.getText().matches("\\d") ?
+        int smithore = Integer.parseInt(smithoreField.getText().matches("\\d+") ?
                 smithoreField.getText() : "0");
-        int crystite = Integer.parseInt(crystiteField.getText().matches("\\d") ?
+        int crystite = Integer.parseInt(crystiteField.getText().matches("\\d+") ?
                 crystiteField.getText() : "0");
 
         int cost = food * store.getCost("food") + energy

@@ -21,6 +21,11 @@
             <RowConstraints maxHeight="-Infinity" minHeight="10.0" percentHeight="25.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
+            <ImageView id="playerFlag" fx:id="playerFlag" fitHeight="96.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="-15.0" />
+               </GridPane.margin>
+            </ImageView>
             <Label fx:id="playerName" text="Player #" GridPane.halignment="LEFT" GridPane.valignment="TOP">
                <font>
                   <Font name="System Bold" size="18.0" />

@@ -7,6 +7,7 @@ public class Turn {
     Player player;
     private Game game;
     RandomEvents randomEvents;
+    String randomEventMessage;
 
     public Turn(Player player, Game game) {
         this.player = player;
@@ -17,8 +18,8 @@ public class Turn {
         Random rand = new Random();
         int randInt = rand.nextInt(100) + 1;
         if (randInt <= 27) {
-            String message = randomEvents.getRandomEvent(player);
-            game.logEvent(message);
+            randomEventMessage = randomEvents.getRandomEvent(player);
+            game.logEvent(randomEventMessage);
         }
     }
 

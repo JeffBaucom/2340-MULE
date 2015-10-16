@@ -10,7 +10,9 @@ import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 
 import java.util.Random;
 
@@ -106,10 +108,10 @@ public class MapController extends Controller {
 
                 int muleId = map.getTile(i, j).getMule();
                 if (muleId > 0) {
-                    ImageView muleImage = new ImageView(new Image("/game/images/mule"
+                    mule = new ImageView(new Image("/game/images/mule"
                             + muleId + ".png"));
 
-                    grid.add(muleImage, j, i);
+                    grid.add(mule, j, i);
                 }
             }
         }

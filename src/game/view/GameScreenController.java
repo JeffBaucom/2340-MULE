@@ -44,6 +44,8 @@ public class GameScreenController extends Controller {
     @FXML
     Label playerName;
     @FXML
+    ImageView playerFlag;
+    @FXML
     Label playerInfo;
     @FXML
     TextArea gameLog;
@@ -68,6 +70,8 @@ public class GameScreenController extends Controller {
         playerScore.setText(game.getLeaderBoard());
         playerName.setText(player.getName());
         playerInfo.setText(player.getResourceString());
+        playerFlag.setImage(new Image("/game/images/flag"
+                + player.getColor() + ".png"));
 
         String musicFile = "src/game/music/map.mp3";
         Media sound = new Media(new File(musicFile).toURI().toString());
@@ -206,6 +210,8 @@ public class GameScreenController extends Controller {
         playerName.setText(player.getName());
         playerInfo.setText(player.getResourceString());
         playerScore.setText(game.getLeaderBoard());
+        playerFlag.setImage(new Image("/game/images/flag"
+                + player.getColor() + ".png"));
 
         gameLog.setText(game.getGameLog());
         gameLog.setScrollTop(Double.MAX_VALUE);
@@ -282,25 +288,19 @@ public class GameScreenController extends Controller {
 
     private class TurnEnder extends TimerTask {
         public void run() {
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    game.setTurnover(true);
-                    game.endTurn();
-                    returnMap();
-                }
+            Platform.runLater(() -> {
+                game.setTurnover(true);
+                game.endTurn();
+                returnMap();
             });
         }
     }
 
     private class ClockUpdater extends TimerTask {
         public void run() {
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    clock.setText("Time Remaining in Turn: " + timeLeft);
-                    timeLeft--;
-                }
+            Platform.runLater(() -> {
+                clock.setText("Time Remaining in Turn: " + timeLeft);
+                timeLeft--;
             });
         }
     }
