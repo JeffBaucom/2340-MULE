@@ -12,7 +12,7 @@ public class RandomEvents {
         this.game = game;
         events = new ArrayList<String>();
         events.add("You just received a package from the GT Alumni containing 3 food and 2 energy units!");
-        events.add("A wandering tech student repaid your hospitality by leaving two bars of ore!");
+        events.add("A wandering Tech student repaid your hospitality by leaving two bars of ore!");
         if (game.getRoundCounter() < 3) {
             rand3Num = 8*25;
         } else if (game.getRoundCounter() >= 3 && game.getRoundCounter() < 7) {
@@ -43,7 +43,7 @@ public class RandomEvents {
             rand5Num = 4*100;
         }
         events.add("Flying cat-bugs ate the roof off your house. Repairs cost $" + rand5Num + ".");
-        events.add("Mischievous UGA students broke into your storage shed and stole half your food.");
+        events.add("Mischievous U(sic)GA students broke into your storage shed and stole half your food.");
         if (game.getRoundCounter() < 3) {
             rand7Num = 6*25;
         } else if (game.getRoundCounter() >= 3 && game.getRoundCounter() < 7) {
