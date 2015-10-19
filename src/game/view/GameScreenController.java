@@ -4,27 +4,25 @@ import game.model.Game;
 import game.model.Map;
 import game.model.Player;
 import game.model.Tile;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.application.Platform;
-import javafx.scene.Node;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Date;
-
-import java.util.Random;
 
 public class GameScreenController extends Controller {
     Game game;
@@ -204,6 +202,10 @@ public class GameScreenController extends Controller {
         game.setTurnover(false);
         getTimerTask();
         update();
+
+        if (!game.getTurn().getRandomEventMessage().equals("")) {
+            showRandomEvent();
+        }
     }
 
     public void update() {
@@ -235,6 +237,26 @@ public class GameScreenController extends Controller {
             landButton.setDisable(true);
             nextButton.setText("Next Turn");
             clock.setText("Turn Over");
+        }
+    }
+
+    public void showRandomEvent() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(GameScreenController.class.getResource
+                    ("/game/view/RandomEvent.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("RANDOM EVENT");
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

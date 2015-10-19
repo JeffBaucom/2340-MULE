@@ -13,13 +13,13 @@ public class Turn {
         this.player = player;
         this.game = game;
         randomEvents = new RandomEvents(game);
+        randomEventMessage = "";
 
         player.updateProduction();
         Random rand = new Random();
         int randInt = rand.nextInt(100) + 1;
         if (randInt <= 27) {
             randomEventMessage = randomEvents.getRandomEvent(player);
-            game.logEvent(randomEventMessage);
         }
     }
 
@@ -126,5 +126,9 @@ public class Turn {
             game.logEvent("You already have a Mule.");
             return false;
         }
+    }
+
+    public String getRandomEventMessage() {
+        return randomEventMessage;
     }
 }
