@@ -6,12 +6,15 @@ public class Tile {
     private int ownerID, row, col;
     private String type;
     private String mule;
+    private Game game;
 
-    public Tile(String type, int row, int col) {
+    public Tile(Game game, String type, int row, int col) {
         this.type = type;
         this.ownerID = -1;
         this.row = row;
         this.col = col;
+
+        this.game = game;
     }
 
     public String getType() {
@@ -58,8 +61,10 @@ public class Tile {
 
     public int getProduction(String resource) {
         int production = 0;
+        Player owner = game.getPlayer(ownerID);
 
-        if (resource == mule) {
+        if (resource == mule && owner.get("energy") > 0) {
+            owner.add("energy", -1);
             if (resource == "food") {
                 if (type == "R") production += 4;
                 else if (type == "P") production += 2;
