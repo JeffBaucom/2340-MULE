@@ -71,7 +71,7 @@ public class GameScreenController extends Controller {
         playerFlag.setImage(new Image("/game/resources/images/flag"
                 + player.getColor() + ".png"));
 
-        String musicFile = "src/game/music/map.mp3";
+        String musicFile = "src/game/resources/music/map.mp3";
         Media sound = new Media(new File(musicFile).toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
@@ -144,7 +144,7 @@ public class GameScreenController extends Controller {
                 main.showScreen("town");
 
                 mediaPlayer.stop();
-                String musicFile = "src/game/music/town.mp3";
+                String musicFile = "src/game/resources/music/town.mp3";
                 Media sound = new Media(new File(musicFile).toURI().toString());
                 mediaPlayer = new MediaPlayer(sound);
                 mediaPlayer.play();
@@ -160,7 +160,7 @@ public class GameScreenController extends Controller {
         main.showScreen("store");
 
         mediaPlayer.stop();
-        String musicFile = "src/game/music/shop.mp3";
+        String musicFile = "src/game/resources/music/shop.mp3";
         Media sound = new Media(new File(musicFile).toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
@@ -179,7 +179,7 @@ public class GameScreenController extends Controller {
         }
 
         mediaPlayer.stop();
-        String musicFile = "src/game/music/map.mp3";
+        String musicFile = "src/game/resources/music/map.mp3";
         Media sound = new Media(new File(musicFile).toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
