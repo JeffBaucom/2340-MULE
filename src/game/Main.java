@@ -42,7 +42,7 @@ public class Main extends Application {
 
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("MULE Game");
-        this.primaryStage.getIcons().add(new Image("/game/images/icon.png"));
+        this.primaryStage.getIcons().add(new Image("/game/resources/images/icon.png"));
 
         main = this;
         screenStack = new ScreenStackController();

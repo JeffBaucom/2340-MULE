@@ -20,7 +20,7 @@ public class TownController extends Controller {
     @FXML
     public void initialize() {
         BackgroundImage myBI= new BackgroundImage(new Image
-                ("/game/images/townSquare.png"),
+                ("/game/resources/images/townSquare.png"),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
 

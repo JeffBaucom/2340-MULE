@@ -68,7 +68,7 @@ public class GameScreenController extends Controller {
         playerScore.setText(game.getLeaderBoard());
         playerName.setText(player.getName());
         playerInfo.setText(player.getResourceString());
-        playerFlag.setImage(new Image("/game/images/flag"
+        playerFlag.setImage(new Image("/game/resources/images/flag"
                 + player.getColor() + ".png"));
 
         String musicFile = "src/game/music/map.mp3";
@@ -212,7 +212,7 @@ public class GameScreenController extends Controller {
         playerName.setText(player.getName());
         playerInfo.setText(player.getResourceString());
         playerScore.setText(game.getLeaderBoard());
-        playerFlag.setImage(new Image("/game/images/flag"
+        playerFlag.setImage(new Image("/game/resources/images/flag"
                 + player.getColor() + ".png"));
 
         gameLog.setText(game.getGameLog());

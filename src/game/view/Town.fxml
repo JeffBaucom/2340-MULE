@@ -16,22 +16,22 @@
       <Button layoutX="772.0" layoutY="607.0" mnemonicParsing="false" onAction="#returnMap" text="Return to Map" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
       <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="283.0" layoutY="71.0" onMouseClicked="#enterStore" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/store.png" />
+            <Image url="@../resources/images/store.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="283.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/assayOffice.png" />
+            <Image url="@../resources/images/assayOffice.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="505.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/landOffice.png" />
+            <Image url="@../resources/images/landOffice.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="485.0" layoutY="71.0" onMouseClicked="#gamblePub" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/pub.png" />
+            <Image url="@../resources/images/pub.png" />
          </image>
       </ImageView>
   </children>

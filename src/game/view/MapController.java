@@ -3,16 +3,13 @@ package game.view;
 import game.model.Game;
 import game.model.Map;
 import game.model.Player;
-import game.model.Tile;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 
 import java.util.Random;
 
@@ -36,8 +33,8 @@ public class MapController extends Controller {
         map = game.getMap();
 
         gameScreenController = main.getGameScreenController();
-        cursor = new ImageView(new Image("/game/images/cursor.png"));
-        flag = new ImageView(new Image("/game/images/flag"
+        cursor = new ImageView(new Image("/game/resources/images/cursor.png"));
+        flag = new ImageView(new Image("/game/resources/images/flag"
                 + player.getColor() + ".png"));
 
         tiles = new ImageView[5][9];
@@ -48,13 +45,13 @@ public class MapController extends Controller {
                 Random fRand = new Random();
 
                 if (map.getTile(i, j).getType() == "P") {
-                    resFile = "/game/images/tile" + map.getTile(i, j).getType()
+                    resFile = "/game/resources/images/tile" + map.getTile(i, j).getType()
                             + pRand.nextInt(3) + ".png";
                 } else if (map.getTile(i, j).getType() == "F") {
-                    resFile = "/game/images/tile" + map.getTile(i, j).getType()
+                    resFile = "/game/resources/images/tile" + map.getTile(i, j).getType()
                             + fRand.nextInt(6) + ".png";
                 } else {
-                    resFile = "/game/images/tile"
+                    resFile = "/game/resources/images/tile"
                             + map.getTile(i, j).getType() + ".png";
                 }
 
@@ -101,14 +98,14 @@ public class MapController extends Controller {
             for (int j = 0; j < 9; j++) {
                 int ownerId = map.getTile(i, j).getOwner();
                 if (ownerId > -1) {
-                    flag = new ImageView(new Image("/game/images/flag"
+                    flag = new ImageView(new Image("/game/resources/images/flag"
                             + game.getPlayer(ownerId).getColor() + ".png"));
                     grid.add(flag, j, i);
                 }
 
                 int muleId = map.getTile(i, j).getMule();
                 if (muleId > 0) {
-                    mule = new ImageView(new Image("/game/images/mule"
+                    mule = new ImageView(new Image("/game/resources/images/mule"
                             + muleId + ".png"));
 
                     grid.add(mule, j, i);
