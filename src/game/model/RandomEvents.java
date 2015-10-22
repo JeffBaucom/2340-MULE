@@ -59,7 +59,7 @@ public class RandomEvents {
     public String getRandomEvent(Player p) {
         Random rand = new Random();
         int event;
-        if (game.getCurrentPlayer() == game.getLowestScore()) {
+        if (game.getCurrentPlayer() == game.getLosingPlayer()) {
             event = rand.nextInt(4);
         } else {
             event = rand.nextInt(7);

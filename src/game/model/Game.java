@@ -158,7 +158,7 @@ public class Game {
         }
     }
 
-    public Player getLowestScore() {
+    public Player getLosingPlayer() {
         Player lastPlace = playerOrder[0];
         for (Player p : playerOrder) {
             if (p.getScore() < lastPlace.getScore()) {

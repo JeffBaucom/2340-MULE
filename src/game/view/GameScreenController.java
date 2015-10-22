@@ -240,20 +240,18 @@ public class GameScreenController extends Controller {
         }
     }
 
-    public void showRandomEvent() {
+    private void showRandomEvent() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(GameScreenController.class.getResource
                     ("/game/view/RandomEvent.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
 
-            // Create the dialog Stage.
             Stage dialogStage = new Stage();
             dialogStage.setTitle("RANDOM EVENT");
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
-            // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
