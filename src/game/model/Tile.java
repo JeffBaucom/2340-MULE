@@ -1,7 +1,7 @@
 package game.model;
 
 
-public class Tile {
+public class Tile implements java.io.Serializable{
 
     private int ownerID, row, col;
     private String type;

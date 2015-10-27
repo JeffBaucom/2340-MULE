@@ -2,7 +2,7 @@ package game.model;
 
 import java.util.Random;
 
-public class Turn {
+public class Turn implements java.io.Serializable{
 
     Player player;
     private Game game;

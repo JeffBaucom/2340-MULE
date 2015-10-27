@@ -3,7 +3,7 @@ package game.model;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class RandomEvents {
+public class RandomEvents implements java.io.Serializable{
     ArrayList<String> events;
     int rand3Num, rand4Num, rand5Num, rand7Num;
     Game game;

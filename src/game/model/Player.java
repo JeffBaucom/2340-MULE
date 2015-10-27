@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 /**
  */
-public class Player {
+public class Player implements java.io.Serializable{
     String name, color;
     Race race;
     int id, properties, mule;
