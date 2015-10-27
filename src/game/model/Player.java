@@ -12,9 +12,6 @@ public class Player {
     HashMap<String, Integer> resources;
     ArrayList<Tile> tiles;
 
-    public Player() {
-    }
-
     public Player(int id, int difficulty, String name, String color, Race race) {
         resources = new HashMap<String, Integer>();
         tiles = new ArrayList<Tile>();

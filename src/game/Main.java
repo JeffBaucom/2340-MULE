@@ -2,6 +2,7 @@ package game;
 
 import java.io.IOException;
 
+import com.google.gson.Gson;
 import game.view.GameScreenController;
 import game.view.ScreenStackController;
 import game.model.Game;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.io.File;
+import java.io.PrintWriter;
 
 public class Main extends Application {
     private Stage primaryStage;
@@ -26,23 +28,25 @@ public class Main extends Application {
     private final String MAP = "/game/view/Map.fxml";
     private final String TOWN = "/game/view/Town.fxml";
     private final String STORE = "/game/view/Store.fxml";
+    private final String GAME_SAVE = "src/game/resources/save/save.txt";
 
     private static Main main;
     private GameScreenController gameScreenController;
     private Game game;
 
     MediaPlayer mediaPlayer;
+    String MUSIC_FILE = "src/game/resources/music/background.mp3";
 
     @Override
     public void start(Stage primaryStage) {
-        String musicFile = "src/game/resources/music/background.mp3";
-        Media sound = new Media(new File(musicFile).toURI().toString());
+        Media sound = new Media(new File(MUSIC_FILE).toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("MULE Game");
-        this.primaryStage.getIcons().add(new Image("/game/resources/images/icon.png"));
+        this.primaryStage.getIcons()
+                .add(new Image("/game/resources/images/icon.png"));
 
         main = this;
         screenStack = new ScreenStackController();
@@ -107,6 +111,18 @@ public class Main extends Application {
 
     public Game getGame() {
         return game;
+    }
+
+    public void saveGame() {
+        Gson gson = new Gson();
+        String json = gson.toJson(game);
+
+        try {
+            PrintWriter out = new PrintWriter(new File(GAME_SAVE));
+            out.println(json);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {

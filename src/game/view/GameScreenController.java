@@ -126,6 +126,11 @@ public class GameScreenController extends Controller {
         }
     }
 
+    @FXML
+    public void saveGame() {
+        main.saveGame();
+    }
+
     public void enableLandButton() {
         if (player.getMule() > 0 || (map.getSelectedTile().getOwner() ==
                 -1 && game.getPhase() < 2)) {
