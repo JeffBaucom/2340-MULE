@@ -114,15 +114,15 @@ public class Main extends Application {
     }
 
     public void saveGame() {
-        Gson gson = new Gson();
-        String json = gson.toJson(game);
-
-        try {
-            PrintWriter out = new PrintWriter(new File(GAME_SAVE));
-            out.println(json);
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
+        // Gson gson = new Gson();
+        // String json = gson.toJson(game);
+        //
+        // try {
+        //  PrintWriter out = new PrintWriter(new File(GAME_SAVE));
+        //  out.println(json);
+        // } catch(IOException e) {
+        //  e.printStackTrace();
+        // }
     }
 
     public static void main(String[] args) {

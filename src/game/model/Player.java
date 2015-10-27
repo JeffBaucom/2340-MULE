@@ -39,7 +39,6 @@ public class Player {
             resources.put("smithore", 0);
             resources.put("crystite", 0);
         }
-
     }
 
     public int getId() { return id; }

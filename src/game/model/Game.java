@@ -17,7 +17,7 @@ public class Game {
         this.players = new Player[playerCount];
         this.playerOrder = new Player[playerCount];
         this.difficulty = difficulty;
-        store = new Store(this);
+        this.store = new Store(this);
         this.map = new Map(this, mapType);
         map.setGame(this);
     }

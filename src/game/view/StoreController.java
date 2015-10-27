@@ -103,7 +103,7 @@ public class StoreController extends Controller {
         smithore = store.getStock("smithore");
         crystite = store.getStock("crystite");
 
-        // TODO: Add Mule stock
+        // TODO: Add mule stock
         foodLabel.setText("Food: " + food );
         energyLabel.setText("Energy: " + energy);
         smithoreLabel.setText("Smithore: " + smithore);
