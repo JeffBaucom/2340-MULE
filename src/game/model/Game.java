@@ -1,6 +1,6 @@
 package game.model;
 
-public class Game {
+public class Game implements java.io.Serializable{
     Turn currentTurn;
     int playerCounter, roundCounter, passCounter, phase, timeLeft;
     boolean turnover;

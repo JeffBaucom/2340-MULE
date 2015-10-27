@@ -2,7 +2,7 @@ package game.model;
 
 import java.util.HashMap;
 
-public class Store {
+public class Store implements java.io.Serializable{
     Game game;
     HashMap<String, Integer> stock, cost;
 

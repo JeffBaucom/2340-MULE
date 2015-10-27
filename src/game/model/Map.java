@@ -3,7 +3,7 @@ package game.model;
 import java.util.Random;
 
 
-public class Map {
+public class Map implements java.io.Serializable{
     private Game game;
     private Tile[][] tiles;
     private Tile selectedTile;
