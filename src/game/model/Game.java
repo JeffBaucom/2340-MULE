@@ -36,7 +36,7 @@ public class Game implements java.io.Serializable{
     }
 
     public void newPlayer(int playerIndex, int difficulty, String name, String color,
-                          Race race) {
+                          String race) {
         if (playerIndex < getPlayerCount()) {
             players[playerIndex] = new Player(playerIndex, difficulty, name, color, race);
             playerOrder[playerIndex] = players[playerIndex];

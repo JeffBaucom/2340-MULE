@@ -6,13 +6,13 @@ import java.util.HashMap;
 /**
  */
 public class Player implements java.io.Serializable{
-    String name, color;
-    Race race;
-    int id, properties, mule;
-    HashMap<String, Integer> resources;
-    ArrayList<Tile> tiles;
+    private String name, color, race;
+    private int id, properties, mule;
+    private HashMap<String, Integer> resources;
+    private ArrayList<Tile> tiles;
 
-    public Player(int id, int difficulty, String name, String color, Race race) {
+    public Player(int id, int difficulty, String name, String color, String
+            race) {
         resources = new HashMap<String, Integer>();
         tiles = new ArrayList<Tile>();
 
@@ -21,9 +21,9 @@ public class Player implements java.io.Serializable{
         this.color = color;
         this.race = race;
 
-        if (race == Race.FLAPPER) {
+        if (race == "flapper") {
             resources.put("money", 1600);
-        } else if (race == Race.HUMAN) {
+        } else if (race == "human") {
             resources.put("money", 600);
         } else {
             resources.put("money", 1000);
@@ -47,7 +47,7 @@ public class Player implements java.io.Serializable{
 
     public String getColor() { return this.color; }
 
-    public Race getRace() { return this.race; }
+    public String getRace() { return this.race; }
 
     public int get(String resource) {
         return resources.get(resource);
@@ -84,10 +84,14 @@ public class Player implements java.io.Serializable{
 
     public void updateProduction() {
         for (Tile t : tiles) {
-            add("food", t.getProduction("food"));
-            add("energy", t.getProduction("energy"));
-            add("crystite", t.getProduction("crystite"));
-            add("smithore", t.getProduction("smithore"));
+            if (get("energy") > 0) {
+                add("food", t.getProduction("food"));
+                add("energy", t.getProduction("energy"));
+                add("crystite", t.getProduction("crystite"));
+                add("smithore", t.getProduction("smithore"));
+            }
+
+            add("energy", -1);
         }
     }
 

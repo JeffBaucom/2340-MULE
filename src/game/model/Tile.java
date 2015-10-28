@@ -6,23 +6,20 @@ public class Tile implements java.io.Serializable{
     private int ownerID, row, col;
     private String type;
     private String mule;
-    private Game game;
 
     public Tile(Game game, String type, int row, int col) {
         this.type = type;
         this.ownerID = -1;
         this.row = row;
         this.col = col;
-
-        this.game = game;
     }
 
     public String getType() {
         return this.type;
     }
 
-    public void setOwner(int playerID) {
-        this.ownerID = playerID;
+    public void setOwner(Player owner) {
+        this.ownerID = owner.getId();
     }
 
     public int getOwner() {
@@ -61,10 +58,8 @@ public class Tile implements java.io.Serializable{
 
     public int getProduction(String resource) {
         int production = 0;
-        Player owner = game.getPlayer(ownerID);
 
-        if (resource == mule && owner.get("energy") > 0) {
-            owner.add("energy", -1);
+        if (resource == mule) {
             if (resource == "food") {
                 if (type == "R") production += 4;
                 else if (type == "P") production += 2;

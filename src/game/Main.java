@@ -3,6 +3,7 @@ package game;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import game.model.GameData;
 import game.view.GameScreenController;
 import game.view.ScreenStackController;
 import game.model.Game;
@@ -28,7 +29,7 @@ public class Main extends Application {
     private final String MAP = "/game/view/Map.fxml";
     private final String TOWN = "/game/view/Town.fxml";
     private final String STORE = "/game/view/Store.fxml";
-    private final String GAME_SAVE = "src/game/resources/save/save.txt";
+    private final String GAME_SAVE = "out/game/resources/save/save.txt";
 
     private static Main main;
     private GameScreenController gameScreenController;
@@ -114,15 +115,17 @@ public class Main extends Application {
     }
 
     public void saveGame() {
-        // Gson gson = new Gson();
-        // String json = gson.toJson(game);
-        //
-        // try {
-        //  PrintWriter out = new PrintWriter(new File(GAME_SAVE));
-        //  out.println(json);
-        // } catch(IOException e) {
-        //  e.printStackTrace();
-        // }
+        GameData save = new GameData(game);
+        Gson gson = new Gson();
+        String json = gson.toJson(save);
+
+        try {
+            PrintWriter out = new PrintWriter(new File(GAME_SAVE));
+            out.println(json);
+            out.close();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {

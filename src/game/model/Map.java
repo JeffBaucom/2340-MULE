@@ -102,4 +102,8 @@ public class Map implements java.io.Serializable{
         return tilesRemaining;
     }
 
+    public Tile[][] getTiles() {
+        return tiles;
+    }
+
 }

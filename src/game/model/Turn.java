@@ -35,7 +35,7 @@ public class Turn implements java.io.Serializable{
     public boolean buyTile(int row, int col) {
         boolean boughtTile = false;
         if (game.getPhase() == 0) {
-            game.getMap().getTile(row, col).setOwner(player.getId());
+            game.getMap().getTile(row, col).setOwner(player);
 
             boughtTile = true;
             player.addProperty(game.getMap().getTile(row, col));
@@ -44,7 +44,7 @@ public class Turn implements java.io.Serializable{
         } else if (game.getPhase() == 1 && player.get("money") >= 300) {
             game.getCurrentPlayer().set("money", game.getCurrentPlayer()
                     .get("money") - 300);
-            game.getMap().getTile(row, col).setOwner(player.getId());
+            game.getMap().getTile(row, col).setOwner(player);
 
             boughtTile = true;
             player.addProperty(game.getMap().getTile(row, col));

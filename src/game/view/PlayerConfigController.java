@@ -1,7 +1,6 @@
 package game.view;
 
 import game.model.Game;
-import game.model.Race;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -32,8 +31,7 @@ public class PlayerConfigController extends Controller {
     RadioButton yellow;
 
     int playerIndex;
-    String playerName, colorValue;
-    Race raceValue;
+    String playerName, colorValue, raceValue;
     Game game;
 
     /**
@@ -67,9 +65,9 @@ public class PlayerConfigController extends Controller {
         else if (yellow.isSelected()) colorValue = "yellow";
         else colorValue = "green";
 
-        if (flapper.isSelected()) raceValue = Race.FLAPPER;
-        else if (human.isSelected()) raceValue = Race.HUMAN;
-        else raceValue = Race.OTHER;
+        if (flapper.isSelected()) raceValue = "flapper";
+        else if (human.isSelected()) raceValue = "human";
+        else raceValue = "other";
 
         game.newPlayer(playerIndex, game.getDifficulty(), playerName, colorValue, raceValue);
 
