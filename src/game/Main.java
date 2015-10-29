@@ -174,6 +174,10 @@ public class Main extends Application {
         screenStack.loadScreen("store", STORE);
     }
 
+    public void quit() {
+        primaryStage.close();
+    }
+
     public static void main(String[] args) {
         launch(args);
     }

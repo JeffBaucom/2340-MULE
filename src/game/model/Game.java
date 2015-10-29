@@ -39,10 +39,11 @@ public class Game implements java.io.Serializable{
         turnover = false;
     }
 
-    public void newPlayer(int playerIndex, int difficulty, String name, String color,
-                          String race) {
+    public void newPlayer(int playerIndex, int difficulty, String name,
+                          String color, String race) {
         if (playerIndex < getPlayerCount()) {
-            players[playerIndex] = new Player(playerIndex, difficulty, name, color, race);
+            players[playerIndex] = new Player(playerIndex, difficulty, name,
+                    color, race);
             playerOrder[playerIndex] = players[playerIndex];
         }
     }

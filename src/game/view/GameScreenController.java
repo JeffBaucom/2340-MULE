@@ -129,7 +129,9 @@ public class GameScreenController extends Controller {
 
     @FXML
     public void saveGame() {
+        handleNext();
         main.saveGame();
+        main.quit();
     }
 
     public void enableLandButton() {
