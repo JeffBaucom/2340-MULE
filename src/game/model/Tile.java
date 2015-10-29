@@ -12,7 +12,6 @@ public class Tile implements java.io.Serializable{
         this.ownerID = -1;
         this.row = row;
         this.col = col;
-        this.mule = "";
     }
 
     public String getType() {
