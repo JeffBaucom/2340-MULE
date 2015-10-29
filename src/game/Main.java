@@ -154,7 +154,7 @@ public class Main extends Application {
 
         game.setMap(save.getTiles());
 
-        game.logEvent(save.getGameLog());
+        game.setGameLog(save.getGameLog());
 
         mediaPlayer.stop();
 

@@ -89,9 +89,11 @@ public class Player implements java.io.Serializable{
                 add("energy", t.getProduction("energy"));
                 add("crystite", t.getProduction("crystite"));
                 add("smithore", t.getProduction("smithore"));
-            }
 
-            add("energy", -1);
+                if (!(t.getMule() == 0)) {
+                    add("energy", -1);
+                }
+            }
         }
     }
 

@@ -160,6 +160,10 @@ public class Game implements java.io.Serializable{
         gameLog += event + "\n";
     }
 
+    public void setGameLog(String gameLog) {
+        this.gameLog = gameLog;
+    }
+
     public String getLeaderBoard() {
         String leaderBoard = "";
 

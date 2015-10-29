@@ -76,11 +76,10 @@ public class GameScreenController extends Controller {
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
-        update();
-
         nextButton.setText("Next Turn");
         timer = new Timer();
         getTimerTask();
+        update();
     }
 
     @FXML
