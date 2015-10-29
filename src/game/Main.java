@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.google.gson.Gson;
 import game.model.GameData;
+import game.model.Player;
 import game.view.GameScreenController;
 import game.view.ScreenStackController;
 import game.model.Game;
@@ -17,6 +18,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class Main extends Application {
     private Stage primaryStage;
@@ -126,6 +128,50 @@ public class Main extends Application {
         } catch(IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void loadGame() {
+        GameData save = new GameData();
+        Gson gson = new Gson();
+
+        try {
+            String json = new Scanner(new File(GAME_SAVE)).useDelimiter("\\Z")
+                    .next();
+            save = gson.fromJson(json, GameData.class);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        game = new Game(save.getPlayers().length, save.getDifficulty(), save
+                .getMapType());
+
+        game.setPlayers(save.getPlayers());
+        game.reorderPlayers();
+
+        game.goToTurn(save.getPlayerCounter(), save.getRoundCounter(),
+                save.getPassCounter(), save.getPhase(), save.getTimeLeft(),
+                save.isTurnover());
+
+        game.setMap(save.getTiles());
+
+        game.logEvent(save.getGameLog());
+
+        mediaPlayer.stop();
+
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class
+                    .getResource(GAME_SCREEN));
+            rootLayout.setBottom(loader.load());
+            gameScreenController = loader.getController();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(gameScreenController);
+        screenStack.loadScreen("map", MAP);
+        screenStack.loadScreen("town",  TOWN);
+        screenStack.loadScreen("store", STORE);
     }
 
     public static void main(String[] args) {

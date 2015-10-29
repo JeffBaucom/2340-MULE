@@ -16,7 +16,7 @@
             <Font name="Consolas" size="72.0" />
          </font>
       </Label>
-      <Button alignment="CENTER" layoutX="363.0" layoutY="581.0" mnemonicParsing="false" onAction="#handleNewGame" prefHeight="39.0" prefWidth="139.0" text="New Game" textAlignment="CENTER" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="362.0" AnchorPane.rightAnchor="362.0" />
+      <Button alignment="CENTER" layoutX="496.0" layoutY="574.0" mnemonicParsing="false" onAction="#handleNewGame" prefHeight="39.0" prefWidth="139.0" text="New Game" textAlignment="CENTER" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="496.0" AnchorPane.rightAnchor="228.0" />
       <GridPane layoutX="229.0" layoutY="95.0" maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="320.0" prefWidth="400.0" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="228.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -88,5 +88,6 @@
             </GridPane>
          </children>
       </GridPane>
+      <Button layoutX="180.0" layoutY="571.0" mnemonicParsing="false" onAction="#handLoadGame" text="Load Game" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="228.0" />
    </children>
 </AnchorPane>

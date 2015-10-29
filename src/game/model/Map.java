@@ -52,6 +52,11 @@ public class Map implements java.io.Serializable{
         this.tilesRemaining = 44;
     }
 
+    public Map(Game game, Tile[][] tiles) {
+        this.game = game;
+        this.tiles = tiles;
+    }
+
     public String[] randomizeMap() {
         String[] string = new String[45];
         for (int i = 0; i < 45; i++) {

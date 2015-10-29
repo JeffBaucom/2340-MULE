@@ -44,10 +44,10 @@ public class MapController extends Controller {
                 Random pRand = new Random();
                 Random fRand = new Random();
 
-                if (map.getTile(i, j).getType() == "P") {
+                if (map.getTile(i, j).getType().equals("P")) {
                     resFile = "/game/resources/images/tile" + map.getTile(i, j).getType()
                             + pRand.nextInt(3) + ".png";
-                } else if (map.getTile(i, j).getType() == "F") {
+                } else if (map.getTile(i, j).getType().equals("F")) {
                     resFile = "/game/resources/images/tile" + map.getTile(i, j).getType()
                             + fRand.nextInt(6) + ".png";
                 } else {
@@ -58,13 +58,15 @@ public class MapController extends Controller {
                 ImageView tileImage = new ImageView(new Image(resFile));
                 tiles[i][j] = tileImage;
 
-                if (map.getTile(i, j).getType() == "T") {
+                if (map.getTile(i, j).getType().equals("T")) {
                     tiles[i][j].setOnMouseClicked(this::enterTown);
                 } else {
                     tiles[i][j].setOnMouseClicked(this::selectTile);
                 }
 
                 grid.add(tiles[i][j], j, i);
+
+                update();
             }
         }
     }
