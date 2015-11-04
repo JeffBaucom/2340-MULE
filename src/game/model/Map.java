@@ -3,7 +3,7 @@ package game.model;
 import java.util.Random;
 
 
-public class Map {
+public class Map implements java.io.Serializable{
     private Game game;
     private Tile[][] tiles;
     private Tile selectedTile;
@@ -50,6 +50,11 @@ public class Map {
         }
 
         this.tilesRemaining = 44;
+    }
+
+    public Map(Game game, Tile[][] tiles) {
+        this.game = game;
+        this.tiles = tiles;
     }
 
     public String[] randomizeMap() {
@@ -100,6 +105,10 @@ public class Map {
 
     public int getTilesRemaining() {
         return tilesRemaining;
+    }
+
+    public Tile[][] getTiles() {
+        return tiles;
     }
 
 }

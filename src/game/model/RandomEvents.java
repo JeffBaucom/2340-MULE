@@ -3,7 +3,7 @@ package game.model;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class RandomEvents {
+public class RandomEvents implements java.io.Serializable{
     ArrayList<String> events;
     int rand3Num, rand4Num, rand5Num, rand7Num;
     Game game;
@@ -59,7 +59,7 @@ public class RandomEvents {
     public String getRandomEvent(Player p) {
         Random rand = new Random();
         int event;
-        if (game.getCurrentPlayer() == game.getLowestScore()) {
+        if (game.getCurrentPlayer() == game.getLosingPlayer()) {
             event = rand.nextInt(4);
         } else {
             event = rand.nextInt(7);

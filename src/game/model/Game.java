@@ -1,6 +1,6 @@
 package game.model;
 
-public class Game {
+public class Game implements java.io.Serializable{
     Turn currentTurn;
     int playerCounter, roundCounter, passCounter, phase, timeLeft;
     boolean turnover;
@@ -9,6 +9,7 @@ public class Game {
     Player[] players, playerOrder;
     int currentId;
     int difficulty;
+    String mapType;
 
     Map map;
     Store store;
@@ -17,9 +18,12 @@ public class Game {
         this.players = new Player[playerCount];
         this.playerOrder = new Player[playerCount];
         this.difficulty = difficulty;
-        store = new Store(this);
+        this.store = new Store(this);
+
+        this.mapType = mapType;
         this.map = new Map(this, mapType);
         map.setGame(this);
+        gameLog = "";
     }
 
     public void startGame() {
@@ -27,7 +31,7 @@ public class Game {
         roundCounter = 0;
         passCounter = 0;
         phase = 0;
-        gameLog = "Welcome to MULE Game.\n";
+        logEvent("Welcome to MULE Game.");
 
         reorderPlayers();
         currentId = playerOrder[0].getId();
@@ -35,12 +39,25 @@ public class Game {
         turnover = false;
     }
 
-    public void newPlayer(int playerIndex, int difficulty, String name, String color,
-                          Race race) {
+    public void newPlayer(int playerIndex, int difficulty, String name,
+                          String color, String race) {
         if (playerIndex < getPlayerCount()) {
-            players[playerIndex] = new Player(playerIndex, difficulty, name, color, race);
+            players[playerIndex] = new Player(playerIndex, difficulty, name,
+                    color, race);
             playerOrder[playerIndex] = players[playerIndex];
         }
+    }
+
+    public void goToTurn(int playerCounter, int roundCounter, int passCounter,
+                         int phase, int timeLeft, boolean turnover) {
+        this.playerCounter = playerCounter;
+        this.roundCounter = roundCounter;
+        this.passCounter = passCounter;
+        this.phase = phase;
+        this.timeLeft = timeLeft;
+
+        currentId = playerOrder[playerCounter].getId();
+        currentTurn = new Turn(playerOrder[playerCounter], this);
     }
 
     public void endTurn() {
@@ -110,6 +127,14 @@ public class Game {
         return players.length;
     }
 
+    public int getPassCounter() {
+        return passCounter;
+    }
+
+    public int getPlayerCounter() {
+        return playerCounter;
+    }
+
     public Store getStore() {
         return store;
     }
@@ -128,8 +153,16 @@ public class Game {
 
     public int getDifficulty() { return difficulty; }
 
+    public String getMapType() {
+        return mapType;
+    }
+
     public void logEvent(String event) {
         gameLog += event + "\n";
+    }
+
+    public void setGameLog(String gameLog) {
+        this.gameLog = gameLog;
     }
 
     public String getLeaderBoard() {
@@ -158,7 +191,7 @@ public class Game {
         }
     }
 
-    public Player getLowestScore() {
+    public Player getLosingPlayer() {
         Player lastPlace = playerOrder[0];
         for (Player p : playerOrder) {
             if (p.getScore() < lastPlace.getScore()) {
@@ -166,5 +199,14 @@ public class Game {
             }
         }
         return lastPlace;
+    }
+
+    public void setMap(Tile[][] tiles) {
+        map = new Map(this, tiles);
+    }
+
+    public void setPlayers(Player[] players) {
+        this.players = players;
+        this.playerOrder = players;
     }
 }

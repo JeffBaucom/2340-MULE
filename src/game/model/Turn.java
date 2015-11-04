@@ -2,7 +2,7 @@ package game.model;
 
 import java.util.Random;
 
-public class Turn {
+public class Turn implements java.io.Serializable{
 
     Player player;
     private Game game;
@@ -34,24 +34,26 @@ public class Turn {
 
     public boolean buyTile(int row, int col) {
         boolean boughtTile = false;
-        if (game.getPhase() == 0) {
-            game.getMap().getTile(row, col).setOwner(player.getId());
+        if (row >= 0 && row <= 4 && col >= 0 && col <= 8) {
+            if (game.getPhase() == 0) {
+                game.getMap().getTile(row, col).setOwner(player);
 
-            boughtTile = true;
-            player.addProperty(game.getMap().getTile(row, col));
-            game.getMap().removeTile();
-            game.endTurn();
-        } else if (game.getPhase() == 1 && player.get("money") >= 300) {
-            game.getCurrentPlayer().set("money", game.getCurrentPlayer()
-                    .get("money") - 300);
-            game.getMap().getTile(row, col).setOwner(player.getId());
+                boughtTile = true;
+                player.addProperty(game.getMap().getTile(row, col));
+                game.getMap().removeTile();
+                game.endTurn();
+            } else if (game.getPhase() == 1 && player.get("money") >= 300) {
+                game.getCurrentPlayer().set("money", game.getCurrentPlayer()
+                        .get("money") - 300);
+                game.getMap().getTile(row, col).setOwner(player);
 
-            boughtTile = true;
-            player.addProperty(game.getMap().getTile(row, col));
-            game.getMap().removeTile();
-            game.endTurn();
-        } else {
-            game.logEvent("You don't have enough money to purchase land.");
+                boughtTile = true;
+                player.addProperty(game.getMap().getTile(row, col));
+                game.getMap().removeTile();
+                game.endTurn();
+            } else {
+                game.logEvent("You don't have enough money to purchase land.");
+            }
         }
 
         return boughtTile;

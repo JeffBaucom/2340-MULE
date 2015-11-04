@@ -67,8 +67,9 @@
                </font>
             </Label>
             <Label fx:id="playerScore" text="Player Scores" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-            <Label fx:id="clock" text="Time Remaining in Turn: " GridPane.rowIndex="1" />
+            <Label fx:id="clock" text="Time Remaining: " GridPane.rowIndex="1" />
          </children>
       </GridPane>
+      <Button layoutX="750.0" layoutY="14.0" mnemonicParsing="false" onAction="#saveGame" text="Save &amp; Quit" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
    </children>
 </AnchorPane>

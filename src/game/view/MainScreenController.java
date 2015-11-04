@@ -63,4 +63,11 @@ public class MainScreenController extends Controller{
         main.newGame(playerCount, difficulty, mapType);
         main.showScreen("player config");
     }
+
+    @FXML
+    private void handLoadGame() {
+        main.closeScreen();
+        main.loadGame();
+        main.showScreen("map");
+    }
 }
