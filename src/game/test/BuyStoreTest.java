@@ -3,7 +3,6 @@ import game.model.Game;
 import game.model.Player;
 import game.model.Store;
 import junit.framework.*;
-import org.junit.*;
 
 public class BuyStoreTest extends TestCase {
     protected Game game;
