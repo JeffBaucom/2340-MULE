@@ -4,7 +4,7 @@ import game.model.Player;
 import game.model.Store;
 import junit.framework.*;
 
-// Nathaniel Barnwell, CS 2340
+// Nathaniel Barnwell, CS 2340, Georgia Tech
 
 public class BuyStoreTest extends TestCase {
     protected Game game;
