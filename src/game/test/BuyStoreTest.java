@@ -4,6 +4,8 @@ import game.model.Player;
 import game.model.Store;
 import junit.framework.*;
 
+// Nathaniel Barnwell, CS 2340
+
 public class BuyStoreTest extends TestCase {
     protected Game game;
     protected Store theStore;
