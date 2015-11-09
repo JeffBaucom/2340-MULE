@@ -3,6 +3,7 @@ import game.model.Game;
 import game.model.Player;
 import junit.framework.*;
 
+// Written by Matthew Cuevas
 public class BuyTileTest extends TestCase {
     protected Game game;
 

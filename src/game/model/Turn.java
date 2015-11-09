@@ -99,6 +99,8 @@ public class Turn implements java.io.Serializable{
     public boolean buyStore(String resource, int amount) {
         if (game.store.getCost(resource) * amount > player.get("money")) {
             return false;
+        } else if (amount < 0) {
+            return false;
         } else {
             game.store.buy(resource, amount, player);
             return true;
@@ -108,6 +110,8 @@ public class Turn implements java.io.Serializable{
     public boolean sellStore(String resource, int amount) {
         if (amount > player.get(resource)) {
             game.logEvent("You don't have enough " + resource + ".");
+            return false;
+        }else if (amount < 0) {
             return false;
         } else {
             game.store.sell(resource, amount, player);
