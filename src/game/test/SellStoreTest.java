@@ -4,10 +4,8 @@ import game.model.Game;
 import game.model.Player;
 import game.model.Store;
 import junit.framework.*;
+//Jeffrey Baucom
 
-/**
- * Created by ABUNAI on 11/11/15.
- */
 public class SellStoreTest extends TestCase{
     protected Game game;
     protected Store store;
