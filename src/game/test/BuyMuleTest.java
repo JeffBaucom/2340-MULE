@@ -25,7 +25,7 @@ public class BuyMuleTest extends TestCase {
         boolean boughtMule = game.getTurn().buyMuleStore(1);
         assertTrue(p.getMule() == 1);
         assertTrue(theStore.getStock("mule") == curStoreMule - 1);
-        assertTrue(boughtFood);
+        assertTrue(boughtMule);
 
     }
 
