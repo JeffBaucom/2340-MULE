@@ -2,13 +2,30 @@ package game.model;
 
 import java.util.HashMap;
 
-public class Store implements java.io.Serializable{
-    Game game;
-    HashMap<String, Integer> stock, cost;
+/**
+ * The Store class.
+ */
+public class Store implements java.io.Serializable {
+    /**
+     * The Game this Store will be part of.
+     */
+    private final Game game;
 
+    /**
+     * Holds the stock and unit price of each item.
+     */
+    private HashMap<String, Integer> stock, cost;
+
+    /**
+     * The amount of money.
+     */
     private int money;
 
-    public Store(Game game) {
+    /**
+     * Sets up the Store.
+     * @param game The game this Store is a part of.
+     */
+    public Store(final Game game) {
         this.game = game;
 
         stock = new HashMap<String, Integer>();
@@ -36,44 +53,80 @@ public class Store implements java.io.Serializable{
 
     }
 
-    public int getStock(String resource) { return stock.get(resource); }
+    /**
+     * Gets the amount of a resource currently in stock.
+     * @param resource The resource sold by the Store.
+     * @return The amount of this resource left in stock.
+     */
+    public final int getStock(final String resource) {
+        return stock.get(resource);
+    }
 
-    public int getCost(String resource) {
+    /**
+     * Gets the cost of a resource currently in stock.
+     * @param resource The resource sold by the Store.
+     * @return The unit price of this resource.
+     */
+    public final int getCost(final String resource) {
         return cost.get(resource);
     }
 
-    public void buy(String resource, int amount, Player player) {
+    /**
+     * Allows a player to buy a specific amount of a specific resource.
+     * @param resource The resource to be bought.
+     * @param amount The amount of the resource to be bought.
+     * @param player The player buying the resource.
+     */
+    public final void buy(final String resource, final int amount,
+                          final Player player) {
         if (amount <= stock.get(resource)) {
             if (amount > 0) {
                 int initialAmt = stock.get(resource);
                 player.set(resource, player.get(resource) + amount);
                 stock.replace(resource, initialAmt - amount);
-                player.set("money", player.get("money") - amount * cost.get
-                        (resource));
-                game.logEvent(player.getName() + " has purchased " + amount + " " + resource + ".");
+                player.set("money", player.get("money")
+                        - amount * cost.get(resource));
+                game.logEvent(player.getName() + " has purchased "
+                        + amount + " " + resource + ".");
             }
         } else {
             game.logEvent("The store does not have enough " + resource + ".");
         }
     }
 
-    public void sell(String resource, int amount, Player player) {
+    /**
+     * Sells a specific amount of a resource back to the Store.
+     * @param resource The resource to be sold back to the Store.
+     * @param amount The amount of the resource to be sold back.
+     * @param player The player selling the resource to the Store.
+     */
+    public final void sell(final String resource, final int amount,
+                           final Player player) {
         int initialAmt = stock.get(resource);
         player.set(resource, player.get(resource) - amount);
         stock.replace(resource, initialAmt + amount);
         player.set("money", player.get("money") + amount * cost.get(resource));
     }
 
-    public void buyMule(int muleType, Player player) {
-            if (stock.get("mule") > 0 && player.getMule() == 0) {
-                player.setMule(muleType);
-                stock.replace("mule", stock.get("mule") - 1);
-                int muleCost = cost.get("mule") + muleType*25;
-                player.set("money", player.get("money") - muleCost);
-            }
+    /**
+     * Buys a Mule.
+     * @param muleType The type of MULE being bought.
+     * @param player The player buying the mule.
+     */
+    public final void buyMule(final int muleType, final Player player) {
+        if (stock.get("mule") > 0 && player.getMule() == 0) {
+            player.setMule(muleType);
+            stock.replace("mule", stock.get("mule") - 1);
+            int muleCost = cost.get("mule") + muleType * 25;
+            player.set("money", player.get("money") - muleCost);
+        }
     }
 
-    public int getMoney() {
+    /**
+     * Returns the amount of money the Store has.
+     * @return The amount of money the Store has.
+     */
+    public final int getMoney() {
         return money;
     }
 
