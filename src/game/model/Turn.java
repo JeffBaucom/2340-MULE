@@ -97,12 +97,12 @@ public class Turn implements java.io.Serializable{
     }
 
     public boolean buyStore(String resource, int amount) {
-        if (game.store.getCost(resource) * amount > player.get("money")) {
+        if (game.getStore().getCost(resource) * amount > player.get("money")) {
             return false;
         } else if (amount < 0) {
             return false;
         } else {
-            game.store.buy(resource, amount, player);
+            game.getStore().buy(resource, amount, player);
             return true;
         }
     }
@@ -114,18 +114,18 @@ public class Turn implements java.io.Serializable{
         }else if (amount < 0) {
             return false;
         } else {
-            game.store.sell(resource, amount, player);
+            game.getStore().sell(resource, amount, player);
             return true;
         }
     }
 
     public boolean buyMuleStore(int muleType) {
         if (player.getMule() == 0) {
-            if (game.store.getCost("mule") > player.get("money")) {
+            if (game.getStore().getCost("mule") > player.get("money")) {
                 game.logEvent("You don't have enough money.");
                 return false;
             } else {
-                game.store.buyMule(muleType, player);
+                game.getStore().buyMule(muleType, player);
                 return true;
             }
         } else {

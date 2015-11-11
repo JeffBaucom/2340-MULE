@@ -1,20 +1,49 @@
 package game.model;
 
-public class Game implements java.io.Serializable{
-    Turn currentTurn;
-    int playerCounter, roundCounter, passCounter, phase, timeLeft;
-    boolean turnover;
-    String gameLog;
+/**
+ * Class representing the current status of the Game.
+ */
+public class Game implements java.io.Serializable {
+    /** The current turn. */
+    private Turn currentTurn;
 
-    Player[] players, playerOrder;
-    int currentId;
-    int difficulty;
-    String mapType;
+    /** Ints representing the current player, the current round, the number
+     * of passes, the current phase, and the time left, respectively. */
+    private int playerCounter, roundCounter, passCounter, phase, timeLeft;
 
-    Map map;
-    Store store;
+    /** Whether the turn is over. */
+    private boolean turnover;
 
-    public Game(int playerCount, int difficulty, String mapType) {
+    /** The log of events in the game. */
+    private String gameLog;
+
+    /** Arrays representing the players and the order of players. */
+    private Player[] players, playerOrder;
+
+    /** The id of the current player. */
+    private int currentId;
+
+    /** The difficulty of the game. */
+    private int difficulty;
+
+    /** The type of map. */
+    private String mapType;
+
+    /** This game's instance of Map. */
+    private Map map;
+
+    /** This game's isntance of Store. */
+    private Store store;
+
+    /**
+     * Constructs a new instance of Game.
+     *
+     * @param playerCount the number of players
+     * @param difficulty the difficulty of the game
+     * @param mapType the type of map
+     */
+    public Game(final int playerCount, final int difficulty, final String
+            mapType) {
         this.players = new Player[playerCount];
         this.playerOrder = new Player[playerCount];
         this.difficulty = difficulty;
@@ -26,7 +55,10 @@ public class Game implements java.io.Serializable{
         gameLog = "";
     }
 
-    public void startGame() {
+    /**
+     * Puts this instance of Game into its starting state.
+     */
+    public final void startGame() {
         playerCounter = 0;
         roundCounter = 0;
         passCounter = 0;
@@ -39,8 +71,17 @@ public class Game implements java.io.Serializable{
         turnover = false;
     }
 
-    public void newPlayer(int playerIndex, int difficulty, String name,
-                          String color, String race) {
+    /**
+     * Adds a new player to the game.
+     * @param playerIndex the player's index in the player array
+     * @param difficulty the difficulty of the game
+     * @param name the name of the player
+     * @param color the color of the player
+     * @param race the race of the player
+     */
+    public final void newPlayer(final int playerIndex, final int difficulty,
+                                final String name, final String color,
+                                final String race) {
         if (playerIndex < getPlayerCount()) {
             players[playerIndex] = new Player(playerIndex, difficulty, name,
                     color, race);
@@ -48,8 +89,19 @@ public class Game implements java.io.Serializable{
         }
     }
 
-    public void goToTurn(int playerCounter, int roundCounter, int passCounter,
-                         int phase, int timeLeft, boolean turnover) {
+    /**
+     * Puts the game in the specified state.
+     *
+     * @param playerCounter the index of current player
+     * @param roundCounter the current round
+     * @param passCounter the cnumber of passes
+     * @param phase the current phase
+     * @param timeLeft the time left
+     * @param turnover whether the turn is over
+     */
+    public final void goToTurn(final int playerCounter, final int roundCounter,
+                               final int passCounter, final int phase, final
+                               int timeLeft, final boolean turnover) {
         this.playerCounter = playerCounter;
         this.roundCounter = roundCounter;
         this.passCounter = passCounter;
@@ -60,7 +112,10 @@ public class Game implements java.io.Serializable{
         currentTurn = new Turn(playerOrder[playerCounter], this);
     }
 
-    public void endTurn() {
+    /**
+     * Ends the current turn and generates a new one.
+     */
+    public final void endTurn() {
         if (playerCounter < players.length - 1) {
             playerCounter++;
         } else {
@@ -71,8 +126,8 @@ public class Game implements java.io.Serializable{
 
         if (roundCounter <= 1) {
             phase = 0;
-        } else if ((roundCounter > 1) && (passCounter < players.length &&
-                phase <= 1)) {
+        } else if ((roundCounter > 1) && (passCounter < players.length
+                && phase <= 1)) {
             phase = 1;
         } else {
             phase = 2;
@@ -86,86 +141,165 @@ public class Game implements java.io.Serializable{
         currentTurn = new Turn(playerOrder[playerCounter], this);
     }
 
-    public void passTurn() {
+    /**
+     * Passes the current turn.
+     */
+    public final void passTurn() {
         passCounter++;
         endTurn();
     }
 
-    public int getPhase() {
+    /**
+     * @return the current phase of the game
+     */
+    public final int getPhase() {
         return phase;
     }
 
-    public int getTimeLeft() {
+    /**
+     * @return the time left in this turn
+     */
+    public final int getTimeLeft() {
         return timeLeft;
     }
 
-    public void setTurnover(boolean turnover) {
+    /**
+     * Sets whether the turn is over or not.
+     * @param turnover whether the turn is over
+     */
+    public final void setTurnover(final boolean turnover) {
         this.turnover = turnover;
     }
 
-    public boolean getTurnOver() { return turnover; }
+    /**
+     * @return whether the turn is over
+     */
+    public final boolean getTurnOver() {
+        return turnover;
+    }
 
-    public void setTimeLeft(int timeLeft) {
+    /**
+     * Sets the time left in the turn.
+     * @param timeLeft the amount of time left in the game
+     */
+    public final void setTimeLeft(final int timeLeft) {
         this.timeLeft = timeLeft;
     }
 
-    public Player getCurrentPlayer() {
+    /**
+     * @return the current player
+     */
+    public final Player getCurrentPlayer() {
         return playerOrder[playerCounter];
     }
 
-    public Player getPlayer(int id) { return players[id]; }
+    /**
+     * Gets a player based on their id.
+     * @param id the player's id
+     * @return the player whose id was passed
+     */
+    public final Player getPlayer(final int id) {
+        return players[id];
+    }
 
-    public Turn getTurn() {
+    /**
+     * @return the current turn
+     */
+    public final Turn getTurn() {
         return currentTurn;
     }
 
-    public Map getMap() {
+    /**
+     * @return the map
+     */
+    public final Map getMap() {
         return map;
     }
 
-    public int getPlayerCount() {
+    /**
+     * @return the amount of players in the game
+     */
+    public final int getPlayerCount() {
         return players.length;
     }
 
-    public int getPassCounter() {
+    /**
+     * @return the amount of passes
+     */
+    public final int getPassCounter() {
         return passCounter;
     }
 
-    public int getPlayerCounter() {
+    /**
+     * @return the current Player this turn
+     */
+    public final int getPlayerCounter() {
         return playerCounter;
     }
 
-    public Store getStore() {
+    /**
+     * @return the store
+     */
+    public final Store getStore() {
         return store;
     }
 
-    public int getRoundCounter() {
+    /**
+     * @return the current round
+     */
+    public final int getRoundCounter() {
         return roundCounter;
     }
 
-    public Player[] getPlayers() {
+    /**
+     * @return the array of Players
+     */
+    public final Player[] getPlayers() {
         return players;
     }
 
-    public String getGameLog() {
+    /**
+     * @return a string representing the events of the game
+     */
+    public final String getGameLog() {
         return gameLog;
     }
 
-    public int getDifficulty() { return difficulty; }
+    /**
+     * @return the difficulty of the game
+     */
+    public final int getDifficulty() {
+        return difficulty;
+    }
 
-    public String getMapType() {
+    /**
+     * @return the map type
+     */
+    public final String getMapType() {
         return mapType;
     }
 
-    public void logEvent(String event) {
+    /**
+     * Adds an event to the game log.
+     * @param event the event to be added to teh game log
+     */
+    public final void logEvent(final String event) {
         gameLog += event + "\n";
     }
 
-    public void setGameLog(String gameLog) {
+    /**
+     * Sets the game log to a given string.
+     * @param gameLog the string for the game log to be set to
+     */
+    public final void setGameLog(final String gameLog) {
         this.gameLog = gameLog;
     }
 
-    public String getLeaderBoard() {
+    /**
+     * Generates the leaderboard for the game.
+     * @return a leaderboard of Players and their scores
+     */
+    public final String getLeaderBoard() {
         String leaderBoard = "";
 
         for (Player p : playerOrder) {
@@ -175,7 +309,10 @@ public class Game implements java.io.Serializable{
         return leaderBoard;
     }
 
-    public void reorderPlayers() {
+    /**
+     * Re-Orders Players based on their score.
+     */
+    public final void reorderPlayers() {
         for (int i = 0; i < playerOrder.length - 1; i++) {
             int maxIndex = i;
             for (int j = i + 1; j < playerOrder.length; j++) {
@@ -191,7 +328,10 @@ public class Game implements java.io.Serializable{
         }
     }
 
-    public Player getLosingPlayer() {
+    /**
+     * @return the Player in last place
+     */
+    public final Player getLosingPlayer() {
         Player lastPlace = playerOrder[0];
         for (Player p : playerOrder) {
             if (p.getScore() < lastPlace.getScore()) {
@@ -201,11 +341,19 @@ public class Game implements java.io.Serializable{
         return lastPlace;
     }
 
-    public void setMap(Tile[][] tiles) {
+    /**
+     * Sets the map to a new map with the given tiles.
+     * @param tiles the tiles for the new map
+     */
+    public final void setMap(final Tile[][] tiles) {
         map = new Map(this, tiles);
     }
 
-    public void setPlayers(Player[] players) {
+    /**
+     * Sets the players to the given array of Players.
+     * @param players the array of Players for the Players to be set as
+     */
+    public final void setPlayers(final Player[] players) {
         this.players = players;
         this.playerOrder = players;
     }
