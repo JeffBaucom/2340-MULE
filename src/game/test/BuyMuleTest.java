@@ -12,8 +12,8 @@ public class BuyMuleTest extends TestCase {
 
     protected void setUp() {
         game = new Game(2, 0, "standard");
-        game.newPlayer(0, 0, “Player 1”, "red", "Human");
-        game.newPlayer(1, 0, “Player 2”, “yellow”, "Flapper");
+        game.newPlayer(0, 0, "Player 1", "red", "Human");
+        game.newPlayer(1, 0, "Player 2", "yellow", "Flapper");
         game.startGame();
         theStore = game.getStore();
     }
@@ -21,10 +21,10 @@ public class BuyMuleTest extends TestCase {
     public void testBuyMule() {
         Player p = game.getCurrentPlayer();
         int curPlayerMule = p.getMule();
-        int curStoreMule = theStore.getStock(“mule”);
+        int curStoreMule = theStore.getStock("mule");
         boolean boughtMule = game.getTurn().buyMuleStore(1);
         assertTrue(p.getMule() == 1);
-        assertTrue(theStore.getStock(“mule”) == curStoreMule - 1);
+        assertTrue(theStore.getStock("mule") == curStoreMule - 1);
         assertTrue(boughtFood);
 
     }
@@ -38,7 +38,7 @@ public class BuyMuleTest extends TestCase {
 
     public void testInsuffFunds() {
         Player p = game.getCurrentPlayer();
-        p.set(“money”, 0);
+        p.set("money", 0);
         boolean boughtMule = game.getTurn().buyMuleStore(1);
         assertFalse(boughtMule);
     }
