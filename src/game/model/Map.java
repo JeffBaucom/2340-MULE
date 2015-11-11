@@ -2,12 +2,28 @@ package game.model;
 
 import java.util.Random;
 
-
-public class Map implements java.io.Serializable{
+/**
+ * class representing the game map.
+ */
+public final class Map implements java.io.Serializable{
+    /**
+     * the game object.
+     */
     private Game game;
+
+    /**
+     * 2D array of tile objects.
+     */
     private Tile[][] tiles;
+
+    /**
+     * the currently selected tile as a tile object.
+     */
     private Tile selectedTile;
 
+    /**
+     *
+     */
     private String[] randTileString;
     public int tilesRemaining;
 

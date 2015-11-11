@@ -29,7 +29,7 @@ public class SellStoreTest extends TestCase{
         boolean test = game.getTurn().sellStore("food", amount);
         assertTrue(test);
         assertTrue(store.getStock("food") == currStoreFood + amount);
-        assertTrue(p.get("money") == currMoney + (amount*store.getCost("food")));
+        assertTrue(p.get("money") == currMoney + (amount * store.getCost("food")));
         assertTrue(p.get("food") == currFood - amount);
     }
 
@@ -58,6 +58,19 @@ public class SellStoreTest extends TestCase{
         assertTrue(p.get("money") == currMoney);
         assertTrue(p.get("food") == currFood);
 
+    }
+
+    public void testOutOfBoundsFood() {
+        Player p = game.getCurrentPlayer();
+        int currFood = p.get("food");
+        int currMoney = p.get("money");
+        int currStoreFood = store.getStock("food");
+        int amount = -1;
+        boolean test = game.getTurn().sellStore("food", amount);
+        assertFalse(test);
+        assertTrue(store.getStock("food") == currStoreFood);
+        assertTrue(p.get("money") == currMoney);
+        assertTrue(p.get("food") == currFood);
     }
 
 }
