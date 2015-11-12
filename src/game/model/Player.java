@@ -2,6 +2,8 @@ package game.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Class that contains all information relevant to a player.
@@ -17,10 +19,16 @@ public class Player implements java.io.Serializable {
     private int id, properties, mule;
 
     /** The player's resources and amounts. */
-    private HashMap<String, Integer> resources;
+    private Map<String, Integer> resources;
 
     /** The player's owned tiles. */
-    private ArrayList<Tile> tiles;
+    private List<Tile> tiles;
+
+    private static final String MONEY = "money";
+    private static final String FOOD = "food";
+    private static final String ENERGY = "energy";
+    private static final String SMITHORE = "smithore";
+    private static final String CRYSTITE = "crystite";
 
     /**
      * Constructs a player.
@@ -40,23 +48,23 @@ public class Player implements java.io.Serializable {
         this.color = color;
         this.race = race;
 
-        if (race == "flapper") {
-            resources.put("money", 1600);
-        } else if (race == "human") {
-            resources.put("money", 600);
+        if (race.equals("flapper")) {
+            resources.put(MONEY, 1600);
+        } else if (race.equals("human")) {
+            resources.put(MONEY, 600);
         } else {
-            resources.put("money", 1000);
+            resources.put(MONEY, 1000);
         }
         if (difficulty == 0) {
-            resources.put("food", 8);
-            resources.put("energy", 4);
-            resources.put("smithore", 0);
-            resources.put("crystite", 0);
+            resources.put(FOOD, 8);
+            resources.put(ENERGY, 4);
+            resources.put(SMITHORE, 0);
+            resources.put(CRYSTITE, 0);
         } else {
-            resources.put("food", 4);
-            resources.put("energy", 2);
-            resources.put("smithore", 0);
-            resources.put("crystite", 0);
+            resources.put(FOOD, 4);
+            resources.put(ENERGY, 2);
+            resources.put(SMITHORE, 0);
+            resources.put(CRYSTITE, 0);
         }
     }
 
@@ -134,9 +142,9 @@ public class Player implements java.io.Serializable {
      * @return the player's score
      */
     public final int getScore() {
-        return this.properties * 500 + resources.get("money")
-                + resources.get("energy") * 25 + resources.get("smithore") * 50
-                + resources.get("food") * 30;
+        return this.properties * 500 + resources.get(MONEY)
+                + resources.get(ENERGY) * 25 + resources.get("smithore") * 50
+                + resources.get(FOOD) * 30;
     }
 
     /**
@@ -144,11 +152,11 @@ public class Player implements java.io.Serializable {
      */
     public final String getResourceString() {
         String resourceString = "";
-        resourceString += "Money: " + resources.get("money")
-                + "\t\tSmithore: " + resources.get("smithore") + "\n";
-        resourceString += "Food: " + resources.get("food") + "\t\t\tCrystite: "
-                + resources.get("crystite") + "\n";
-        resourceString += "Energy: " + resources.get("energy") + "\t\t\tMule: "
+        resourceString += "Money: " + resources.get(MONEY)
+                + "\t\tSmithore: " + resources.get(SMITHORE) + "\n";
+        resourceString += "Food: " + resources.get(FOOD) + "\t\t\tCrystite: "
+                + resources.get(CRYSTITE) + "\n";
+        resourceString += "Energy: " + resources.get(ENERGY) + "\t\t\tMule: "
                 + mule + "\n";
 
         return resourceString;
@@ -159,14 +167,14 @@ public class Player implements java.io.Serializable {
      */
     public final void updateProduction() {
         for (Tile t : tiles) {
-            if (get("energy") > 0) {
-                add("food", t.getProduction("food"));
-                add("energy", t.getProduction("energy"));
-                add("crystite", t.getProduction("crystite"));
-                add("smithore", t.getProduction("smithore"));
+            if (get(ENERGY) > 0) {
+                add(FOOD, t.getProduction(FOOD));
+                add(ENERGY, t.getProduction(ENERGY));
+                add(CRYSTITE, t.getProduction(CRYSTITE));
+                add(SMITHORE, t.getProduction(SMITHORE));
 
                 if (!(t.getMule() == 0)) {
-                    add("energy", -1);
+                    add(ENERGY, -1);
                 }
             }
         }

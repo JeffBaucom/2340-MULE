@@ -1,11 +1,15 @@
 package game.model;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * The Store class.
  */
 public class Store implements java.io.Serializable {
+    private static final String MONEY = "money";
+    private static final String MULE = "mule";
+
     /**
      * The Game this Store will be part of.
      */
@@ -14,7 +18,7 @@ public class Store implements java.io.Serializable {
     /**
      * Holds the stock and unit price of each item.
      */
-    private HashMap<String, Integer> stock, cost;
+    private Map<String, Integer> stock, cost;
 
     /**
      * The amount of money.
@@ -34,13 +38,13 @@ public class Store implements java.io.Serializable {
             stock.put("energy", 16);
             stock.put("smithore", 0);
             stock.put("crystite", 0);
-            stock.put("mule", 25);
+            stock.put(MULE, 25);
         } else {
             stock.put("food", 8);
             stock.put("energy", 8);
             stock.put("smithore", 8);
             stock.put("crystite", 0);
-            stock.put("mule", 16);
+            stock.put(MULE, 16);
         }
 
         cost = new HashMap<String, Integer>();
@@ -48,7 +52,7 @@ public class Store implements java.io.Serializable {
         cost.put("energy", 10);
         cost.put("smithore", 10);
         cost.put("crystite", 10);
-        cost.put("mule", 100);
+        cost.put(MULE, 100);
         money = 1000;
 
     }
@@ -84,7 +88,7 @@ public class Store implements java.io.Serializable {
                 int initialAmt = stock.get(resource);
                 player.set(resource, player.get(resource) + amount);
                 stock.replace(resource, initialAmt - amount);
-                player.set("money", player.get("money")
+                player.set(MONEY, player.get(MONEY)
                         - amount * cost.get(resource));
                 game.logEvent(player.getName() + " has purchased "
                         + amount + " " + resource + ".");
@@ -105,7 +109,7 @@ public class Store implements java.io.Serializable {
         int initialAmt = stock.get(resource);
         player.set(resource, player.get(resource) - amount);
         stock.replace(resource, initialAmt + amount);
-        player.set("money", player.get("money") + amount * cost.get(resource));
+        player.set(MONEY, player.get(MONEY) + amount * cost.get(resource));
     }
 
     /**
@@ -114,11 +118,11 @@ public class Store implements java.io.Serializable {
      * @param player The player buying the mule.
      */
     public final void buyMule(final int muleType, final Player player) {
-        if (stock.get("mule") > 0 && player.getMule() == 0) {
+        if (stock.get(MULE) > 0 && player.getMule() == 0) {
             player.setMule(muleType);
-            stock.replace("mule", stock.get("mule") - 1);
-            int muleCost = cost.get("mule") + muleType * 25;
-            player.set("money", player.get("money") - muleCost);
+            stock.replace(MULE, stock.get(MULE) - 1);
+            int muleCost = cost.get(MULE) + muleType * 25;
+            player.set(MONEY, player.get(MONEY) - muleCost);
         }
     }
 

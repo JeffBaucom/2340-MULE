@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import com.google.gson.Gson;
 import game.model.GameData;
-import game.model.Player;
 import game.view.GameScreenController;
 import game.view.ScreenStackController;
 import game.model.Game;
@@ -25,24 +24,24 @@ public class Main extends Application {
     private BorderPane rootLayout;
     private ScreenStackController screenStack;
 
-    private final String MAIN = "/game/view/MainScreen.fxml";
-    private final String PLAYER_CONFIG = "/game/view/PlayerConfig.fxml";
-    private final String GAME_SCREEN = "/game/view/GameScreen.fxml";
-    private final String MAP = "/game/view/Map.fxml";
-    private final String TOWN = "/game/view/Town.fxml";
-    private final String STORE = "/game/view/Store.fxml";
-    private final String GAME_SAVE = "out/game/resources/save/save.txt";
+    private static final String MAIN = "/game/view/MainScreen.fxml";
+    private static final String PLAYER_CONFIG = "/game/view/PlayerConfig.fxml";
+    private static final String GAME_SCREEN = "/game/view/GameScreen.fxml";
+    private static final String MAP = "/game/view/Map.fxml";
+    private static final String TOWN = "/game/view/Town.fxml";
+    private static final String STORE = "/game/view/Store.fxml";
+    private static final String GAME_SAVE = "out/game/resources/save/save.txt";
 
     private static Main main;
     private GameScreenController gameScreenController;
     private Game game;
 
-    MediaPlayer mediaPlayer;
-    String MUSIC_FILE = "src/game/resources/music/background.mp3";
+    private MediaPlayer mediaPlayer;
+    private String MUSICFILE = "src/game/resources/music/background.mp3";
 
     @Override
     public void start(Stage primaryStage) {
-        Media sound = new Media(new File(MUSIC_FILE).toURI().toString());
+        Media sound = new Media(new File(MUSICFILE).toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
@@ -99,7 +98,6 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
-        System.out.println(gameScreenController);
         screenStack.loadScreen("map", MAP);
         screenStack.loadScreen("town",  TOWN);
         screenStack.loadScreen("store", STORE);
@@ -168,7 +166,6 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
-        System.out.println(gameScreenController);
         screenStack.loadScreen("map", MAP);
         screenStack.loadScreen("town",  TOWN);
         screenStack.loadScreen("store", STORE);

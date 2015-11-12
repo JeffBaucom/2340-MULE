@@ -1,8 +1,6 @@
 package game.view;
 
-import game.Main;
 import game.model.Game;
-import game.model.Player;
 import game.model.Store;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -28,11 +26,15 @@ public class StoreController extends Controller {
     @FXML
     TextField crystiteField;
 
-    Game game;
-    Player player;
-    Store store;
-    GameScreenController gameScreenController;
-    int food, energy, smithore, crystite, mule;
+    private Game game;
+    private Store store;
+    private GameScreenController gameScreenController;
+    private int food, energy, smithore, crystite, mule;
+
+    private static final String FOOD = "food";
+    private static final String ENERGY = "energy";
+    private static final String SMITHORE = "smithore";
+    private static final String CRYSTITE = "crystite";
 
     /**
      * The constructor.
@@ -50,12 +52,11 @@ public class StoreController extends Controller {
     private void initialize() {
         game = main.getGame();
         store = game.getStore();
-        player = game.getCurrentPlayer();
 
-        food = store.getStock("food");
-        energy = store.getStock("energy");
-        smithore = store.getStock("smithore");
-        crystite = store.getStock("crystite");
+        food = store.getStock(FOOD);
+        energy = store.getStock(ENERGY);
+        smithore = store.getStock(SMITHORE);
+        crystite = store.getStock(CRYSTITE);
         mule = store.getStock("mule");
 
         foodField.setText("0");
@@ -98,12 +99,11 @@ public class StoreController extends Controller {
     }
 
     private void updateResources() {
-        food = store.getStock("food");
-        energy = store.getStock("energy");
-        smithore = store.getStock("smithore");
-        crystite = store.getStock("crystite");
+        food = store.getStock(FOOD);
+        energy = store.getStock(ENERGY);
+        smithore = store.getStock(SMITHORE);
+        crystite = store.getStock(CRYSTITE);
 
-        // TODO: Add mule stock
         foodLabel.setText("Food: " + food );
         energyLabel.setText("Energy: " + energy);
         smithoreLabel.setText("Smithore: " + smithore);
@@ -129,16 +129,16 @@ public class StoreController extends Controller {
         int crystite = Integer.parseInt(crystiteField.getText().matches("\\d+") ?
                 crystiteField.getText() : "0");
 
-        int cost = food * store.getCost("food") + energy
-                * store.getCost("energy") + smithore
-                * store.getCost("smithore") + crystite
-                * store.getCost("crystite");
+        int cost = food * store.getCost(FOOD) + energy
+                * store.getCost(ENERGY) + smithore
+                * store.getCost(SMITHORE) + crystite
+                * store.getCost(CRYSTITE);
 
         if (cost <= game.getCurrentPlayer().get("money")) {
-            game.getTurn().buyStore("food", food);
-            game.getTurn().buyStore("energy", energy);
-            game.getTurn().buyStore("smithore", smithore);
-            game.getTurn().buyStore("crystite", crystite);
+            game.getTurn().buyStore(FOOD, food);
+            game.getTurn().buyStore(ENERGY, energy);
+            game.getTurn().buyStore(SMITHORE, smithore);
+            game.getTurn().buyStore(CRYSTITE, crystite);
         } else {
             game.logEvent("You don't have enough money.");
         }
@@ -159,17 +159,16 @@ public class StoreController extends Controller {
         int crystite = Integer.parseInt(crystiteField.getText().matches("\\d") ?
                 crystiteField.getText() : "0");
 
-        // TODO: Use else statements to return input error
-        if (game.getTurn().sellStore("food", food)) {
+        if (game.getTurn().sellStore(FOOD, food)) {
             updateResources();
         }
-        if (game.getTurn().sellStore("energy", energy)) {
+        if (game.getTurn().sellStore(ENERGY, energy)) {
             updateResources();
         }
-        if (game.getTurn().sellStore("smithore", smithore)) {
+        if (game.getTurn().sellStore(SMITHORE, smithore)) {
             updateResources();
         }
-        if (game.getTurn().sellStore("crystite", crystite)) {
+        if (game.getTurn().sellStore(CRYSTITE, crystite)) {
             updateResources();
         }
 

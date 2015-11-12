@@ -50,8 +50,7 @@ public class Game implements java.io.Serializable {
         this.store = new Store(this);
 
         this.mapType = mapType;
-        this.map = new Map(this, mapType);
-        map.setGame(this);
+        this.map = new Map(mapType);
         gameLog = "";
     }
 
@@ -99,7 +98,7 @@ public class Game implements java.io.Serializable {
      * @param timeLeft the time left
      * @param turnover whether the turn is over
      */
-    public final void goToTurn(final int playerCounter, final int roundCounter,
+    public final void goToTurn(int playerCounter, final int roundCounter,
                                final int passCounter, final int phase, final
                                int timeLeft, final boolean turnover) {
         this.playerCounter = playerCounter;
@@ -346,7 +345,7 @@ public class Game implements java.io.Serializable {
      * @param tiles the tiles for the new map
      */
     public final void setMap(final Tile[][] tiles) {
-        map = new Map(this, tiles);
+        map = new Map(tiles);
     }
 
     /**

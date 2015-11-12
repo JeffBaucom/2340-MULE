@@ -7,11 +7,6 @@ import java.util.Random;
  */
 public final class Map implements java.io.Serializable {
     /**
-     * the game object.
-     */
-    private Game game;
-
-    /**
      * 2D array of tile objects.
      */
     private Tile[][] tiles;
@@ -31,42 +26,41 @@ public final class Map implements java.io.Serializable {
      * @param game the current instance of game
      * @param mapType the type of map
      */
-    public Map(final Game game, final String mapType) {
-        this.game = game;
+    public Map(final String mapType) {
         tiles = new Tile[5][9];
         if (mapType.equals("standard")) {
             for (int i = 0; i < 5; i++) {
                 for (int j = 0; j < 9; j++) {
-                    tiles[i][j] = new Tile(game, "P", i, j);
+                    tiles[i][j] = new Tile("P", i, j);
                 }
             }
 
             for (int i = 0; i < 5; i++) {
-                tiles[i][4] = new Tile(game, "R", i, 4);
+                tiles[i][4] = new Tile("R", i, 4);
             }
 
-            tiles[2][4] = new Tile(game, "T", 2, 4);
-            tiles[0][2] = new Tile(game, "M1", 0, 2);
-            tiles[1][1] = new Tile(game, "M1", 1, 1);
-            tiles[2][8] = new Tile(game, "M1", 2, 8);
-            tiles[3][1] = new Tile(game, "M2", 3, 1);
-            tiles[3][6] = new Tile(game, "M2", 3, 6);
-            tiles[4][2] = new Tile(game, "M2", 4, 2);
-            tiles[4][8] = new Tile(game, "M2", 4, 8);
-            tiles[0][6] = new Tile(game, "M3", 0, 6);
-            tiles[1][8] = new Tile(game, "M3", 1, 8);
-            tiles[2][0] = new Tile(game, "M3", 2, 0);
+            tiles[2][4] = new Tile("T", 2, 4);
+            tiles[0][2] = new Tile("M1", 0, 2);
+            tiles[1][1] = new Tile("M1", 1, 1);
+            tiles[2][8] = new Tile("M1", 2, 8);
+            tiles[3][1] = new Tile("M2", 3, 1);
+            tiles[3][6] = new Tile("M2", 3, 6);
+            tiles[4][2] = new Tile("M2", 4, 2);
+            tiles[4][8] = new Tile("M2", 4, 8);
+            tiles[0][6] = new Tile("M3", 0, 6);
+            tiles[1][8] = new Tile("M3", 1, 8);
+            tiles[2][0] = new Tile("M3", 2, 0);
         } else {
             randTileString = randomizeMap();
             int k = 0;
             for (int i = 0; i < 5; i++) {
                 for (int j = 0; j < 9; j++) {
-                    tiles[i][j] = new Tile(game, randTileString[k], i, j);
+                    tiles[i][j] = new Tile(randTileString[k], i, j);
                     k++;
                 }
             }
 
-            tiles[2][4] = new Tile(game, "T", 2, 4);
+            tiles[2][4] = new Tile("T", 2, 4);
         }
 
         this.tilesRemaining = 44;
@@ -77,8 +71,7 @@ public final class Map implements java.io.Serializable {
      * @param game the current instance of game
      * @param tiles the tiles in the new map
      */
-    public Map(final Game game, final Tile[][] tiles) {
-        this.game = game;
+    public Map(final Tile[][] tiles) {
         this.tiles = tiles;
     }
 
@@ -91,9 +84,6 @@ public final class Map implements java.io.Serializable {
         for (int i = 0; i < 45; i++) {
             Random rand = new Random();
             switch (rand.nextInt(6)) {
-                default:
-                    string[i] = "P";
-                    break;
                 case 1:
                     string[i] = "R";
                     break;
@@ -108,6 +98,9 @@ public final class Map implements java.io.Serializable {
                     break;
                 case 5:
                     string[i] = "F";
+                default:
+                    string[i] = "P";
+                    break;
             }
         }
 
@@ -138,14 +131,6 @@ public final class Map implements java.io.Serializable {
      */
     public void setSelectedTile(final int row, final int col) {
         selectedTile = tiles[row][col];
-    }
-
-    /**
-     * Sets the current instance of game.
-     * @param game the current instance of game
-     */
-    public void setGame(final Game game) {
-        this.game = game;
     }
 
     /**

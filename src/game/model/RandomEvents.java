@@ -1,6 +1,7 @@
 package game.model;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -8,11 +9,13 @@ import java.util.Random;
  */
 public class RandomEvents implements java.io.Serializable {
     /** A string of random event messages. */
-    private ArrayList<String> events;
+    private List<String> events;
     /** Numbers to help generate random events. */
     private int rand3Num, rand4Num, rand5Num, rand7Num;
     /** The instance of game. */
     private Game game;
+
+    private static final String MONEY = "money";
 
     /**
      *  Instantiates a random event.
@@ -92,15 +95,15 @@ public class RandomEvents implements java.io.Serializable {
         } else if (event == 1) {
             p.add("smithore", 2);
         } else if (event == 2) {
-            p.add("money", rand3Num);
+            p.add(MONEY, rand3Num);
         } else if (event == 3) {
-            p.add("money", rand4Num);
+            p.add(MONEY, rand4Num);
         } else if (event == 4) {
-            p.add("money", -1 * rand5Num);
+            p.add(MONEY, -1 * rand5Num);
         } else if (event == 5) {
             p.set("food", (p.get("food") / 2));
         } else {
-            p.add("money", -1 * rand7Num);
+            p.add(MONEY, -1 * rand7Num);
         }
         return events.get(event);
     }

@@ -1,6 +1,5 @@
 package game.view;
 
-import game.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -8,10 +7,11 @@ import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 public class ScreenStackController extends StackPane {
-    private HashMap<String, Node> screens = new HashMap<String, Node>();
-    private HashMap<String, Controller> controllers = new HashMap<String, Controller>();
+    private Map<String, Node> screens = new HashMap<String, Node>();
+    private Map<String, Controller> controllers = new HashMap<String, Controller>();
 
     /** Add screen and controller to relevant HashMaps
      */

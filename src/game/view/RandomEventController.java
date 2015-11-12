@@ -5,7 +5,7 @@ import javafx.scene.text.Text;
 
 public class RandomEventController extends Controller {
     @FXML
-    Text randomEventMessage;
+    private Text randomEventMessage;
 
     @FXML
     public void initialize() {

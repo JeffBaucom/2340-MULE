@@ -30,9 +30,9 @@ public class PlayerConfigController extends Controller {
     @FXML
     RadioButton yellow;
 
-    int playerIndex;
-    String playerName, colorValue, raceValue;
-    Game game;
+    private int playerIndex;
+    private String playerName, colorValue, raceValue;
+    private Game game;
 
     /**
      * Initializes the controller class. This method is automatically called
@@ -60,14 +60,23 @@ public class PlayerConfigController extends Controller {
 
         playerName = playerNameField.getText();
 
-        if (red.isSelected()) colorValue = "red";
-        else if (blue.isSelected()) colorValue = "blue";
-        else if (yellow.isSelected()) colorValue = "yellow";
-        else colorValue = "green";
+        if (red.isSelected()) {
+            colorValue = "red";
+        } else if (blue.isSelected()) {
+            colorValue = "blue";
+        } else if (yellow.isSelected()) {
+            colorValue = "yellow";
+        } else {
+            colorValue = "green";
+        }
 
-        if (flapper.isSelected()) raceValue = "flapper";
-        else if (human.isSelected()) raceValue = "human";
-        else raceValue = "other";
+        if (flapper.isSelected()) {
+            raceValue = "flapper";
+        } else if (human.isSelected()) {
+            raceValue = "human";
+        } else {
+            raceValue = "other";
+        }
 
         game.newPlayer(playerIndex, game.getDifficulty(), playerName, colorValue, raceValue);
 

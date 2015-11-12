@@ -13,12 +13,11 @@ public class Tile implements java.io.Serializable {
 
     /**
      * Constructs a tile.
-     * @param game the current instance of game
      * @param type the type of tile
      * @param row the tile's row
      * @param col the tile's column
      */
-    public Tile(final Game game, final String type, final int row, final int
+    public Tile(final String type, final int row, final int
             col) {
         this.type = type;
         this.ownerID = -1;
@@ -67,9 +66,9 @@ public class Tile implements java.io.Serializable {
     public final int getMule() {
         if (mule == null) {
             return 0;
-        } else if (mule == "food") {
+        } else if (mule.equals("food")) {
             return 1;
-        } else if (mule == "energy") {
+        } else if (mule.equals("energy")) {
             return 2;
         } else {
             return 3;
@@ -98,31 +97,31 @@ public class Tile implements java.io.Serializable {
     public final int getProduction(final String resource) {
         int production = 0;
 
-        if (resource == mule) {
-            if (resource == "food") {
-                if (type == "R") {
+        if (resource.equals(mule)) {
+            if (resource.equals("food")) {
+                if (type.equals("R")) {
                     production += 4;
-                } else if (type == "P") {
+                } else if (type.equals("P")) {
                     production += 2;
                 } else {
                     production += 1;
                 }
-            } else if (resource == "energy") {
-                if (type == "R") {
+            } else if (resource.equals("energy")) {
+                if (type.equals("R")) {
                     production += 2;
-                } else if (type == "P") {
+                } else if (type.equals("P")) {
                     production += 3;
                 } else {
                     production += 1;
                 }
-            } else if (resource == "smithore") {
-                if (type == "R") {
+            } else if (resource.equals("smithore")) {
+                if (type.equals("R")) {
                     production += 0;
-                } else if (type == "P") {
+                } else if (type.equals("P")) {
                     production += 1;
-                } else if (type == "M1") {
+                } else if (type.equals("M1")) {
                     production += 2;
-                } else if (type == "M2") {
+                } else if (type.equals("M2")) {
                     production += 3;
                 } else {
                     production += 4;

@@ -1,10 +1,9 @@
 package game.view;
 
-import game.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 
-public class MainScreenController extends Controller{
+public class MainScreenController extends Controller {
     @FXML
     RadioButton players2;
     @FXML
@@ -22,9 +21,9 @@ public class MainScreenController extends Controller{
     @FXML
     RadioButton standard;
 
-    int playerCount;
-    int difficulty;
-    String mapType;
+    private int playerCount;
+    private int difficulty;
+    private String mapType;
 
     /**
      * The constructor.
@@ -48,16 +47,27 @@ public class MainScreenController extends Controller{
      */
     @FXML
     private void handleNewGame() {
-        if(players2.isSelected()) playerCount = 2;
-        else if(players3.isSelected()) playerCount = 3;
-        else playerCount = 4;
+        if(players2.isSelected()) {
+            playerCount = 2;
+        } else if(players3.isSelected()) {
+            playerCount = 3;
+        } else {
+            playerCount = 4;
+        }
 
-        if(beginner.isSelected()) difficulty = 0;
-        else if(standardDiff.isSelected()) difficulty = 1;
-        else difficulty = 2;
+        if(beginner.isSelected()) {
+            difficulty = 0;
+        } else if(standardDiff.isSelected()) {
+            difficulty = 1;
+        } else {
+            difficulty = 2;
+        }
 
-        if(standard.isSelected()) mapType = "standard";
-        else mapType = "random";
+        if(standard.isSelected()) {
+            mapType = "standard";
+        } else {
+            mapType = "random";
+        }
 
         main.closeScreen();
         main.newGame(playerCount, difficulty, mapType);

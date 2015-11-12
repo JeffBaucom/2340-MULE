@@ -6,8 +6,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
 public class TownController extends Controller {
-    Game game;
-    GameScreenController gameScreenController;
+    private Game game;
+    private GameScreenController gameScreenController;
 
     @FXML
     AnchorPane background;
@@ -18,7 +18,7 @@ public class TownController extends Controller {
     }
 
     @FXML
-    public void initialize() {
+    public final void initialize() {
         BackgroundImage myBI= new BackgroundImage(new Image
                 ("/game/resources/images/townSquare.png"),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
