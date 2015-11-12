@@ -186,7 +186,7 @@ public class Turn implements java.io.Serializable {
                 return true;
             }
         } else {
-            game.logEvent("You already have a Mule.");
+            game.logEvent("You already have the Mule.");
             return false;
         }
     }

@@ -21,21 +21,24 @@ public final class Map implements java.io.Serializable {
     /** The number of tiles remaining on the map. */
     private int tilesRemaining;
 
+    private static final int WIDTH = 9;
+    private static final int HEIGHT = 5;
+
     /**
      * Construct a new Map.
      * @param game the current instance of game
      * @param mapType the type of map
      */
     public Map(final String mapType) {
-        tiles = new Tile[5][9];
+        tiles = new Tile[HEIGHT][WIDTH];
         if (mapType.equals("standard")) {
-            for (int i = 0; i < 5; i++) {
-                for (int j = 0; j < 9; j++) {
+            for (int i = 0; i < HEIGHT; i++) {
+                for (int j = 0; j < WIDTH; j++) {
                     tiles[i][j] = new Tile("P", i, j);
                 }
             }
 
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < HEIGHT; i++) {
                 tiles[i][4] = new Tile("R", i, 4);
             }
 
@@ -53,8 +56,8 @@ public final class Map implements java.io.Serializable {
         } else {
             randTileString = randomizeMap();
             int k = 0;
-            for (int i = 0; i < 5; i++) {
-                for (int j = 0; j < 9; j++) {
+            for (int i = 0; i < HEIGHT; i++) {
+                for (int j = 0; j < WIDTH; j++) {
                     tiles[i][j] = new Tile(randTileString[k], i, j);
                     k++;
                 }
