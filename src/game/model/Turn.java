@@ -3,27 +3,39 @@ package game.model;
 import java.util.Random;
 
 /**
- * All information and actions relevant to a player's turn.
+ * class representing turns.
  */
 public class Turn implements java.io.Serializable {
-    /** The player passing the turn. */
+
+    /**
+     * the current player object.
+     */
     private Player player;
-    /** The current instance of game. */
+    /**
+     * the game object.
+     */
     private Game game;
-    /** The random event message. */
+    /**
+     * the random events object.
+     */
+    private RandomEvents randomEvents;
+    /**
+     * the message corresponding to the random event.
+     */
     private String randomEventMessage;
 
     private static final String MONEY = "money";
 
+
     /**
-     * Instantiates a Turn.
-     * @param player the current player
-     * @param game the isntance of game
+     *
+     * @param currPlayer the player object who has this turn
+     * @param theGame the game object
      */
-    public Turn(final Player player, final Game game) {
-        this.player = player;
-        this.game = game;
-        RandomEvents randomEvents = new RandomEvents(game);
+    public Turn(final Player currPlayer, final Game theGame) {
+        this.player = currPlayer;
+        this.game = theGame;
+        randomEvents = new RandomEvents(game);
         randomEventMessage = "";
 
         player.updateProduction();
@@ -35,9 +47,9 @@ public class Turn implements java.io.Serializable {
     }
 
     /**
-     * Places a mule.
-     * @param row the row of the tile
-     * @param col the column of the tile
+     *
+     * @param row the map row to place mule.
+     * @param col the map column to place mule.
      */
     public final void placeMule(final int row, final int col) {
         game.getMap().getTile(row, col).setMule(player.getMule());
@@ -45,17 +57,17 @@ public class Turn implements java.io.Serializable {
     }
 
     /**
-     * Ends the turn when a player loses a mule.
+     * Method that ends turn when Mule is lost.
      */
     public final void loseMule() {
         game.endTurn();
     }
 
     /**
-     * Buys a tile.
-     * @param row the row of the tile
-     * @param col the column of the tile
-     * @return whether the tile was bought
+     *
+     * @param row the row of the tile.
+     * @param col the column of the tile.
+     * @return boolean true if successful or false if unsuccessful.
      */
     public final boolean buyTile(final int row, final int col) {
         boolean boughtTile = false;
@@ -85,7 +97,7 @@ public class Turn implements java.io.Serializable {
     }
 
     /**
-     * Gambles and gives the player money.
+     * Method that handles gambling at the pub.
      */
     public final void gamble() {
         int timeLeft = game.getTimeLeft();
@@ -112,7 +124,8 @@ public class Turn implements java.io.Serializable {
             timeBonus = 50;
         }
 
-        int winnings = roundBonus + rand.nextInt(timeBonus);
+        int winnings = roundBonus + rand.nextInt(
+                timeBonus);
         if (winnings > 250) {
             winnings = 250;
         }
@@ -124,13 +137,13 @@ public class Turn implements java.io.Serializable {
     }
 
     /**
-     * Buys from the store.
-     * @param resource the desired resource
-     * @param amount the amount of that resource
-     * @return whether the resource was bought
+     *
+     * @param resource the resource being bought
+     * @param amount the amount to buy
+     * @return true if successful false if unsuccessful
      */
     public final boolean buyStore(final String resource, final int amount) {
-        if (game.getStore().getCost(resource) * amount > player.get(MONEY)) {
+        if (game.getStore().getCost(resource) * amount > player.get("money")) {
             return false;
         } else if (amount < 0) {
             return false;
@@ -141,10 +154,10 @@ public class Turn implements java.io.Serializable {
     }
 
     /**
-     * Sells to teh store.
-     * @param resource the desired resource
-     * @param amount the amount
-     * @return whether the resource was sold
+     *
+     * @param resource the resource being sold
+     * @param amount the amount to sell
+     * @return true if successful false if unsuccessful
      */
     public final boolean sellStore(final String resource, final int amount) {
         if (amount > player.get(resource)) {
@@ -159,9 +172,9 @@ public class Turn implements java.io.Serializable {
     }
 
     /**
-     * Buys a mule from the store.
-     * @param muleType type of mule
-     * @return whether the mule was bought
+     *
+     * @param muleType type of mule to buy
+     * @return true if successful false if unsuccessful
      */
     public final boolean buyMuleStore(final int muleType) {
         if (player.getMule() == 0) {
@@ -179,7 +192,8 @@ public class Turn implements java.io.Serializable {
     }
 
     /**
-     * @return the random event message
+     *
+     * @return the string describing the random event
      */
     public final String getRandomEventMessage() {
         return randomEventMessage;
