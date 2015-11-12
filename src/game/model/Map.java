@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * class representing the game map.
  */
-public final class Map implements java.io.Serializable{
+public final class Map implements java.io.Serializable {
     /**
      * the game object.
      */
@@ -21,13 +21,17 @@ public final class Map implements java.io.Serializable{
      */
     private Tile selectedTile;
 
-    /**
-     *
-     */
+    /** The string used to generate a random map. */
     private String[] randTileString;
-    public int tilesRemaining;
+    /** The number of tiles remaining on the map. */
+    private int tilesRemaining;
 
-    public Map(Game game, String mapType) {
+    /**
+     * Construct a new Map.
+     * @param game the current instance of game
+     * @param mapType the type of map
+     */
+    public Map(final Game game, final String mapType) {
         this.game = game;
         tiles = new Tile[5][9];
         if (mapType.equals("standard")) {
@@ -68,17 +72,26 @@ public final class Map implements java.io.Serializable{
         this.tilesRemaining = 44;
     }
 
-    public Map(Game game, Tile[][] tiles) {
+    /**
+     * Constructs a new map given a set of tiles.
+     * @param game the current instance of game
+     * @param tiles the tiles in the new map
+     */
+    public Map(final Game game, final Tile[][] tiles) {
         this.game = game;
         this.tiles = tiles;
     }
 
+    /**
+     * Generates a string used to generate a random map.
+     * @return a string to be used to generate a map
+     */
     public String[] randomizeMap() {
         String[] string = new String[45];
         for (int i = 0; i < 45; i++) {
             Random rand = new Random();
             switch (rand.nextInt(6)) {
-                case 0:
+                default:
                     string[i] = "P";
                     break;
                 case 1:
@@ -101,28 +114,57 @@ public final class Map implements java.io.Serializable{
         return string;
     }
 
-    public Tile getTile(int row, int col) {
+    /**
+     * Get a specified tile from the map.
+     * @param row the tile's row
+     * @param col the tile's column
+     * @return the desired tile
+     */
+    public Tile getTile(final int row, final int col) {
         return tiles[row][col];
     }
 
-    public Tile getSelectedTile() { return selectedTile; }
+    /**
+     * @return the selected tile
+     */
+    public Tile getSelectedTile() {
+        return selectedTile;
+    }
 
-    public void setSelectedTile(int row, int col) {
+    /**
+     * Sets the selected tile.
+     * @param row the row of the desired tile
+     * @param col the column of the desired tile
+     */
+    public void setSelectedTile(final int row, final int col) {
         selectedTile = tiles[row][col];
     }
 
-    public void setGame(Game game) {
+    /**
+     * Sets the current instance of game.
+     * @param game the current instance of game
+     */
+    public void setGame(final Game game) {
         this.game = game;
     }
 
+    /**
+     * Decrement the tiles remaining.
+     */
     public void removeTile() {
         this.tilesRemaining--;
     }
 
+    /**
+     * @return the number of remaining tiles
+     */
     public int getTilesRemaining() {
         return tilesRemaining;
     }
 
+    /**
+     * @return the array of tiles in the map
+     */
     public Tile[][] getTiles() {
         return tiles;
     }
