@@ -3,16 +3,28 @@ package game.model;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Class to handle the generation of Random Events.
+ */
 public class RandomEvents implements java.io.Serializable {
+    /** A string of random event messages. */
     private ArrayList<String> events;
+    /** Numbers to help generate random events. */
     private int rand3Num, rand4Num, rand5Num, rand7Num;
+    /** The instance of game. */
     private Game game;
 
-    public RandomEvents(Game game) {
+    /**
+     *  Instantiates a random event.
+     *  @param game the instance of game
+     */
+    public RandomEvents(final Game game) {
         this.game = game;
         events = new ArrayList<String>();
-        events.add("You just received a package from the GT Alumni containing 3 food and 2 energy units!");
-        events.add("A wandering Tech student repaid your hospitality by leaving two bars of ore!");
+        events.add("You just received a package from the GT Alumni "
+                + "containing 3 food and 2 energy units!");
+        events.add("A wandering Tech student repaid your hospitality by"
+                + "leaving two bars of ore!");
         if (game.getRoundCounter() < 3) {
             rand3Num = 8 * 25;
         } else if (game.getRoundCounter() >= 3 && game.getRoundCounter() < 7) {
@@ -22,7 +34,8 @@ public class RandomEvents implements java.io.Serializable {
         } else {
             rand3Num = 8 * 100;
         }
-        events.add("The museum bought your antique personal computer for $" + rand3Num + "!");
+        events.add("The museum bought your antique personal computer for $"
+                + rand3Num + "!");
         if (game.getRoundCounter() < 3) {
             rand4Num = 2 * 25;
         } else if (game.getRoundCounter() >= 3 && game.getRoundCounter() < 7) {
@@ -32,7 +45,8 @@ public class RandomEvents implements java.io.Serializable {
         } else {
             rand4Num = 2 * 100;
         }
-        events.add("You found a dead moose rat and sold the hide for $" + rand4Num + "!");
+        events.add("You found a dead moose rat and sold the hide for $"
+                + rand4Num + "!");
         if (game.getRoundCounter() < 3) {
             rand5Num = 4 * 25;
         } else if (game.getRoundCounter() >= 3 && game.getRoundCounter() < 7) {
@@ -42,8 +56,10 @@ public class RandomEvents implements java.io.Serializable {
         } else {
             rand5Num = 4 * 100;
         }
-        events.add("Flying cat-bugs ate the roof off your house. Repairs cost $" + rand5Num + ".");
-        events.add("Mischievous U(sic)GA students broke into your storage shed and stole half your food.");
+        events.add("Flying cat-bugs ate the roof off your house. Repairs cost $"
+                + rand5Num + ".");
+        events.add("Mischievous U(sic)GA students broke into your storage"
+                + "shed and stole half your food.");
         if (game.getRoundCounter() < 3) {
             rand7Num = 6 * 25;
         } else if (game.getRoundCounter() >= 3 && game.getRoundCounter() < 7) {
@@ -53,10 +69,16 @@ public class RandomEvents implements java.io.Serializable {
         } else {
             rand7Num = 6 * 100;
         }
-        events.add("Your space gypsy in-laws made a mess of the town. It cost you $" + rand7Num + " to clean it up.");
+        events.add("Your space gypsy in-laws made a mess of the town."
+                + "It cost you $" + rand7Num + " to clean it up.");
     }
 
-    public String getRandomEvent(Player p) {
+    /**
+     * Gets the message for a random event.
+     * @param p the pplayer the event is occuring for
+     * @return the random event message
+     */
+    public final String getRandomEvent(final Player p) {
         Random rand = new Random();
         int event;
         if (game.getCurrentPlayer() == game.getLosingPlayer()) {
@@ -74,11 +96,11 @@ public class RandomEvents implements java.io.Serializable {
         } else if (event == 3) {
             p.add("money", rand4Num);
         } else if (event == 4) {
-            p.add("money", -1*rand5Num);
+            p.add("money", -1 * rand5Num);
         } else if (event == 5) {
             p.set("food", (p.get("food") / 2));
         } else {
-            p.add("money", -1*rand7Num);
+            p.add("money", -1 * rand7Num);
         }
         return events.get(event);
     }

@@ -129,6 +129,4 @@ public class Store implements java.io.Serializable {
     public final int getMoney() {
         return money;
     }
-
-
 }
