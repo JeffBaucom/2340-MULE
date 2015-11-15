@@ -112,6 +112,10 @@ public class Player implements java.io.Serializable {
      */
     public final void set(final String resource, final int amount) {
         resources.replace(resource, amount);
+
+        if (get(resource) < 0) {
+            resources.replace(resource, 0);
+        }
     }
 
     /**
@@ -121,6 +125,10 @@ public class Player implements java.io.Serializable {
      */
     public final void add(final String resource, final int amount) {
         resources.replace(resource, resources.get(resource) + amount);
+
+        if (get(resource) < 0) {
+            resources.replace(resource, 0);
+        }
     }
 
     /**

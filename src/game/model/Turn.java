@@ -16,10 +16,6 @@ public class Turn implements java.io.Serializable {
      */
     private Game game;
     /**
-     * the random events object.
-     */
-    private RandomEvents randomEvents;
-    /**
      * the message corresponding to the random event.
      */
     private String randomEventMessage;
@@ -35,7 +31,7 @@ public class Turn implements java.io.Serializable {
     public Turn(final Player currPlayer, final Game theGame) {
         this.player = currPlayer;
         this.game = theGame;
-        randomEvents = new RandomEvents(game);
+        RandomEvents randomEvents = new RandomEvents(game);
         randomEventMessage = "";
 
         player.updateProduction();

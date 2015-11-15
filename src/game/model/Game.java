@@ -138,6 +138,10 @@ public class Game implements java.io.Serializable {
 
         currentId = playerOrder[playerCounter].getId();
         currentTurn = new Turn(playerOrder[playerCounter], this);
+
+        if (phase > 1) {
+            getCurrentPlayer().add("food", -1);
+        }
     }
 
     /**

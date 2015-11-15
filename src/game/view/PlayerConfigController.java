@@ -31,8 +31,7 @@ public class PlayerConfigController extends Controller {
     RadioButton yellow;
 
     private int playerIndex;
-    private String playerName, colorValue, raceValue;
-    private Game game;
+    private String colorValue, raceValue;
 
     /**
      * Initializes the controller class. This method is automatically called
@@ -56,9 +55,9 @@ public class PlayerConfigController extends Controller {
 
     @FXML
     private void handleNext() {
-        game = main.getGame();
+        Game game = main.getGame();
 
-        playerName = playerNameField.getText();
+        String playerName = playerNameField.getText();
 
         if (red.isSelected()) {
             colorValue = "red";

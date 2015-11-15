@@ -5,7 +5,7 @@ package game.model;
  */
 public class Tile implements java.io.Serializable {
     /** Integers that identify the tile. */
-    private int ownerID, row, col;
+    private int ownerID, row, col, crystite;
     /** The type of tile. */
     private String type;
     /** The type of mule on the tile. */
@@ -23,6 +23,13 @@ public class Tile implements java.io.Serializable {
         this.ownerID = -1;
         this.row = row;
         this.col = col;
+
+        if (type == "R") {
+            crystite = 0;
+        } else {
+            crystite = (int) Math.random() * 5;
+            // crystite = 1;
+        }
     }
 
     /**
@@ -57,6 +64,9 @@ public class Tile implements java.io.Serializable {
             this.mule = "energy";
         } else if (mule == 3) {
             this.mule = "smithore";
+        } else {
+            System.out.println("Set Crystite Mule.");
+            this.mule = "crystite";
         }
     }
 
@@ -70,8 +80,10 @@ public class Tile implements java.io.Serializable {
             return 1;
         } else if (mule.equals("energy")) {
             return 2;
-        } else {
+        } else if (mule.equals("smithore")) {
             return 3;
+        } else {
+            return 4;
         }
     }
 
@@ -126,6 +138,9 @@ public class Tile implements java.io.Serializable {
                 } else {
                     production += 4;
                 }
+            } else if (resource.equals("crystite")) {
+                System.out.println("Get crystite production.");
+                production += crystite;
             }
         }
 

@@ -2,7 +2,10 @@ package game.view;
 
 import game.model.Game;
 import game.model.Store;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -25,6 +28,8 @@ public class StoreController extends Controller {
     TextField smithoreField;
     @FXML
     TextField crystiteField;
+    @FXML
+    ComboBox muleChoices;
 
     private Game game;
     private Store store;
@@ -69,6 +74,16 @@ public class StoreController extends Controller {
         smithoreLabel.setText("Smithore: " + smithore);
         crystiteLabel.setText("Crystite: " + crystite);
         muleLabel.setText("Mule: " + mule);
+
+        ObservableList<String> options =
+                FXCollections.observableArrayList(
+                        "Food",
+                        "Energy",
+                        "Smithore",
+                        "Crystite"
+                );
+        muleChoices.setItems(options);
+        muleChoices.setPromptText("Choose a Mule");
     }
 
     @FXML
@@ -95,6 +110,27 @@ public class StoreController extends Controller {
     @FXML
     public void buyOreMule() {
         game.getTurn().buyMuleStore(3);
+        returnMap();
+    }
+
+    @FXML
+    public void buyCrystiteMule() {
+        game.getTurn().buyMuleStore(4);
+        returnMap();
+    }
+
+    @FXML
+    public void buyMule() {
+        if (muleChoices.getValue().equals("Food")) {
+            game.getTurn().buyMuleStore(1);
+        } else if (muleChoices.getValue().equals("Energy")) {
+            game.getTurn().buyMuleStore(2);
+        } else if (muleChoices.getValue().equals("Smithore")) {
+            game.getTurn().buyMuleStore(3);
+        } else if (muleChoices.getValue().equals("Crystite")) {
+            game.getTurn().buyMuleStore(4);
+        }
+
         returnMap();
     }
 

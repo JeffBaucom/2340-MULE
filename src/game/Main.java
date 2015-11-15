@@ -37,7 +37,8 @@ public class Main extends Application {
     private Game game;
 
     private MediaPlayer mediaPlayer;
-    private String MUSICFILE = "src/game/resources/music/background.mp3";
+    private static final String MUSICFILE =
+            "src/game/resources/music/background.mp3";
 
     @Override
     public void start(Stage primaryStage) {

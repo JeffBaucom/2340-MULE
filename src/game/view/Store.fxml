@@ -43,9 +43,8 @@
     <Button layoutX="637.0" layoutY="357.0" mnemonicParsing="false" onAction="#buyResource" text="Buy" />
       <Button layoutX="698.0" layoutY="357.0" mnemonicParsing="false" onAction="#sellResource" text="Sell" />
       <Button layoutX="757.0" layoutY="599.0" mnemonicParsing="false" onAction="#returnTown" text="Return to Town" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
-      <Button layoutX="153.0" layoutY="357.0" mnemonicParsing="false" onAction="#buyFoodMule" text="Buy Food Mule" />
-      <Button layoutX="306.0" layoutY="357.0" mnemonicParsing="false" onAction="#buyEnergyMule" text="Buy Energy Mule" />
       <Label fx:id="muleLabel" layoutX="153.0" layoutY="408.0" text="Mule: #" />
-      <Button layoutX="472.0" layoutY="357.0" mnemonicParsing="false" onAction="#buyOreMule" text="Buy Ore Mule" />
+      <ComboBox fx:id="muleChoices" layoutX="153.0" layoutY="357.0" prefHeight="39.0" prefWidth="183.0" />
+      <Button layoutX="363.0" layoutY="357.0" mnemonicParsing="false" onAction="#buyMule" text="Buy Mule" />
   </children>
 </AnchorPane>
