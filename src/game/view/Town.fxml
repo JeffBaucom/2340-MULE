@@ -19,7 +19,7 @@
             <Image url="@../resources/images/store.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="283.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="283.0" layoutY="200.0" onMouseClicked="#assayLand" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/images/assayOffice.png" />
          </image>

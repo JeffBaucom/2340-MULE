@@ -88,7 +88,11 @@ public class GameScreenController extends Controller {
         nextButton.setDisable(false);
         landButton.setDisable(true);
 
-        if (player.getMule() > 0) {
+        if (game.getTurn().isAssaying()) {
+            game.logEvent("This tile has " + currentTile.getCrystite() + " " +
+                    "Crystite.");
+            game.getTurn().setAssaying(false);
+        } else if (player.getMule() > 0) {
             if (currentTile.getOwner() == player.getId()
                     && currentTile.getMule() == 0) {
                 game.getTurn().placeMule(currentTile.getRow(),
@@ -136,7 +140,7 @@ public class GameScreenController extends Controller {
 
     public void enableLandButton() {
         if (player.getMule() > 0 || (map.getSelectedTile().getOwner() ==
-                -1 && game.getPhase() < 2)) {
+                -1 && game.getPhase() < 2) || game.getTurn().isAssaying()) {
             landButton.setDisable(false);
             landButton.setVisible(true);
         } else {
@@ -235,9 +239,12 @@ public class GameScreenController extends Controller {
             game.setTurnover(true);
         }
 
-        if (player.getMule() < 1 && game.getPhase() >= 1) {
+        if (game.getTurn().isAssaying() && game.getPhase() >= 1) {
+            landButton.setText("Assay Land");
+        } else if (player.getMule() < 1 && game.getPhase() >= 1) {
             landButton.setText("Buy Land");
         }
+
 
         if (game.getTurnOver()) {
             timer.cancel();

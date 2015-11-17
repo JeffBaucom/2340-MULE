@@ -1,5 +1,7 @@
 package game.model;
 
+import java.util.Random;
+
 /**
  * Class that holds information relevant to a tile.
  */
@@ -27,7 +29,8 @@ public class Tile implements java.io.Serializable {
         if (type == "R") {
             crystite = 0;
         } else {
-            crystite = (int) Math.random() * 5;
+            Random rand = new Random();
+            crystite = rand.nextInt(5);
             // crystite = 1;
         }
     }
@@ -145,5 +148,9 @@ public class Tile implements java.io.Serializable {
         }
 
         return production;
+    }
+
+    public int getCrystite() {
+        return crystite;
     }
 }

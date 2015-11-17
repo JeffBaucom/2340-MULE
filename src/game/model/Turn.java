@@ -20,6 +20,8 @@ public class Turn implements java.io.Serializable {
      */
     private String randomEventMessage;
 
+    private boolean assaying;
+
     private static final String MONEY = "money";
 
 
@@ -40,6 +42,8 @@ public class Turn implements java.io.Serializable {
         if (randInt <= 27) {
             randomEventMessage = randomEvents.getRandomEvent(player);
         }
+
+        assaying = false;
     }
 
     /**
@@ -193,5 +197,13 @@ public class Turn implements java.io.Serializable {
      */
     public final String getRandomEventMessage() {
         return randomEventMessage;
+    }
+
+    public boolean isAssaying() {
+        return assaying;
+    }
+
+    public void setAssaying(boolean assaying) {
+        this.assaying = assaying;
     }
 }

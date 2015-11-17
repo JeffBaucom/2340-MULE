@@ -44,6 +44,12 @@ public class TownController extends Controller {
         gameScreenController.returnMap();
     }
 
+    @FXML
+    public void assayLand() {
+        game.getTurn().setAssaying(true);
+        gameScreenController.returnMap();
+    }
+
     public void update() {
     }
 }
