@@ -26,7 +26,7 @@ public class Tile implements java.io.Serializable {
         this.row = row;
         this.col = col;
 
-        if (type == "R") {
+        if (type.equals("R")) {
             crystite = 0;
         } else {
             Random rand = new Random();
@@ -68,7 +68,6 @@ public class Tile implements java.io.Serializable {
         } else if (mule == 3) {
             this.mule = "smithore";
         } else {
-            System.out.println("Set Crystite Mule.");
             this.mule = "crystite";
         }
     }
@@ -142,7 +141,6 @@ public class Tile implements java.io.Serializable {
                     production += 4;
                 }
             } else if (resource.equals("crystite")) {
-                System.out.println("Get crystite production.");
                 production += crystite;
             }
         }
