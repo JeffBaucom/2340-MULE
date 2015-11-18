@@ -115,8 +115,6 @@ public class MapController extends Controller {
             }
         }
 
-        if (game.getTurnOver()) {
-            grid.getChildren().remove(cursor);
-        }
+        grid.getChildren().remove(cursor);
     }
 }
