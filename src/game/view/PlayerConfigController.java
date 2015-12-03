@@ -20,7 +20,13 @@ public class PlayerConfigController extends Controller {
     @FXML
     RadioButton human;
     @FXML
-    RadioButton other;
+    RadioButton yellowJacket;
+    @FXML
+    RadioButton bonzoid;
+    @FXML
+    RadioButton ugaite;
+    @FXML
+    RadioButton buzzite;
     @FXML
     RadioButton red;
     @FXML
@@ -73,8 +79,14 @@ public class PlayerConfigController extends Controller {
             raceValue = "flapper";
         } else if (human.isSelected()) {
             raceValue = "human";
+        } else if (bonzoid.isSelected()) {
+            raceValue = "bonzoid";
+        } else if (ugaite.isSelected()) {
+            raceValue = "ugaite";
+        } else if (buzzite.isSelected()) {
+            raceValue = "buzzite";
         } else {
-            raceValue = "other";
+            raceValue = "yellow jacket";
         }
 
         game.newPlayer(playerIndex, game.getDifficulty(), playerName, colorValue, raceValue);
@@ -106,7 +118,10 @@ public class PlayerConfigController extends Controller {
 
         flapper.setSelected(false);
         human.setSelected(false);
-        other.setSelected(false);
+        buzzite.setSelected(false);
+        bonzoid.setSelected(false);
+        ugaite.setSelected(false);
+        yellowJacket.setSelected(false);
 
         next.setDisable(true);
     }
