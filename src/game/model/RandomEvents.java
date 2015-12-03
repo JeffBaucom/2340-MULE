@@ -76,6 +76,7 @@ public class RandomEvents implements java.io.Serializable {
                 + "It cost you $" + rand7Num + " to clean it up.");
         events.add("A roving band of space pirates stole half your energy.");
         events.add("Wandering mole-bats broke into your ore storage." + "Half of your ore is lost.");
+        events.add("Famine has stricken the planet. All players' food is lost");
     }
 
     /**
@@ -89,7 +90,7 @@ public class RandomEvents implements java.io.Serializable {
         if (game.getCurrentPlayer() == game.getLosingPlayer()) {
             event = rand.nextInt(4);
         } else {
-            event = rand.nextInt(9);
+            event = rand.nextInt(10);
         }
         if (event == 0) {
             p.add("food", 3);
@@ -108,8 +109,12 @@ public class RandomEvents implements java.io.Serializable {
             p.add(MONEY, -1 * rand7Num);
         } else if (event == 7) {
             p.set("energy", (p.get("energy") / 2));
-        } else {
+        } else if (event == 8) {
             p.set("smithore", (p.get("smithore") / 2));
+        } else {
+            for(Player player: game.getPlayers()) {
+                player.set("food", 0);
+            }
         }
         return events.get(event);
     }
