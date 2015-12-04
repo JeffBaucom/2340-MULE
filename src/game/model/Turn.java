@@ -30,9 +30,9 @@ public class Turn implements java.io.Serializable {
      * @param currPlayer the player object who has this turn
      * @param theGame the game object
      */
-    public Turn(final Player currPlayer, final Game theGame) {
+    public Turn(final Player currPlayer) {
         this.player = currPlayer;
-        this.game = theGame;
+        game = Game.getInstance();
         RandomEvents randomEvents = new RandomEvents(game);
         randomEventMessage = "";
 
