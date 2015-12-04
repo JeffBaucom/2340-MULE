@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="864.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.view.PlayerConfigController">
+<AnchorPane id="main-screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="864.0" stylesheets="@../../../../../MULE/styles.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.view.PlayerConfigController">
     <children>
-        <Label fx:id="playerText" layoutX="193.0" layoutY="38.0" prefHeight="93.0" prefWidth="291.0" text="Player #" textAlignment="CENTER" AnchorPane.leftAnchor="232.0" AnchorPane.rightAnchor="232.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="143.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="864.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+               <stops>
+                  <Stop color="#1e92ff00" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+        <Label id="PlayerConfigTitle" fx:id="playerText" layoutX="193.0" layoutY="38.0" prefHeight="93.0" prefWidth="291.0" stylesheets="@../../../../../MULE/styles.css" text="Player #" textAlignment="CENTER" AnchorPane.leftAnchor="232.0" AnchorPane.rightAnchor="232.0">
             <font>
                 <Font size="64.0" />
             </font>
@@ -25,9 +36,9 @@
                 <RowConstraints minHeight="10.0" percentHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label text="Enter Player Name:" GridPane.valignment="TOP" />
+                <Label text="Enter Player Name:" textFill="WHITE" GridPane.valignment="TOP" />
                 <TextField fx:id="playerNameField" onAction="#enableNext" onKeyTyped="#enableNext" GridPane.columnIndex="1" GridPane.valignment="TOP" />
-                <Label text="Select a Race" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                <Label text="Select a Race" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                 <GridPane maxHeight="120.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -38,15 +49,15 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <RadioButton fx:id="flapper" mnemonicParsing="false" onAction="#enableNext" text="Flapper" GridPane.valignment="TOP">
+                        <RadioButton fx:id="flapper" mnemonicParsing="false" onAction="#enableNext" text="Flapper" textFill="WHITE" GridPane.valignment="TOP">
                             <toggleGroup>
                                 <ToggleGroup fx:id="race" />
                             </toggleGroup></RadioButton>
-                        <RadioButton fx:id="human" mnemonicParsing="false" onAction="#enableNext" text="Human" toggleGroup="$race" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                        <RadioButton fx:id="yellowJacket" mnemonicParsing="false" onAction="#enableNext" text="Yellow Jacket" toggleGroup="$race" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                        <RadioButton fx:id="human" mnemonicParsing="false" onAction="#enableNext" text="Human" textFill="WHITE" toggleGroup="$race" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                        <RadioButton fx:id="yellowJacket" mnemonicParsing="false" onAction="#enableNext" text="Yellow Jacket" textFill="WHITE" toggleGroup="$race" GridPane.rowIndex="2" GridPane.valignment="TOP" />
                     </children>
                 </GridPane>
-                <Label text="Select a Color" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                <Label text="Select a Color" textFill="WHITE" GridPane.rowIndex="2" GridPane.valignment="TOP" />
                 <GridPane maxHeight="160.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -58,13 +69,13 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <RadioButton fx:id="blue" mnemonicParsing="false" onAction="#enableNext" text="Blue" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                        <RadioButton fx:id="blue" mnemonicParsing="false" onAction="#enableNext" text="Blue" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP">
                             <toggleGroup>
                                 <ToggleGroup fx:id="color" />
                             </toggleGroup></RadioButton>
-                        <RadioButton fx:id="red" mnemonicParsing="false" onAction="#enableNext" text="Red" toggleGroup="$color" GridPane.valignment="TOP" />
-                        <RadioButton fx:id="green" mnemonicParsing="false" onAction="#enableNext" text="Green" toggleGroup="$color" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                        <RadioButton fx:id="yellow" mnemonicParsing="false" onAction="#enableNext" text="Yellow" toggleGroup="$color" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                        <RadioButton fx:id="red" mnemonicParsing="false" onAction="#enableNext" text="Red" textFill="WHITE" toggleGroup="$color" GridPane.valignment="TOP" />
+                        <RadioButton fx:id="green" mnemonicParsing="false" onAction="#enableNext" text="Green" textFill="WHITE" toggleGroup="$color" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                        <RadioButton fx:id="yellow" mnemonicParsing="false" onAction="#enableNext" text="Yellow" textFill="WHITE" toggleGroup="$color" GridPane.rowIndex="3" GridPane.valignment="TOP" />
                     </children>
                 </GridPane>
                 <GridPane GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -77,9 +88,9 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <RadioButton fx:id="bonzoid" mnemonicParsing="false" onAction="#enableNext" text="Bonzoid" toggleGroup="$race" GridPane.valignment="TOP" />
-                        <RadioButton fx:id="ugaite" mnemonicParsing="false" onAction="#enableNext" prefHeight="19.0" prefWidth="68.0" text="Ugaite" toggleGroup="$race" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                        <RadioButton fx:id="buzzite" mnemonicParsing="false" onAction="#enableNext" text="Buzzite" toggleGroup="$race" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                        <RadioButton fx:id="bonzoid" mnemonicParsing="false" onAction="#enableNext" text="Bonzoid" textFill="WHITE" toggleGroup="$race" GridPane.valignment="TOP" />
+                        <RadioButton fx:id="ugaite" mnemonicParsing="false" onAction="#enableNext" prefHeight="19.0" prefWidth="68.0" text="Ugaite" textFill="WHITE" toggleGroup="$race" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                        <RadioButton fx:id="buzzite" mnemonicParsing="false" onAction="#enableNext" text="Buzzite" textFill="WHITE" toggleGroup="$race" GridPane.rowIndex="2" GridPane.valignment="TOP" />
                     </children>
                 </GridPane>
             </children>
