@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="main-screen" fx:id="background" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="true" prefHeight="480.0" prefWidth="864.0" snapToPixel="true" stylesheets="@../../../../../MULE/styles.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.view.TownController">
+<AnchorPane id="main-screen" fx:id="background" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="true" prefHeight="480.0" prefWidth="869.0" snapToPixel="true" stylesheets="@../../../../../MULE/styles.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.view.TownController">
   <children>
       <Text fill="#ffffff31" layoutX="-44.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to The Town!">
          <font>
