@@ -35,6 +35,8 @@ public class Game implements java.io.Serializable {
     /** This game's isntance of Store. */
     private Store store;
 
+    private static Game game;
+
     /**
      * Constructs a new instance of Game.
      *
@@ -52,6 +54,8 @@ public class Game implements java.io.Serializable {
         this.mapType = mapType;
         this.map = new Map(mapType);
         gameLog = "";
+
+        game = this;
     }
 
     /**
@@ -66,7 +70,7 @@ public class Game implements java.io.Serializable {
 
         reorderPlayers();
         currentId = playerOrder[0].getId();
-        currentTurn = new Turn(players[currentId], this);
+        currentTurn = new Turn(players[currentId]);
         turnover = false;
     }
 
@@ -108,7 +112,7 @@ public class Game implements java.io.Serializable {
         this.timeLeft = timeLeft;
 
         currentId = playerOrder[playerCounter].getId();
-        currentTurn = new Turn(playerOrder[playerCounter], this);
+        currentTurn = new Turn(playerOrder[playerCounter]);
     }
 
     /**
@@ -137,7 +141,7 @@ public class Game implements java.io.Serializable {
         }
 
         currentId = playerOrder[playerCounter].getId();
-        currentTurn = new Turn(playerOrder[playerCounter], this);
+        currentTurn = new Turn(playerOrder[playerCounter]);
 
         if (phase > 1) {
             getCurrentPlayer().add("food", -1);
@@ -360,4 +364,6 @@ public class Game implements java.io.Serializable {
         this.players = players;
         this.playerOrder = players;
     }
+
+    public static Game getInstance() { return game; }
 }
