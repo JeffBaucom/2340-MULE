@@ -78,7 +78,7 @@ public class RandomEvents implements java.io.Serializable {
         events.add("Wandering mole-bats broke into your ore storage." + "Half of your ore is lost.");
         events.add("Famine has stricken the planet. All players' food is lost.");
         events.add("A solar flare has hit the planet.  All players' energy is lost.");
-        events.add("Space invaders demand tribute. All players' smithore is list.");
+        events.add("Space invaders demand tribute. All players' smithore is lost.");
     }
 
     /**
