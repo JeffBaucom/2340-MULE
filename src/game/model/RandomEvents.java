@@ -59,7 +59,7 @@ public class RandomEvents implements java.io.Serializable {
         } else {
             rand5Num = 4 * 100;
         }
-        events.add("Flying cat-bugs ate the roof off your house. Repairs cost $"
+        events.add("Flying cat-bugs ate the roof off your house. The repairs cost $"
                 + rand5Num + ".");
         events.add("Mischievous U(sic)GA students broke into your storage"
                 + "shed and stole half your food.");
