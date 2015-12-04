@@ -26,7 +26,7 @@ public class RandomEvents implements java.io.Serializable {
         events = new ArrayList<String>();
         events.add("You just received a package from the GT Alumni "
                 + "containing 3 food and 2 energy units!");
-        events.add("A wandering Tech student repaid your hospitality by"
+        events.add("A wandering Tech student repaid your hospitality by "
                 + "leaving two bars of ore!");
         if (game.getRoundCounter() < 3) {
             rand3Num = 8 * 25;
@@ -75,7 +75,7 @@ public class RandomEvents implements java.io.Serializable {
         events.add("Your space gypsy in-laws made a mess of the town."
                 + "It cost you $" + rand7Num + " to clean it up.");
         events.add("A roving band of space pirates stole half your energy.");
-        events.add("Wandering mole-bats broke into your ore storage." + "Half of your ore is lost.");
+        events.add("Wandering mole-bats broke into your ore storage. " + "Half of your ore is lost.");
     }
 
     /**

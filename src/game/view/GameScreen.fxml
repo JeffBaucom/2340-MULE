@@ -8,9 +8,9 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.view.GameScreenController">
+<AnchorPane id="main-screen" stylesheets="@../../../../../MULE/styles.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.view.GameScreenController">
    <children>
-      <Button fx:id="nextButton" layoutX="758.0" layoutY="121.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleNext" text="Next" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+      <Button id="return-button" fx:id="nextButton" layoutX="758.0" layoutY="121.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleNext" stylesheets="@../../../../../MULE/styles.css" text="Next" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
       <GridPane layoutX="20.0" layoutY="20.0" prefWidth="240.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" percentWidth="100.0" prefWidth="110.0" />
@@ -26,16 +26,16 @@
                   <Insets top="-15.0" />
                </GridPane.margin>
             </ImageView>
-            <Label fx:id="playerName" text="Player #" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+            <Label fx:id="playerName" text="Player #" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="playerInfo" text="Player Info" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-            <Button fx:id="landButton" alignment="BOTTOM_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#landAction" text="Land Action" GridPane.rowIndex="2" />
+            <Label id="info" fx:id="playerInfo" stylesheets="@../../../../../MULE/styles.css" text="Player Info" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Button id="return-button" fx:id="landButton" alignment="BOTTOM_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#landAction" stylesheets="@../../../../../MULE/styles.css" text="Land Action" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <GridPane layoutX="280.0" layoutY="20.0" prefWidth="240.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="20.0">
+      <GridPane layoutX="262.0" layoutY="20.0" prefHeight="140.0" prefWidth="240.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="262.0" AnchorPane.topAnchor="20.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -44,12 +44,12 @@
             <RowConstraints minHeight="10.0" percentHeight="75.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Log" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Log" GridPane.halignment="LEFT" GridPane.valignment="TOP">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Text>
-            <TextArea fx:id="gameLog" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+            <TextArea id="entry" fx:id="gameLog" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../../../MULE/styles.css" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <GridPane layoutX="540.0" layoutY="20.0" prefHeight="140.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="540.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0">
@@ -61,15 +61,15 @@
             <RowConstraints minHeight="10.0" percentHeight="80.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label text="Leaderboard" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+            <Label id="Label" stylesheets="@../../../../../MULE/styles.css" text="Leaderboard" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="playerScore" text="Player Scores" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-            <Label fx:id="clock" text="Time Remaining: " GridPane.rowIndex="1" />
+            <Label id="Label" fx:id="playerScore" stylesheets="@../../../../../MULE/styles.css" text="Player Scores" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Label id="Label" fx:id="clock" stylesheets="@../../../../../MULE/styles.css" text="Time Remaining: " textFill="WHITE" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button layoutX="750.0" layoutY="14.0" mnemonicParsing="false" onAction="#saveGame" text="Save &amp; Quit" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+      <Button id="tiny-buttons" layoutX="750.0" layoutY="14.0" mnemonicParsing="false" onAction="#saveGame" stylesheets="@../../../../../MULE/styles.css" text="Save &amp; Quit" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
    </children>
 </AnchorPane>
