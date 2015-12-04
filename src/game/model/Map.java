@@ -34,7 +34,11 @@ public final class Map implements java.io.Serializable {
         if (mapType.equals("standard")) {
             for (int i = 0; i < HEIGHT; i++) {
                 for (int j = 0; j < WIDTH; j++) {
-                    tiles[i][j] = new Tile("P", i, j);
+                    if (Math.random() < 0.5) {
+                        tiles[i][j] = new Tile("P", i, j);
+                    } else {
+                        tiles[i][j] = new Tile("F", i, j);
+                    }
                 }
             }
 

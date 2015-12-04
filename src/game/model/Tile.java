@@ -117,6 +117,8 @@ public class Tile implements java.io.Serializable {
                     production += 4;
                 } else if (type.equals("P")) {
                     production += 2;
+                } else if (type.equals("F")) {
+                    production += 4;
                 } else {
                     production += 1;
                 }
